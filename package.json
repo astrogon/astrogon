@@ -1,8 +1,8 @@
 {
-  "name": "pages",
+  "name": "reednel.com",
   "version": "1.0.0",
-  "description": "Template.",
-  "author": "Jane Doe",
+  "description": "Reed Nelson's personal website",
+  "author": "Reed Nelson",
   "license": "MIT",
   "packageManager": "npm@10.2.4",
   "scripts": {

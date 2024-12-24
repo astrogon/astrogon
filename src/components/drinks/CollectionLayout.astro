@@ -1,0 +1,57 @@
+---
+import BaseLayout from "@components/base/BaseLayout.astro";
+import DrinksCard from "@components/drinks/Card.astro";
+import Pagination from "@components/common/Pagination.astro";
+import PageHeader from "@components/common/PageHeader.astro";
+import DrinksSidebar from "@components/drinks/Sidebar.astro";
+import type { DrinksEntry } from "@/types";
+
+interface Props {
+  entryIndex: DrinksEntry;
+  entries: DrinksEntry[];
+  bottles: string[];
+  spirits: string[];
+  tags: string[];
+  pageIndex: number;
+  pageCount: number;
+}
+
+const { entryIndex, entries, bottles, spirits, tags, pageIndex, pageCount } =
+  Astro.props;
+---
+
+<BaseLayout
+  title={entryIndex.data.title}
+  description={entryIndex.data.description}
+>
+  <PageHeader title={entryIndex.data.title} />
+  <section class="section">
+    <div class="flex container">
+      <div class="row px-0 mx-0 w-full">
+        <!-- drink posts -->
+        <div class="col-12 lg:col-8 lg:p-0">
+          <div class="row">
+            {
+              entries.map((entry) => (
+                <div class="mb-4 px-2 md:col-6 h-min">
+                  <DrinksCard entry={entry} />
+                </div>
+              ))
+            }
+          </div>
+          <Pagination
+            collection="drinks"
+            pageIndex={pageIndex}
+            pageCount={pageCount}
+          />
+        </div>
+        <!-- sidebar -->
+        <div
+          class="lg:col-4 lg:flex max-h-static_sidemenu sticky p-0 pl-4 top-[4rem]"
+        >
+          <DrinksSidebar bottles={bottles} spirits={spirits} tags={tags} />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

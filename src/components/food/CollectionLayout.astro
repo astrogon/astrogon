@@ -1,0 +1,42 @@
+---
+import BaseLayout from "@components/base/BaseLayout.astro";
+import FoodCard from "@components/food/Card.astro";
+import Pagination from "@components/common/Pagination.astro";
+import PageHeader from "@components/common/PageHeader.astro";
+import type { FoodEntry } from "@/types";
+
+interface Props {
+  entryIndex: FoodEntry;
+  entries: FoodEntry[];
+  pageIndex: number;
+  pageCount: number;
+}
+
+const { entryIndex, entries, pageIndex, pageCount }: Props = Astro.props;
+---
+
+<BaseLayout
+  title={entryIndex.data.title}
+  image={entryIndex.data.image?.src}
+  description={entryIndex.data.description}
+>
+  <PageHeader title={entryIndex.data.title} />
+  <section class="section m-2">
+    <div class="container">
+      <div class="row">
+        {
+          entries.map((entry) => (
+            <div class="md:col-6 lg:col-4 h-min p-2">
+              <FoodCard entry={entry} />
+            </div>
+          ))
+        }
+      </div>
+      <Pagination
+        collection="food"
+        pageIndex={pageIndex}
+        pageCount={pageCount}
+      />
+    </div>
+  </section>
+</BaseLayout>

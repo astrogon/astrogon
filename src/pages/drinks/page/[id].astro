@@ -1,0 +1,51 @@
+---
+import config from "@/config/config.json";
+import { getIndex, getEntries } from "@lib/contentParser";
+import { getTaxa } from "@lib/taxonomyParser";
+import { sortByDate } from "@lib/sortFunctions";
+import CollectionLayout from "@components/drinks/CollectionLayout.astro";
+import type { DrinksEntry } from "@/types";
+
+export async function getStaticPaths() {
+  const entries = (await getEntries("drinks", sortByDate)) as DrinksEntry[];
+  const pageCount = Math.ceil(entries.length / config.settings.drinks_pagination);
+  const paths = [];
+
+  for (let i = 1; i < pageCount; i++) {
+    paths.push({
+      params: {
+        id: (i + 1).toString(),
+      },
+    });
+  }
+  return paths;
+}
+
+const { id } = Astro.params;
+const currentPageIndex = id && !isNaN(Number(id)) ? Number(id) : 1;
+
+const entryIndex = (await getIndex("drinks")) as DrinksEntry;
+const entries = (await getEntries("drinks", sortByDate)) as DrinksEntry[];
+
+const bottles = await getTaxa("drinks", "bottles");
+const spirits = await getTaxa("drinks", "spirits");
+const tags = await getTaxa("drinks", "tags");
+
+const indexOfLastEntry = currentPageIndex * config.settings.drinks_pagination;
+const indexOfFirstEntry = indexOfLastEntry - config.settings.drinks_pagination;
+const currentEntries = entries.slice(indexOfFirstEntry, indexOfLastEntry);
+
+const pageCount: number = Math.ceil(
+  entries.length / config.settings.drinks_pagination
+);
+---
+
+<CollectionLayout
+  entryIndex={entryIndex}
+  entries={currentEntries}
+  bottles={bottles}
+  spirits={spirits}
+  tags={tags}
+  pageIndex={currentPageIndex}
+  pageCount={pageCount}
+/>

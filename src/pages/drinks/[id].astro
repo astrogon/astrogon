@@ -1,0 +1,23 @@
+---
+import type { DrinksEntry } from "@/types";
+import { sortByDate } from "@lib/sortFunctions";
+import EntryLayout from "@components/drinks/EntryLayout.astro";
+import { getEntries } from "@lib/contentParser";
+import similerItems from "@lib/similarItems";
+
+export async function getStaticPaths() {
+  const entries = (await getEntries("drinks", sortByDate)) as DrinksEntry[];
+  const paths = entries.map((entry) => ({
+    params: {
+      id: entry.id,
+    },
+    props: { entry, entries },
+  }));
+  return paths;
+}
+
+const { entry, entries } = Astro.props;
+const relatedEntries = similerItems(entry, entries, entry.id);
+---
+
+<EntryLayout entry={entry} relatedEntries={relatedEntries} />

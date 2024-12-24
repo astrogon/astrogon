@@ -1,0 +1,102 @@
+---
+title: Conversation Cards
+description: I made a set of conversation cards so you don't have to buy one.
+
+cards:
+ - What was your first impression of me? What surprised you after getting to know me?
+ - What do you think comes easily to me that's hard for others?
+ - What do you think I'm sensitive to?
+ - Which one of your other friends do you think I'd be the most compatable with? Explain.
+ - What's one small detail you remember about the first time we met?
+ - What qualities do you think I need most in a long term partner? What do I tend to go for?
+ - What made you gravitate towards me as a friend?
+ - Describe my ideal roommate. Who could I never live with?
+ - What do I have a low tolerance for in people?
+ - What assumptions do you think strangers make about me based off of my social media?
+ - What about me is most intimidating, if anything?
+ - What (or who) do you think I spend most of my time thinking about these days?
+ - How many unread texts do you think I have right now?
+ - On a scale of 1-10, how sexually adventurous do I seem?
+ - What do you think I strongly dislike that most people obsess over?
+ - When do you think I wake up on an average day? Explain.
+ - How many people do you think I've slept with?
+ - Who do you think I'm closest to (besides you)?
+ - What am I most likely to walk out on a date because of?
+ - What's something I'll never say no to?
+ - What's the first thing you noticed about me?
+ - What's something I could do for hours on end without getting bored?
+ - What's something I could give an hour-long presentation on right now?
+ - From your perspective, what would this chapter of my life be called?
+ - What assumption did you make about me that was way off?
+ - Who's the more hydrated friend?
+ - Who do you think was the last person I stalked on social media? What was I looking for?
+ - What about me would people least expect?
+ - What outfit am I most likely to wear on a first date? Get specific?
+ - When do you think I'm most 'in my element'? What do you think I'm doing? Who am I with?
+ - If I had a movie poster on my wall, which would it be?
+ - What do you think my circle of friends has in common?
+ - What about my style is undenyably me?
+ - Who in my life do you think brings out the best in me?
+ - Describe my ideal first date from start to finish.
+ - What have you been extra hard on yourself for lately?
+ - What are you tired of complaining about?
+ - What are you trying not to think about?
+ - When do you feel most like yourself? Who are you with? What are you doing?
+ - What do you wish you got more credit for?
+ - Do any of your friends no longer feel like friends?
+ - What's an exciting change you've been seeing in yourself, big or small?
+ - What have you learned to accept about yourself with time?
+ - What do you need to vent about right now?
+ - Who's a friend you've lost touch with that you think about to this day?
+ - Who was your first best friend and one thing about them?
+ - How many times has your 'best friend' changed through the years?
+ - Does our friendship have a defining moment? What was it?
+ - What are you proudest of yourself for? You have permission to brag.
+ - If you could relive an iconic day in our friendship, what would it be?
+ - What made you smile today?
+ - Is there a pattern you've noticed in my love life?
+ - Who in your life leaves you feeling drained? What boundary could you set with them?
+ - What (or who) have you been overthinking?
+ - What conversation are you avoiding?
+ - What could you benefit from letting go of? Why are you still holding on?
+ - What do you want to make more time for? What's getting in the way of that?
+ - Have you ever had a friendship breakup before? What did it teach you?
+ - What are you procrastinating right now? Why does it feel so hard?
+ - What text would you send right now if there weren't any consequences?
+ - What's one small thing someone's done for you recently that made you feel loved in a big way?
+ - When was the time you were a bad friend? What could you have done differently?
+ - What part of your job doesn't feel like work?
+ - What are you still processing?
+ - What's the most loving thing you've done for yourself recently?
+ - What's the hardest part about making new friends for you?
+ - Rate your happiness level at your current job on a scale of 1-10. What would make it 1 point higher?
+ - What have I introduced you to that you now love?
+ - What was your first impression of my most recent partner? What do you think now?
+ - Were you comfortable having friends over growing up? Explain.
+ - What's something you can always rely on me for?
+ - How have you seen me change over time? What hasn't changet at all?
+ - What makes our friendship work?
+ - What was hardest for you to open up to me about?
+ - When do you feel closest to me? What are we doing?
+ - When was the last time you had a big win? How can we celebrate?
+ - What's a habit of mine that you're inspired by?
+ - Have I changed your mind about anything?
+ - What do I need brutally honest advice about?
+ - What growth have you seen in me recently that's been exciting to watch?
+ - What do you think I need to hear right now?
+ - What are you proudest of us for getting through together?
+ - What's something I don't give myself enough credit for?
+ - What's the best way I can show up for you when you're going through it?
+ - What's one thing you cherish about our friendship?
+ - What do you think I'm growing out of? What do you think I'm growing into?
+ - What's something that reminds you of me?
+ - Is there any way our friendship has raised your standards for all the rest?
+ - What song(s) make you think of me?
+ - What's a philosophy of mine that you'd like to adopt?
+ - How has our friendship changed you for the better?
+ - What's something we used to take for granted? What's something we could be taking for granted now?
+ - How have I helped you without realizing it?
+ - When you're upset, what do you need most?
+ - In what ways do our differences compliment each other?
+ - What's something I should stop apologizing for?
+---

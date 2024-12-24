@@ -1,4 +1,4 @@
-<!-- ---
+---
 // Twinkling Star Background 
 const numStars = 1024;
 const stars = Array.from({ length: numStars }).map(() => ({
@@ -14,7 +14,7 @@ const stars = Array.from({ length: numStars }).map(() => ({
   {
     stars.map(({ left, top, size, delay }) => (
       <div
-        class="absolute bg-black dark:bg-white rounded-full animate-twinkle"
+        class="absolute bg-bg-p dark:bg-white rounded-full animate-twinkle"
         style={`
             left: ${left};
             top: ${top};
@@ -25,18 +25,7 @@ const stars = Array.from({ length: numStars }).map(() => ({
       />
     ))
   }
-</div> -->
-
-<!-- Gradient Cycle Background -->
-<!-- <div
-  class="gradient animate-cycleBg fixed top-0 left-0 w-full h-full -z-1 pointer-events-none overflow-hidden"
-/>
-<style>
-  .gradient {
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-  }
-</style> -->
+</div>
 
 <!-- Image Background -->
 <!-- <style>

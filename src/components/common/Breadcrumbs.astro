@@ -6,9 +6,9 @@ const { className }: { className?: string } = Astro.props;
 const paths = Astro.url.pathname.split("/").filter((x) => x);
 let parts = [
   {
-    label: "Home",
+    label: "~",
     href: "/",
-    "aria-label": Astro.url.pathname === "/" ? "page" : undefined,
+    ariaLabel: Astro.url.pathname === "/" ? "page" : undefined,
   },
 ];
 
@@ -16,9 +16,9 @@ paths.forEach((label: string, i: number) => {
   const href = `/${paths.slice(0, i + 1).join("/")}`;
   label !== "page" &&
     parts.push({
-      label: lowerHumanize(label.replace(/[-_]/g, " ")) || "",
+      label: lowerHumanize(label),
       href,
-      "aria-label": Astro.url.pathname === href ? "page" : undefined,
+      ariaLabel: Astro.url.pathname === href ? "page" : undefined,
     });
 });
 ---
@@ -26,15 +26,17 @@ paths.forEach((label: string, i: number) => {
 <nav aria-label="Breadcrumb" class={className}>
   <ol class="inline-flex" role="list">
     {
-      parts.map(({ label, ...attrs }, index) => (
+      parts.map(({ label, href, ariaLabel }, index) => (
         <li class="mx-1 capitalize" role="listitem">
           {index > 0 && <span class="inlin-block mr-1">/</span>}
           {index !== parts.length - 1 ? (
-            <a class="text-txt-p dark:text-darkmode-txt-p" {...attrs}>
+            <a class="text-txt-p dark:text-darkmode-txt-p" href={href} aria-label={ariaLabel}>
               {label}
             </a>
           ) : (
-            <span class="text-txt-light dark:text-darkmode-txt-light">{label}</span>
+            <span class="text-txt-light dark:text-darkmode-txt-light">
+              {label}
+            </span>
           )}
         </li>
       ))

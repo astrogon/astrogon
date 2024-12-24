@@ -1,0 +1,39 @@
+---
+import config from "@/config/config.json";
+import { getIndex, getEntries } from "@lib/contentParser";
+import { sortByDate } from "@lib/sortFunctions";
+import type { FoodEntry } from "@/types";
+import CollectionLayout from "@components/food/CollectionLayout.astro";
+
+export async function getStaticPaths() {
+  const entries = (await getEntries("food", sortByDate)) as FoodEntry[];
+  const pageCount = Math.ceil(entries.length / config.settings.food_pagination);
+  const paths = [];
+
+  for (let i = 1; i < pageCount; i++) {
+    paths.push({
+      params: {
+        id: (i + 1).toString(),
+      },
+    });
+  }
+  return paths;
+}
+
+const entryIndex = (await getIndex("food")) as FoodEntry;
+const entries = (await getEntries("food", sortByDate)) as FoodEntry[];
+
+const { id } = Astro.params;
+const currentPageIndex = id && !isNaN(Number(id)) ? Number(id) : 1;
+const pageCount = Math.ceil(entries.length / config.settings.food_pagination);
+const indexOfLastEntry = currentPageIndex * config.settings.food_pagination;
+const indexOfFirstEntry = indexOfLastEntry - config.settings.food_pagination;
+const currentEntries = entries.slice(indexOfFirstEntry, indexOfLastEntry);
+---
+
+<CollectionLayout
+  entryIndex={entryIndex}
+  entries={currentEntries}
+  pageIndex={currentPageIndex}
+  pageCount={pageCount}
+/>

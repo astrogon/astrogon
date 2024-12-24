@@ -1,28 +1,25 @@
 {
   "site": {
-    "title": "Pages",
-    "base_url": "https://janedoe.com",
+    "title": "reednel.com",
+    "base_url": "https://reednel.com",
     "base_path": "/"
   },
-
+  "metadata": {
+    "meta_author": "Reed Nelson",
+    "meta_image": "",
+    "meta_description": "Reed Nelson's website"
+  },
   "settings": {
     "sticky_header": true,
     "theme_switcher": true,
     "default_theme": "system",
     "search_enabled": true,
-    "searchable_collections": ["about", "authors", "blog", "docs", "poetry", "recipes", "terms"],
+    "searchable_collections": ["about", "blog", "food", "drinks", "terms"],
     "blog_pagination": 4,
     "blog_description_length": 200,
     "search_description_length": 200,
-    "recipe_pagination": 6,
-    "hide_doc_browser": false,
-    "hide_doc_toc": false,
+    "food_pagination": 6,
+    "drinks_pagination": 10,
     "hide_blog_toc": false
-  },
-
-  "metadata": {
-    "meta_author": "Jane Doe",
-    "meta_image": "@assets/og-image.png",
-    "meta_description": "Template website"
   }
 }

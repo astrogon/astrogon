@@ -1,0 +1,9 @@
+---
+import TaxaLayout from "@components/drinks/TaxaLayout.astro";
+import { getTaxa, getTaxaMultiset } from "@lib/taxonomyParser";
+
+const taxa = await getTaxa("drinks", "bottles");
+const allTaxa = await getTaxaMultiset("drinks", "bottles");
+---
+
+<TaxaLayout taxonomy={"bottles"} taxa={taxa} allTaxa={allTaxa} />

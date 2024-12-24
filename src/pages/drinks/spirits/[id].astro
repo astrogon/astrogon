@@ -1,0 +1,24 @@
+---
+import type { DrinksEntry } from "@/types";
+import { getEntries } from "@lib/contentParser";
+import { getTaxa } from "@lib/taxonomyParser";
+import taxonomyFilter from "@lib/taxonomyFilter";
+import TaxonLayout from "@components/drinks/TaxonLayout.astro";
+
+export async function getStaticPaths() {
+  const taxa = await getTaxa("drinks", "spirits");
+  const paths = taxa.map((taxon) => ({
+    params: {
+      id: taxon,
+    },
+    props: { taxon },
+  }));
+  return paths;
+}
+
+const { taxon } = Astro.props;
+const entries = await getEntries("drinks") as DrinksEntry[];
+const filteredEntries: DrinksEntry[] = taxonomyFilter(entries, "spirits", taxon!);
+---
+
+<TaxonLayout taxon={taxon} entries={filteredEntries} />

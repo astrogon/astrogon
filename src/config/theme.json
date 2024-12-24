@@ -8,7 +8,7 @@
       },
       "bg": {
         "primary": "#fff",
-        "secondary": "#fff",
+        "secondary": "#ddd",
         "tertiary": "#ddd"
       },
       "border": "#ddd"
@@ -21,7 +21,7 @@
       },
       "bg": {
         "primary": "#222",
-        "secondary": "#222",
+        "secondary": "#444",
         "tertiary": "#444"
       },
       "border": "#444"
@@ -29,8 +29,8 @@
   },
   "fonts": {
     "font_family": {
-      "primary": "serif",
-      "primary_type": "serif",
+      "primary": "cormorant",
+      "primary_type": "cormorant",
       "secondary": "Open Sans",
       "secondary_type": "sans-serif"
     },

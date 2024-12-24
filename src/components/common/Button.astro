@@ -18,7 +18,7 @@ const { label, link, newtab=false, type="primary", color, hoverInvert=false, gla
     target=`${newtab ? "_blank" : ""}`
     class=`no-underline inline-block hover:opacity-100 ${type == "primary" ? "" : "intersect:animate-fade opacity-0"}`
   >
-    <div class=`glass-t hover:bg-opacity-20 hover:backdrop-blur-none
+    <div class=`glass-t hover:bg-opacity-0 hover:backdrop-blur-none
       ${type == "primary" ? "px-4 py-2 rounded-md font-bold intersect:animate-fade opacity-0" : "px-2 py-0.5 rounded-sm text-txt-light dark:text-darkmode-txt-light"}`
     >
       {label}

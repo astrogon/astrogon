@@ -1,0 +1,98 @@
+---
+import { lowerHumanize, upperHumanize } from "@lib/textConverter";
+import { FaRegFolder, FaHashtag } from "react-icons/fa";
+import Button from "@components/common/Button.astro";
+import { ScrollArea } from "@components/common/shortcodes/ScrollArea";
+
+interface Props {
+  bottles: string[];
+  spirits: string[];
+  tags: string[];
+}
+
+const { bottles, spirits, tags }: Props = Astro.props;
+---
+
+<ScrollArea className="h-full" client:only="react">
+  <!-- bottles -->
+  <div class="glass rounded-lg p-4 m-2 intersect:animate-fadeLeft opacity-0">
+    <div>
+      <h4 class="mb-2">
+        <a href="/drinks/bottles">
+          <FaRegFolder className={"mr-1 -mt-1.5 inline-block"} />
+           Bottles
+        </a>
+      </h4>
+      <hr class="mb-2 -mt-1" />
+      <ul>
+        {
+          bottles.map((bottle: any) => {
+            return (
+              <li class="inline-block m-1">
+                <Button
+                  label={lowerHumanize(bottle)}
+                  link={`/drinks/bottles/${bottle}`}
+                  type="secondary"
+                />
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  </div>
+  <!-- spirits -->
+  <div class="glass rounded-lg p-4 m-2 intersect:animate-fadeLeft opacity-0">
+    <div>
+      <h4 class="mb-2">
+        <a href="/drinks/spirits">
+          <FaRegFolder className={"mr-1 -mt-1.5 inline-block"} />
+           Spirits
+        </a>
+      </h4>
+      <hr class="mb-2 -mt-1" />
+      <ul>
+        {
+          spirits.map((spirit: any) => {
+            return (
+              <li class="inline-block m-1">
+                <Button
+                  label={lowerHumanize(spirit)}
+                  link={`/drinks/spirits/${spirit}`}
+                  type="secondary"
+                />
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  </div>
+  <!-- tags -->
+  <div class="glass rounded-lg p-4 m-2 intersect:animate-fadeLeft opacity-0">
+    <div>
+      <h4 class="mb-2">
+        <a href="/drinks/tags">
+          <FaHashtag className={"mr-1 -mt-1.5 inline-block"} />
+           Tags
+        </a>
+      </h4>
+      <hr class="mb-2 -mt-1" />
+      <ul>
+        {
+          tags.map((tag: any) => {
+            return (
+              <li class="inline-block m-1">
+                <Button
+                  label={lowerHumanize(tag)}
+                  link={`/drinks/tags/${tag}`}
+                  type="secondary"
+                />
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  </div>
+</ScrollArea>

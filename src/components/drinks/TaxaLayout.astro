@@ -1,0 +1,38 @@
+---
+import BaseLayout from "@components/base/BaseLayout.astro";
+import { upperHumanize } from "@lib/textConverter";
+import PageHeader from "@components/common/PageHeader.astro";
+import Button from "@components/common/Button.astro";
+
+interface Props {
+  taxonomy: string;
+  taxa: string[];
+  allTaxa: string[];
+}
+
+const { taxonomy, taxa, allTaxa }: Props = Astro.props;
+---
+
+<BaseLayout title={upperHumanize(taxonomy)}>
+  <PageHeader title={upperHumanize(taxonomy)} />
+  <section class="section">
+    <div class="container text-center">
+      <ul>
+        {
+          taxa.map((taxon: string) => {
+            const count = allTaxa.filter((c) => c === taxon).length;
+            return (
+              <li class="m-3 inline-block">
+                <Button
+                  label=`${upperHumanize(taxon)} (${count})`
+                  link={`/drinks/${taxonomy}/${taxon}`}
+                  hoverInvert
+                />
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

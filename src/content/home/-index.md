@@ -1,9 +1,6 @@
 ---
 # Banner
 banner:
-  title: Pages
-  content: A rapidly-customizable template for a blog, documentation, and more.
-  button:
-    label: See the Code
-    link: https://github.com/reednel/pages
+  title: Reed Nelson
+  content: Stuff and things. A work in progress.
 ---
