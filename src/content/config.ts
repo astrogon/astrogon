@@ -8,8 +8,8 @@ import { markketplace } from "@/config";
 import { strapiLoader } from "../strapi-loader";
 
 const stores = defineCollection({
-  loader: strapiLoader({ contentType: 'store' })
-})
+  loader: strapiLoader({ contentType: 'store', filter: `slug=${markketplace.store_slug}` })
+});
 
 const searchable = z.object({
   title: z.string(),
@@ -191,4 +191,5 @@ export const collections = {
   recipes,
   terms,
   stores,
+  store,
 };

@@ -1,9 +1,50 @@
 ---
-import { getIndex } from "@lib/contentParser";
-import EntryLayout from "@components/home/EntryLayout.astro";
-import type { HomeEntry } from "@/types";
+import { getCollection } from "astro:content";
+import BaseLayout from "@components/base/BaseLayout.astro";
+import { markdownify } from "@lib/textConverter";
+import Button from "@components/common/Button.astro";
+import { Image } from "astro:assets";
 
-const entry = (await getIndex("home")) as HomeEntry;
+const store = (await getCollection("store"))?.[0]?.data;
 ---
 
-<EntryLayout entry={entry} />
+<BaseLayout>
+  <section class="section">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="text-center lg:col-6">
+          {
+            store?.Logo?.url && (
+              <div class="blur-[0px]">
+                <Image
+                  class="mb-6 w-64"
+                  src={store?.Logo?.url}
+                  alt={store?.Logo?.alternativeText || store?.title}
+                  width={1024}
+                  height={1024}
+                  loading="eager"
+                />
+              </div>
+            )
+          }
+          <h1 class="mb-4">{store?.title}</h1>
+          <div
+            set:html={markdownify(store?.Description, true)}
+            class="mb-8 mt-4"
+          />
+          {
+            store.URLS?.map((button: any) => (
+              <Button
+                label={button.Label}
+                link={button.URL}
+                newtab
+                hoverInvert
+                color=""
+              />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
