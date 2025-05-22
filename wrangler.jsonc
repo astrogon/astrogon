@@ -1,0 +1,7 @@
+{
+  "name": "astrogon-site",
+  "compatibility_date": "2025-05-22",
+  "assets": {
+    "directory": "./dist"
+  }
+}
