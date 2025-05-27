@@ -1,9 +1,9 @@
 ---
-image: "@assets/astrogon-star.svg"
-imageAlt: Astrogon logo
-title: Astrogon
-content: A rapidly-customizable template for a blog, documentation, and more.
+image: "@assets/Arktos-Star-logo.svg"
+imageAlt: Arktos Health Logo
+title: Arktos Health LLC
+content: Guiding Your Path to a Healthier Life.
 button:
-  label: See the Code
-  link: https://github.com/astrogon/astrogon
+  label: Free Consultation
+  link: https://teddy-botana-lmft.clientsecure.me/
 ---
