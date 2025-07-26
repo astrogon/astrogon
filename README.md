@@ -79,6 +79,20 @@ See [docs/tech-stack.md](docs/tech-stack.md) for more details.
 
 > *This is relevant if you intend to deploy your site to Cloudflare. Starting with Astro 5.8, Node 18 is unsupported, but the old Cloudflare Pages uses 18 by default. Wrangler appears to be necessary to use the new Cloudflare Workers. Read about Astro deployment [here](https://docs.astro.build/en/guides/deploy/cloudflare/#cloudflare-workers).
 
+## Optional: Isolates shell for development
+
+[Devbox](https://github.com/jetify-com/devbox) is a command-line tool
+that lets you easily create isolated shells for development.
+Instead of installing Node on the host machine (directly or via `nvm`)
+you can install all development dependencies into an isolated shell.
+You can use your IDE installed on the host machine as usual.
+For instalaltion instructions refer to the
+[corresponding Devbox docs](https://www.jetify.com/docs/devbox/installing_devbox/).
+
+    devbox shell
+    npx astro dev
+    exit
+
 ## License
 
 Astrogon is licensed under the [MIT License](LICENSE).
