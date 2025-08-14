@@ -3,4 +3,4 @@ Allow: /
 
 Disallow: /api/*
 
-Sitemap: https://www.janedoe.com/sitemap-index.xml
+Sitemap: https://frickeldave.de/sitemap-index.xml

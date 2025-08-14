@@ -1,4 +1,4 @@
 ---
-title: Blog Posts
-description: The blog of Jane and John Doe
+title: Frickeldaves Blog
+description: Alles über DIY, Heimwerken, 3D Druck und mehr. 
 ---

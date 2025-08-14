@@ -1,0 +1,121 @@
+---
+title: Bring was Liebe ins Business
+description: In diesem Artikel erfährst du, warum echte Wertschätzung, emotionale Bindung und Teamgeist im Business und speziell in DevOps entscheidend sind – und wie Liebe den Unterschied macht.
+date: 2021-12-01
+image: "@assets/blog/it/bring-was-liebe-ins-business/bwlib-header.jpeg"
+imageAlt: Header image für den Blog Artikel Bring was Liebe ins Business
+categories: [DevOps Organisation]
+author: Frickeldave
+tags: [devops, it]
+---
+
+Was hat den “Liebe” im “Business” oder “DevOps” Umfeld zu suchen? Der eine oder andere mag denken “DevOps ist kein Kuschelzoo”. Vielleicht hältst du mich beim Lesen dieses Titels für ein bisschen verrückt, vielleicht auch für eine esoterischen Spinner. Aber hey, jetzt bist du doch hier und liest. In den vergangenen Jahren hat sich mein Handeln und Denken um das Thema DevOps gedreht und bei allen Büchern und Artikel ist mir folgendes aufgefallen:
+
+Wenn über DevOps geschrieben oder gesprochen wird, geht es in den meisten Artikel “nur” über den kulturellen Wandel oder die technisch genialen Lösungen, die damit einhergehen.
+
+Und natürlich ist das richtig, DevOps ist ein Wandel der entweder Bottom-Up (Technologische Herausforderungen triggern den kulturellen Wandel) oder Top-Down (Der Markt erfordert den Wandel und die organisatorischen Änderungen triggern die Nutzung neuer Technologien) funktioniert. Im Idealfall trifft beides gleichzeitig zu und der Wandel passiert einfach irgendwie plötzlich.
+
+## The missing piece
+
+Aber egal wie rum das Thema betrachtet wird, die emotionale Seite wird dabei so gut wie nie betrachtet und vielleicht ist auch diese Seite ein valider “Initiator” für das Thema DevOps”. Wenn du nach “DevOps” und “Love” suchst, findest du Artikel die ungefähr lauten:
+
+I love DevOps
+Things i love about DevOps
+DevOps tools we love
+Selbst wenn ich Seite 2-5 auf google eine Chance gebe, wird das Bild nicht besser. Was stört mich daran? Denk doch mal an deine erste große Liebe zurück, den ersten großen Herzschmerz, deine Ehefrau oder deine Kinder. Wenn man sich dieses Gefühl in Erinnerung ruft, kann man diese Beziehung mit der Beziehung zu einem Prozess oder einer Methodik gleichsetzen? Am liebsten würde ich dich beim Schreiben dieser Sätze an den Schultern packen und kräftig schütteln um ganz sicher zu sein, dass du verstehst, wie bescheuert das wäre, das gleichzusetzen. Ich kann einen Prozess nicht “lieben”, ich kann keine Sache “lieben” (Okay es gibt Menschen die das können, aber das wollen wir hier nicht thematisieren 😉 ).
+
+## Wie bringe ich Liebe ins Business?
+
+Nun, warum schreibe ich dann über DevOps, Liebe und Business? Weil wir nun mal mindestens 8 Stunden und viel Energie jeden Tag in das Thema stecken. Und den halben Wachzustandstag ohne Liebe zu verbringen, klingt nach einem ziemlich furchtbaren Leben, was denkst du? Ich fürchte ich klinge nun wie ein Fernsehprediger, aber lass uns hier gemeinsam darüber nachdenken, wie wir diese 8 Stunden tatsächlich mit “Liebe” füllen können und warum das vielleicht sogar den Unterschied zwischen irgendeiner Software-Company und DER Software-Company macht. Ich werde mal auf einige Themen eingehen und versuchen, zu jedem Thema einen konkreten Vorschlag zu machen, was du (egal in welcher Position) konkret tun kannst, um das Thema zu verfolgen.
+
+## Liebe heißt zusammen-wachsen
+
+Nein, ich meine nicht damit, dass ihr euch nun gegenseitig die Beine wachsen sollt. Der Bindestrich in der Überschrift soll sagen: Teams (ganze Firmen; DevOps Teams; Kunden-Dienstleister-Teams;…) müssen gemeinsam an Ihren Herausforderungen wachsen und sie müssen zusammenwachsen. Sie müssen lernen zu “lieben”. Wird das funktionieren ohne emotionale Bindung einzugehen? Jeder der das nun bejaht, sollte schnellstmöglich aus dem Projekt entfernt werden. Natürlich geht das nicht. Ich muss mich einlassen auf mein gegenüber, ich muss verstehen, was Sie/oder Ihn gerade bewegt. Ich muss wissen, warum der Mensch der mir gegenüber sitzt grade schlechte Laune hat oder eben besonders euphorisch ist. Ich muss wissen, was ihn interessiert und was in den nächsten Jahren mit seinem Leben anfangen will.
+
+Nur dann kann ich auch ein Umfeld schaffen, in dem dieser Mensch gerne arbeitet. Und das funktioniert nicht als Einbahnstraße. Auch dein gegenüber muss wissen, was dich gerade bewegt. Und wer jetzt glaubt all das ist Sache des PM/PO/Vorgesetzten, oder das nur die Sache der Entwickler im Team: Man vergiss es. Ein Team besteht aus allen beteiligten Personen. Vom Geschäftsführer, über den Kunden, zum Projektleiter, zum Entwickler bis hin zum Praktikanten.
+
+Werdet Freunde. Bleibt nicht nur Kollegen. Das wäre so oder so sehr schade.
+
+### The big story
+
+Wenn ein neues Projekt oder Team aufgesetzt wird, sollte dieser Punkt der für dich wichtigste sein: Wie bringe ich das Team möglichst häufig zusammen. Idealzustand ist 8 Stunden täglich. Wenn unterschiedliche Standorte das unmöglich machen, dann plane mehr Reisetätigkeit ins Budget ein. Schau dass alle im gleichen Büroraum sitzen. Schaffe ein Umfeld, in dem die Leute auch gerne ins Büro kommen (mehr dazu später).
+
+### A small step
+
+Geh das Thema von jetzt sofort an. Verbringe möglichst 100% deiner Zeit mit deinen Projektkollegen. Reduziere Management/Planungs/Sonstwas-Meetings die nicht mit deinem Team stattfinden auf ein Minimum. Dein Team ist deine Familie. Lasse zu, dass deine Kollegen etwas von deinem Privatleben mitbekommen. Verbringt wenn möglich Freizeit miteinander. Seid doch mal forsch: Integriert eure Familien.
+
+Hier bin ich so frei noch einen zweiten Tipp zu geben: Dem Kollegen mal nen Kuchen zum Geburtstag zu backen anstatt zu erwarten dass er einen in die Kaffeeküche stellt, bringt machmal mehr als man denkt. Und lös dich von dem Gedanken, dass es “schleimen” ist, wenn man das mal für den Projektleiter tut. Und es ist nicht unter deiner Würde das für den Praktikanten zu tun. Hab ich mich jetzt klar genug ausgedrückt? Gut, dann weiter.
+
+## Liebe braucht Zeit
+
+Wenn ein Bakterienstamm wachsen soll, ist die wichtigste Zutat “Zeit”. Wenn ein Team zusammenwachsen soll trifft das genauso zu. Es ist unrealistisch anzunehmen, dass ein effektives Team in ein paar Monaten wirklich eine schlagkräftige Truppe wird. Ich spreche hier nicht davon, “notwendige Onboarding” Maßnahmen durchzuführen und das Verständnis für ein Stück Software zu entwickeln. Ganz klar, ich kann eine/n neue/n Mitarbeiter/in recht schnell befähigen in einem Team mitzuarbeiten, aber dann ist der Mensch noch kein Team-Mitglied, sondern eine Ressource die Code erzeugt. Das klingt hart, aber so ist es. Erst nach einiger Zeit wird die Kultur und das Zusammenleben im Team auch die neuen Mitglieder erfassen und zu einem elementaren Bestandteil des Teams machen.
+
+Du magst dich jetzt fragen, ob mit diesem Vorgehen nicht auch der Wandel blockiert wird? Auch hier ist es wie mit einem Bakterienstamm. Der nächste Joghurt, das nächste Sauerteigbrot entsteht durch die Weitergabe. Ist ein Team wirklich stabil und in sich gefestigt, dass spricht auch nichts dagegen, wenn ein Teammitglied irgendwann weiterwandert, sich neue Herausforderungen sucht und Teile seiner Kultur in ein neues Team trägt. Aber nur in kleinen Mengen.
+
+The big story
+Lass die Teams wie sie sind, auch Projektübergreifend. Projekte immer wieder neu mit neuen Menschen zu bestücken ist NIE, in keinem einzigen Fall, so produktiv wie eine trainierte aufeinander abgestimmte Einheit auf ein Thema loszulassen. Dieser Fakt ist einfach so vielfältig bewiesen, dass es hier keine Beweisführung mehr braucht. Google sperrt Teams in kleine Räume (erst wenn ich weiß wie jemandes Furz riecht, kenne ich Ihn wirklich). Im Militär, speziell in Sonderkommandos ist dies seit jahrhunderten gelebte Praxis. Sieh also zu, dass dein Team/ deine Teams möglichst stabil bleiben.
+
+### A small step
+
+Nutze die Macht des Backlogs. Plane pro Sprint ein Backlog Item das sich ausschließlich darum dreht, Zeit zu investieren einem Kollegen bei irgendetwas zu helfen. Das kann ein Business Thema sein, muss es aber nicht. Probiere doch mal aus was passiert, wenn im Titel der Userstory steht: “Martin beim Umzug helfen” (damit er endlich ohne Stau und pünktlich beim daily ist). Und was wohl erst passiert, wenn wirklich das ganze Team dabei ist?
+
+## Liebe dein Ergebnis
+
+Hey, der Typ hat doch grade noch geschrieben, dass man Prozess/Methodik nicht lieben kann oder soll? Ja richtig. Aber was meint Ihr, wie sich ein Tischler fühlt, wenn er nach monatelanger Arbeit sein Meisterstück gefertigt hat? Durchsuch doch mal die Google Bildersuche nach “Meisterstück”. Du wirst Dinge finden, von denen du nicht gedacht hast, dass man so etwas überhaupt aus Holz bauen kann.
+
+Und genau das ist es doch, was wir täglich versuchen wollen zu erreichen, oder? Wir wollen Software erschaffen, die vorher noch keiner in dieser Art gebaut hat (alles andere würde ja wenig Sinn machen). Wir erschaffen Einzelstücke, unvergleichbare Perlen, die es in dieser Form nur ein einziges Mal auf dieser Welt gibt. Die entstanden sind nur in unserem Geiste, auf einem Stück Papier irgendwann in der Nacht. Ideen, die über Woche oder Monate oder gar Jahre gewachsen sind, bevor wir überhaupt die Tastatur berührt haben. Wir können unsere Produkte nicht greifen, nicht anfassen, oft auch gar nicht wirklich sehen, aber sie sind da und Sie bewegen etwas in der Welt.
+
+Und welche Narren wären wir, die wohl gehegten und ständig verbesserten Stücke kreativer und mühsamer Arbeit nicht zu lieben? Nicht in der Nacht darüber nachzudenken, was wir besser, schneller, leichter gestalten können? Nicht darüber zu verzweifeln, was wir falsch gemacht haben, wenn etwas mal nicht so läuft wie wir uns das vorgestellt haben? Diese Liebe zu deinem Produkt kannst du spüren, egal in welcher Position du bist. Als Projektleiter/Product Manager habe ich dieses Gefühl schon genauso gespürt, als wenn ich selber die Software geschrieben habe. Spürst du diese Nähe und Liebe zu dem von dir geschaffenen Ergebnis? Würdest du die Tür von deinem Chef eintreten, um dich für dein Produkt einzusetzen? Wenn nicht, schau dir den small-step gut an.
+
+### The big story
+
+Wenn ein Kunde dich bittet, dass 100ste mal eine Anwendung zu bauen, die sich anfühlt wie Excel, benutzt wird wie Excel und eigentlich auch irgendwie das gleiche macht wie Excel, dann denk doch mal darüber nach, ob es der Auftrag Wert ist, in der Form von Dir angenommen zu werden. Wenn du eine gute Beziehung zu dem Kunden hast, dann rede mit Ihm. Gibt es das Produkt vielleicht schon am Markt? Hast du vielleicht einen besseren Lösungsansatz, den du dem Kunden auch verkaufen kannst? Und wenn all Stricke reißen, dann lehn in ab, dieser Auftrag wird dich und deine Company nicht weiterbringen. Du gewinnst ein bisschen Geld, aber du verlierst die Menschen. Entweder weil sie einfach gehen oder weil sie zu reinen Codezeilengeneratoren verkümmern.
+
+### A small step
+
+Welchen Rat kann ich Dir persönlich geben der nicht auch eine “big story” ist? Keinen. Dieses Thema verlangt konsequentes Handeln.
+
+Bist du darin gefangen ein Produkt zu bauen, dass sich anfühlt und benutzt wie Excel?
+Bist du nur dafür verantwortlich eine UserStory abzuarbeiten die schon von 3 Gremien vorgekaut wurde?
+Führst du lebenserhaltende Maßnahmen an einer völlig kaputten Software durch, die schon von 3 anderen Dienstleistern kaputt programmiert wurde?
+Hast du keine Möglichkeit der Mitgestaltung?
+Ist dein Tagesablauf getrieben und fremdgesteuert, erlebst du keine Überraschungen mehr?
+Wenn du eine der Fragen mit “ja” beantworten musst, dann wirst du in deiner Situation dein Meisterstück nicht bauen. Du läufst vielleicht Gefahr ein Codezeilengenerator zu werden oder musst das Team verlassen. Schnell, du bist in Lebensgefahr, HANDEL.
+
+## Liebe deinen Arbeitsplatz
+
+8 Stunden am Tag. Ungefähr 1600 Stunden im Jahr. 60.000 – 70.000 Stunden in deinem Leben. Das ist die Zeit, die du an deinem Arbeitsplatz verbringst. Als IT-Mensch gilt das für deinen virtuellen Arbeitsplatz als auch die reale Welt um dich herum. Deine Kreativität ist den ganzen Tag gefragt. Du sollst ungewöhnlich sein, verrückte Ideen haben, auf Dinge kommen, die sonst keinem eingefallen sind. Ich habe meine Zweifel, dass das geht, wenn du auf eine weiße Wand starrst, dein Bildschirmhintergrund das vorgegebene Firmenlogo ziert, deine Entwicklungsumgebung von einem Styleguide fix definiert wurde und eine Clean Desk Policy dir vorschreibt, dass dein Schreibtisch bitte dem Standard angemessen aufgeräumt zu sein hat.
+
+### The big story
+
+Bist du in der Position zu entscheiden, wie die Geschäftsräume gestaltet werden sollen, dann habe ich schlechte Nachrichten: Du bist nicht in der Position. Als Teil des Teams gestaltest du mit. Aber die Menschen um dich herum müssen die Freiheit haben, Ihren Lebensraum zu gestalten, wie es zur Erfüllung Ihrer Aufgaben notwendig ist. Vielleicht braucht Maria viele Farben und Grünzeug um sich herum. Und vielleicht will Gottfried der Architekt einen flauschigen Teppich und hasst Schuhe? Der SCRUM Master Johann braucht seine Glücks-Hängebauchschweinspardose als Team-Bullshit-Kasse immer auf dem Tisch. Und Michael will ein riesiges Whiteboard haben, weil er seine Begeisterung für Whiteboard-Arts entdeckt hat? Dann um alles in der Welt, lass sie doch. Und wenn du dir sorgen machst, was wohl die Kunden denken, wenn sie mal zu Besuch kommen, dann stell Dir folgende Frage: Wovon werden sie wohl mehr begeistert sein? Von 10 Leuten an 10 Schreibtischen?
+Oder von einer lärmenden aktiven, sprühenden, bunten und wilden Umgebung, deren Luft von Kreativität getränkt ist?
+Du fragst dich jetzt vielleicht: Hey meine Leute haben mich noch nie nach so etwas gefragt. Naja, dann lasse ich dich mit diesem Gedankengang mal einfach hier allein.
+
+### A small step
+
+Viel brauche ich hier nicht zu schreiben. Schnapp dir deine Glücks-Hängebauchschweinspardose, reiß Dir die Schuhe von den Füßen, fang an auf dem kleine Flip-Chart zu malen, stell die erste Pflanze auf. Du bist das Kapital der Firma. Mach dich so wertvoll wie möglich und setz dich über Vorgaben hinweg die dich in deiner Kreativität bremsen.
+
+## Liebe “Neues”
+
+Wenn du in der IT arbeitest, dann gibt es keinen anderen Job der näher am Zahn der Zeit ist. Eigentlich sollte ich diesen Absatz gar nicht schreiben müssen, aber ich stelle immer wieder fest, dass sich Menschen die in der IT arbeiten, nicht mit dem neuen heißen Scheiß beschäftigen wollen. Die Gründe dafür sind vielfältig. Weil es bequem ist, weil man unter dem Berg von Arbeit versinkt, weil man grade Nachwuchs zu Hause hat, weil man mit der Geschwindigkeit, mit der die Technologie fortschreitet überfordert ist, oder weil die Management Aufgaben immer mehr zunehmen.
+
+Alle diese Argumente sind richtig und auch nachvollziehbar. Und es spricht auch gar nichts dagegen, sich mal 2-3 Jahre etwas zurückzunehmen. Familie (also die wirkliche zu Hause) ist nun mal wichtig und braucht einen entsprechend großen Platz im Leben. Aber irgendwann kommt der Punkt, in dem wir uns wieder begeistern müssen für ein Stück Software, für ein Stück Hardware, für eine Methodik oder für eine Idee. Ohne Begeisterung würde es heute Computertechnologie in der Form, in der wir sie täglich verwenden schlicht nicht geben. Nur weil sich Menschen in der Garage die Nächte um die Ohren geschlagen haben können wir heute Netflix schauen, Fortnite zocken, Videokonferenzen on-demand durchführen oder fantastische Tools mit wenig Aufwand in der Cloud entwickeln.
+
+Und irgendwann kommt der Punkt, in dem ich nicht nur begeistert von etwas Neuem bin, sondern dieses regelrecht anfange zu lieben und mein ganzes Arbeitsleben danach ausrichte. Wie viele Leute haben die agile Vorgehensweise als den Masterplan für Ihr Arbeitsleben angenommen? Wie viele Leute arbeiten nur noch und ausschließlich auf einer Kubernetes Plattform? Sie richten Ihr ganzes Augenmerk darauf und es ist für sie völlig unvorstellbar anders zu arbeiten (und zu denken) als exakt so.
+
+### The big story
+
+Als Verantwortliche/r (egal ob Geschäftsführer, Abteilungsleiter, Architekt, SCRUM master, Projektleiter oder als einer der sich verantwortlich fühlt), solltest du sowohl das ganze Team also auch jede einzelne Person im Team immer im Blick behalten. Wer ruht sich grade aus, wer spricht nicht begeistert von DEM neuen coolen DING, wer winkt ab, wenn es um eine neue Methodik geht? Die besten Manager haben eine Vision. Sie setzen Dinge schnell durch, indem sie sagen: “Das will ich machen. Jetzt sofort, lasst alles stehen und liegen und beschäftigt euch damit”. Dieser Schritt tut immer wieder weh, aber in 100 von 100 Fällen hat er sich gelohnt. Trau dich. Finde die Trends und setz dein Team darauf an.
+
+### A small step
+
+Nutze doch mal die Fahrt zur Arbeit für ein wenig Ehrlichkeit. Was hast du Neues gelernt, was du gerne deinen Kollegen zeigen würdest? Gibt es etwas von dem du überzeugt bist, dass müssen alle in deinem Team wissen und kennen? Hast du etwas gelesen was dich nicht mehr loslässt, was du unbedingt probieren willst? Für das du Begeisterung entwickeln kannst? Hast du das Gefühl, dass dein Team grade einen Trend verpasst?
+
+Wenn nicht, dann aber los: Dieser Absatz ist nicht umsonst der letzte in diesem Artikel. Du hast jetzt 10 Minuten zeit zum Lesen dieses Beitrag investiert (was mich freut). Mach einen neuen Browser-Tab auf und such nach dem Buch, nach dem YouTube Video, nach dem Podcast oder der Facebook Gruppe, die deine neue Zeit einleitet. JETZT, Fazit lesen und Kommentar schreiben kannst du später.
+
+## Fazit
+
+Sind wir mal ehrlich, dieser Artikel beschreibt nichts neues. Aber leider sehe ich diese Themen selten als Teil eines agilen Manifest oder als Leitlinie einer Firma oder auf irgendeiner Roadmap. Mit viel Glück pinselt mal einer “stabile Teams” als Stichwort auf irgendeine Tapete, aber wie ernsthaft wird das dann am Ende umgesetzt? Machmal wird das Wort “Leidenschaft” verwendet. Aber ist das Wort stark genug um eine Bindung zu erzeugen? Man kann leideschaftlich sein ohne zu lieben. Das sollte uns nicht ausreichen. Grade wenn wir uns DevOps auf die Fahne schreiben, wollen wir Veränderungen herbeiführen, für die Leidenschaft oft nicht ausreicht und wir lernen müssen zu lieben.
+
+Natürlich wird auch dieser Artikel keine Firma verändern. Aber vielleicht hilft er dabei, deinen Kompass wieder neu zu “norden”. Einen frischen Blick auf dich und dein Team zu ermöglichen. Einen wachen Moment zwischen all den Tagesaufgaben zu ermöglichen. Und vielleicht zeigst du Ihn deinen Kollegen. Und vielleicht lernen wir wieder neu unseren Job, unser Team, unsere Technologie zu lieben. Und vielleicht verändern wir gemeinsam doch eine Firma. Nur vielleicht, aber Träumen ist erlaubt.
