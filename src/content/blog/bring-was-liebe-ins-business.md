@@ -4,9 +4,9 @@ description: In diesem Artikel erfährst du, warum echte Wertschätzung, emotion
 date: 2021-12-01
 image: "@assets/blog/it/bring-was-liebe-ins-business/bwlib-header.jpeg"
 imageAlt: Header image für den Blog Artikel Bring was Liebe ins Business
-categories: [DevOps Organisation]
+categories: [IT]
 author: Frickeldave
-tags: [devops, it]
+tags: [DevOps, Team, Kultur, Motivation, Innovation, Leadership, New Work, Teamwork, Unternehmenskultur]
 ---
 
 Was hat den “Liebe” im “Business” oder “DevOps” Umfeld zu suchen? Der eine oder andere mag denken “DevOps ist kein Kuschelzoo”. Vielleicht hältst du mich beim Lesen dieses Titels für ein bisschen verrückt, vielleicht auch für eine esoterischen Spinner. Aber hey, jetzt bist du doch hier und liest. In den vergangenen Jahren hat sich mein Handeln und Denken um das Thema DevOps gedreht und bei allen Büchern und Artikel ist mir folgendes aufgefallen:
