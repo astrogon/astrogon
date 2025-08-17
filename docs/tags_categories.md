@@ -1,6 +1,6 @@
 # Tags and catogories used in the blog
 
-## IT
+## IT/DevOps
 
 DevOps
 Organisation
