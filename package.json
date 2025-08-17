@@ -1,5 +1,5 @@
 {
-  "name": "Astrogon",
+  "name": "frickeldave-main",
   "version": "1.0.0",
   "description": "Template.",
   "author": "Jane Doe",
@@ -9,6 +9,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "postbuild": "pagefind --site dist",
+    "preview": "astro preview",
     "format": "prettier -w ./src"
   },
   "dependencies": {
