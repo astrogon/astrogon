@@ -1,0 +1,64 @@
+---
+title: Das DevOps Stoßpendel
+description: Die Analogie des Stoßpendels veranschaulicht, wie das Zusammenspiel von Kultur, Organisation und Technologie den Erfolg von DevOps-Initiativen beeinflusst. Anhand praxisnaher Beispiele zeigt der Artikel, wie Veränderungen in diesen Bereichen zu nachhaltigen Verbesserungen in Softwareprojekten führen können – und warum die richtige Balance entscheidend ist, um langfristig erfolgreich zu sein.
+date: 2021-05-21 # TODO: Nachkontrollieren
+image: "@assets/blog/IT/das-devops-stosspendel/ddosp-header.jpeg"
+imageAlt: Header image für den Blog Artikel über das DevOps Stoßpendel
+categories: [IT, DevOps]
+author: Frickeldave
+tags: [DevOps, Organisation, Kultur, Technologie, Transformation, Softwareentwicklung]
+hideToc: false
+---
+
+Die Funktionalität des Stoßpendel wird grundsätzlich durch drei physikalische Konstanten bestimmt (ja es sind noch mehr, aber ich will ja nur eine Analogie schaffen 😉 ). Die Seillänge, die Höhe der anstoßenden Kugel und die Masse der Kugel. Alle drei Konstanten müssen auf einander abgestimmt sein, damit alles gut und dauerhaft zusammen funktioniert. Gleiches gilt für ein Unternehmen das DevOps einführen möchte.
+
+## Das DevOps Stoßpendel
+Die Seillänge repräsentiert für mich die Kultur. Je länger das Seil wird, um so mehr Schwung erhält mein Projekt. Aber es kann eben auch mehr Chaos kann am Ende enstehen (Im “worst cast” wickelt sich die letzte Kugel um das Gestell).
+
+Die Organisation wird durch die Masse der Kugel dargestellt. Habe ich viel Masse kann ich viel bewegen. Aber umso mehr Masse ich habe, desto schwerer kann der Prozess auch in Gang gebracht werden. Habe ich hingegen zu wenig Masse, wird sich nicht viel oder gar nichts bewegen.
+
+Am Ende kommt noch die Höhe ins Spiel, die die Technologische Herausforderungen repräsentiert. Eine gewisse Höhe ist notwendig, da es erst neue Technologien überhaupt möglich machen, DevOps in kleinen Teams umzusetzen. Werden die Herausforderungen aber zu hoch, wird die aufgewendete Energie unkontrollierbar. Die Kugel schwingt am Ziel vorbei, die Teammitglieder beschäftigen sich viel zu lange mit Dingen die sie einfach nicht weiterbringen.
+
+## Abstimmung ist wichtig
+Je besser alle drei Faktoren aufeinander abgestimmt sind, um so länger funktioniert das Stoßpendel. Das gleiche kann man auch von der Softwareentwicklung/ DevOps sagen. Jedes Software-Produkt wird irgendwann einmal eingestellt, schlicht “einschlafen”, oder mir sogar um die Ohren fliegen. Das ist ein Fakt an dem wohl kaum zu rütteln ist. Wir halten fest, gut abgestimmte Prozesse halten den (Softwareentwicklungs-)Prozess länger am Leben, aber nicht unendlich.
+Will ich den Prozess verlängern, muss ich neue Energie einbringen. Ein gutes Beispiel dafür geben uns unsere wohlbekannten Softwareriesen. Wie oft wurde schon Windows oder SAP “neugestartet”?
+Wenn ich das mit viel Gefühl und Erfahrung mache, schaffe ich es neue Energie in das Modell einfließen zu lassen, so dass die Pendelbewegung fast ununterbrochen weiter geführt wird und kaum einer was merkt. Manche Linux Distributionen (bei weitem auch nicht alle) schaffen dies zum Beispiel seit mehrere Jahrzehnten.
+
+## Auswirkungen
+Nun kann ich bei unserem DevOps Stoßpendel alle 3 Konstanten verändern um andere Ergebnisse zu erzeugen. Wie wirken sich diese Veränderungen aber in Software- / DevOps Projekten aus? Tatsächlich reicht mein Erfahrungsschatz aus, um da mal mit drei Projekten die ich begleiten durfte, aus dem Nähkästchen zu plaudern.
+
+### Organisatorische Veränderung führt zu DevOps
+Ein Softwareteam dessen Leitung ich übernommen habe, stand vor den folgenden Herausforderungen:
+
+Das Team war zur Bewältigung der Anforderungen (deutlich) zu klein.
+Der “Abstand” zum Kunden war zu groß, wir wussten eigentlich nicht was die Kunden wollten.
+Die halbjährlichen Releases waren extrem fordernd.
+Vielleicht erkennt sich der eine oder andere hier wieder. Wie haben wir reagiert:
+
+Das Unternehmen hat auch einen eigenen Servicedesk betrieben, in dem ein Mitarbeiter irgendwie versucht hat, die Anfragen der Kunden zu beantworten. Diese Incidents sind aber (sofern sie nicht in ein Feature gemündet sind) nie in der Entwicklung aufgeschlagen, weil die Entwicklung auch keinen Zugriff auf das genutzte ITIL Tool hatte/haben wollte. Die einzig logische Konsequenz, die damit verbundenen Probleme zu lösen, war es den Servicedesk Mitarbeiter ins Team zu holen. Dieser hat sofort nach seinem physikalischen und organisatorischen Umzug damit begonnen, alle Incidents ins Backlog zu übertragen und somit auch mit in die SCRUM-Zeremonien zu tragen.
+Diese kleine organisatorische Änderung führt dazu, dass die beim Kunden auftretenden Probleme uns doch aufhorchen ließen und die Situation “im Feld” besser eingeschätzt werden konnte. Ungefähr 3 Monate nach der Integration des Servicedesk in das Entwicklungsteam fuhr der erste Entwickler 400km zum Kunden um einen Sammlung von Incidents direkt vor Ort in dessen Umgebung zu betrachten und 10 von 12 Tickets innerhalb weniger Stunden direkt zu lösen, die sich über die Monaten aufgestaut habe.
+Der Erfolg dieses ersten Einsatzes (und das positive Feedback des Kunden) sorgte dafür, dass wir immer öfters zu den Kunden rausgefahren sind und das Produkt entsprechend geändert haben. Gleichzeitig verschob sich der Fokus von “vermeintlich” wichtigen Features hin zu Features die unsere Kunden als relevant eingestuft hatten.
+Setzt man nun Wünsche der Kunden zeitnah im Produkt um, möchte man diese aber auch schnell ausliefern. Die erste Reaktion bestand in “Special Releases” für Kunde ABC. Man kann sich aber denken, dass dies zu ziemlichen Chaos führte. Auch hier war die Konsequenz naheliegend: Wir mussten die Deployment Pipeline automatisieren. Erst wurde der Build automatisiert (CI), dann die Release Artefakte automatisiert in einem Marketplace zur Verfügung gestellt (CD(elivery)), im letzten Schritt auch Features automatisiert ausgeliefert (CD(eployment)).
+Oft höre ich: Eine DevOps Transition aus einer organisatorischen Änderung ist ein “top-down” Ansatz. Dieses Beispiel zeigt, es besteht kein Grund als Team darauf zu warten dass die Geschäftsführung eine “DevOps” Strategie beschließt. Anstatt nun das riesige Beton- und Stahl-DevOps-Stoßpendel-Konstrukt vor das Firmengebäude zu stellen, sollte man oft erst in kleinerem Maßstab denken. Es reicht ja wenn in jedem Team die Bewegung für sich losgeht.
+
+### Kulturelle Veränderung führt zu DevOps
+Ein befreundetes Unternehmen stellte irgendwann fest, es muss sich etwas verändern, wenn wir am Markt bestehen bleiben wollen. Waren sie bisher “nur” auf Consulting, Support und Entwicklung für bestimmte ausgewählte (Fremd- und eigene) Produkte fokussiert, war für die Geschäftsleitung der Punkt gekommen, in dem die Entscheidung gefällt werden musste, ob man die Software-Entwicklung nun komplett kappt oder umbaut. Man hatte irgendwie das Gefühl, dass DevOps die richtige Strategie zu sein scheint, aber es ging Ihnen wie vielen anderen auch: So richtig greifen konnte man das Thema eben nicht. Man hatte sich darauf verständigt, dass sich tatsächlich die Kultur (oder Denkweise ?!) im Unternehmen radikal verändern und mindestens die drei Abteilungen Support, Betrieb und Entwicklung eng verzahnt werden müssen.
+Aber wie etabliere ich eine neue “Kultur”? Ich kann nicht als Geschäftsführer hingehen und sagen “Etabliert bitte eine DevOps Kultur”. Dieses Erkenntnis hat zu der Annahme geführt, das “Kultur” von innen heraus wachsen muss. Ich kann als Geschäftsführer den Boden vorbereiten, ich kann düngen, wässern, dafür sorgen, dass die richtigen Pflanzen beieinander stehen. Aber wachsen müssen sie von alleine. Und noch eine Erkenntnis aus dem Gartenbereich ist hier sicherlich zutreffend: Wenn eine Pflanze gut wächst, dann breitet sie sich aus. Also wurde genauso vorgegangen wie man es im Garten macht: Es wurde ein Projekt herausgepickt um mit Menschen unterschiedlicher Disziplinen bestückt. Jemand aus dem Support, Entwickler, jemand mit Betriebserfahrung und jemand der die Vorgehensweise coached. Dieses Team hat man dann “machen lassen”. Es wurden keine Vorgaben gemacht, keine Randbedingungen definiert. Man hat Ihnen die lange Leine gelassen, sogar mal ein Auge zugedrückt, wenn es mit dem Budget nicht ganz gepasst hat.
+Mittlerweile (nach fast 2 Jahren) hat dieses Team genügend Energie aufgebracht, um auch die anderen Teams in unserem Stoßpendel zu aktivieren und nun die DevOps Welle durch das gesamte Unternehmen trägt. Das war sicher nicht einfach und ein ziemlich langer Weg. Aber die usprüngliche Organisation des Unternehmens ist kaum noch wieder zu erkennen. Ich brauche wohl kaum erwähnen, dass auch Technologien im Einsatz sind, deren Sinn und Nutzen 2 Jahre zuvor noch nicht mal bekannt waren.
+
+### Technische Veränderung führt zu DevOps
+Manchmal werde ich dafür geschlagen, aber es ist nun mal eine Tatsache die ich oft beobachte: Wenn ich einfach “definiere” dass in Zukunft alle im Haus entwickelten Produkte auf einer skalierbaren, containerbasierten Infrastruktur laufen müssen (dies nur als Beispiel), ändern sich oft wie von Magie die Vorgehensweisen. Und oft kommen diese technologischen Veränderungen ja auch nicht von ungefähr. DEV Teams “schmeissen” shell Scripte übern Zaun und die OPS Leute müssen es ans laufen bringen.
+Nun habe ich es ein paar mal erlebt, dass genau diese OPS Leute plötzlich sagen:
+“Okay wir bauen eine Plattform und betreiben die. Wir stellen sicher, dass alle Software darauf gewissen Prüfungen unterliegt. Wir liefern Daten zur Auswertung des Anwendungsbetriebs.
+Aber Ihr seid nun dafür zuständig die Software in das richtige Format (Container) zu packen, zu deployen und zu betreiben.”
+
+Diesen Ansatz erlebe ich tatsächlich am häufigsten und ich bin jedesmal erstaunt, wie schnell sich DEV Team plötzlich dafür interessieren, ehemals klassische OPS Aufgaben zu automatisieren und zu optimieren und vor allem wie schnell da auch eine gewissen Begeisterung entsteht. Themen wie “Erhebung fachlicher Telemetriedaten” werden von den Entwicklern oft ohne weiteres zutun eingebaut, weil diese sich plötzlich dafür interessieren die Monitoring Dashboard mit mehr relevanten Daten zu befüllen.
+Weil dies natürlich noch besser mit dem Plattformbetrieb gemeinsam geht, stellt der erstaunte Projektleiter plötzlich fest, wie Kollegen die ehemals mit dem Finger aufeinander gezeigt haben, gemeinsam vor dem Whiteboard stehen und planen wie mit den aufkommenenden Datenvolumen in Zukunft umgegangen werden kann.
+
+## Fazit
+Um ehrlich zu sein, bin ich ein bisschen stolz auf die Analogie zwischen dem Stoßpendel und DevOps. Ich habe selten Vergleiche gesehen, die so gut zueinander passen. Möglich, dass du meine Meinung dazu nicht teilst, dass ist auch gar nicht schlimm. Was ich Dir mitgeben will ist:
+Wenn du vor der Monster-Aufgabe stehst, eine DevOps Transition durchzuführen, dann denke über die Konstanten in deinem Projekt nach. Welche kannst du verändern? Welche Auswirkung könnte das haben? Wen brauchst du dafür? Wer zieht mit, wer nicht?
+
+Dieses Gedankengänge helfen Dir dabei, festzustellen, ob eine Transition überhaupt möglich ist. Zudem helfen sie DIr dabei, deinen Workload in deiner Funktion als DevOps Enthusiast/Evangelist in einem kontrollierbarem Rahmen zu halten.
+
+Würde mich freuen, irgendwann einmal in einem Projekt vom “DevOps Stoßpendel” zu hören.
