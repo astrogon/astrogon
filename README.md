@@ -5,6 +5,8 @@
 
 ---
 
+[![Built with Astro](https://astro.badg.es/v2/built-with-astro/tiny.svg)](https://astro.build)
+
 [![GitHub License](https://img.shields.io/github/license/frickeldave/frickeldave-main?color=red)](https://github.com/astrogon/astrogon/blob/main/LICENSE) [![Repo Size](https://img.shields.io/github/repo-size/frickeldave/frickeldave-main)](https://github.com/astrogon/astrogon) ![GitHub branch check runs](https://img.shields.io/github/check-runs/frickeldave/frickeldave-main/main) [![Website](https://img.shields.io/website?up_message=online&up_color=limegreen&down_message=offline&down_color=yellow&url=https%3A%2F%2Ffrickeldave.de%2F)](https://frickeldave.de/)
 
 # Frickeldave
@@ -14,6 +16,12 @@ The frickeldave site is a mix of personal blog, portfolio, IT topics, diy topics
 ## Technology
 
 Frickeldave is based on [Astro](https://astro.build/) and uses the Astro theme [Astrogon](https://github.com/astrogon/astrogon). This is a rapidly-customizable multipurpose website template built using Astro JS, Tailwind, and a sprinkle of React.
+
+## Additional information
+
+- [Contribution]( ./contribute.md)
+- [prompts]( ./prompts.md)
+- [tags-categories]( ./tags-categories.md)
 
 ## License
 
@@ -29,5 +37,4 @@ This project uses the following fonts:
 - **Open Sans** © Steve Matteson – [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
 
 For details, please refer to the respective license links above.
-
 
