@@ -87,6 +87,8 @@ cat .husky/pre-commit
 
 ### Doing nach dem clone
 
+Im Gegensatz zu einem hook in ".git/hooks", muss noch einmal husky lokal eingerichtet werden. Anstatt dies wie oben zu machen, wird dies Rahmen des eh notnwendigen `npm install` erledigt. 
+
 ```bash
 # Abhängigkeiten installieren (führt `prepare` aus, wenn es in package.json steht)
 npm install
