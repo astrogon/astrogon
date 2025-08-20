@@ -69,3 +69,19 @@ All commands are run from the root of the project, from a terminal:
 The [customization guideline from astrogon](https://github.com/astrogon/astrogon/blob/main/docs/customization.md) describes how to customize the theme. 
 
 See [Teckstack](https://github.com/astrogon/astrogon/blob/main/docs/tech-stack.md) for more details.
+
+## 🔧 Git hooks & Husky
+
+Dieses Projekt verwendet Husky, um Git-Hooks (z. B. `pre-commit`) aus dem Verzeichnis `.husky/` zu verwalten. Nach dem Klonen des Repos sollten Mitwirkende die Hooks einmalig aktivieren:
+
+```bash
+# Installiert Abhängigkeiten und führt das `prepare`-Script aus, das Husky installiert
+npm install
+
+# Falls nötig, Husky manuell einrichten
+npm run prepare
+# oder
+npx husky install
+```
+
+Wichtig: Wenn `npm install` mit `--ignore-scripts` ausgeführt wird oder Lifecycle-Scripts deaktiviert sind, wird das `prepare`-Script nicht ausgeführt und die Hooks werden nicht eingerichtet. In CI solltest du Hooks nicht als Ersatz für CI-Linter-Jobs verwenden; dort sollten Linter/Formatter explizit als separate Schritte ausgeführt werden.
