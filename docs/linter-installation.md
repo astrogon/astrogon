@@ -56,8 +56,8 @@ Diese Anleitung beschreibt, wie du in einem Astro/Starlight Repository alle notw
       - [Hook erweitern für Prettier](#hook-erweitern-für-prettier)
       - [Testen der Prettier-Integration](#testen-der-prettier-integration)
       - [Editor-Integration für Prettier](#editor-integration-für-prettier)
-      - [Troubleshooting Prettier](#troubleshooting-prettier)
       - [Hinweise für Prettier](#hinweise-für-prettier)
+
 
 ## Übersicht der Tools
 
@@ -646,7 +646,7 @@ Erweitere den Husky pre-commit Hook, um Prettier vor ESLint auszuführen:
 #!/usr/bin/env sh
 .
 echo "Execute formatting (PRETTIER) -> consistent code formatting"
-npm run format
+npm run format:check
 
 echo "Execute linting (ESLINT) -> code quality and best practices"
 npm run lint:check
@@ -707,30 +707,6 @@ git commit -m "test prettier integration"
 ```bash
 code --install-extension esbenp.prettier-vscode
 ```
-
-#### Troubleshooting Prettier
-
-**Fehler: "Prettier couldn't find the plugin 'prettier-plugin-astro'"**
-
-Das bedeutet, die Prettier-Plugins sind nicht installiert. Führe aus:
-
-```bash
-npm install --save-dev prettier-plugin-astro prettier-plugin-tailwindcss
-```
-
-**Fehler: "Error: Cannot find module 'prettier-plugin-tailwindcss'"**
-
-Installiere das fehlende Plugin:
-
-```bash
-npm install --save-dev prettier-plugin-tailwindcss
-```
-
-**Code wird nicht formatiert in VS Code:**
-
-1. Überprüfe, ob die Prettier-Extension installiert ist
-2. Setze Prettier als Standard-Formatter in VS Code
-3. Aktiviere "Format on Save" in den VS Code Einstellungen
 
 #### Hinweise für Prettier
 
