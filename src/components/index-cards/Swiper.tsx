@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 
 import {
@@ -34,7 +35,7 @@ const getTodayIndex = () => {
 
 const ConversationSwiper = ({ cards }: Props) => {
   const todayIndex = getTodayIndex();
-  const [swiper, setSwiper] = useState<any>(null);
+  const [swiper, setSwiper] = useState<SwiperType | null>(null);
   const [currentIndex, setCurrentIndex] = useState(todayIndex);
 
   useEffect(() => {
