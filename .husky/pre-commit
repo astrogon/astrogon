@@ -1,15 +1,44 @@
 #!/usr/bin/env sh
 .
-echo "Execute formatting (PRETTIER) -> consistent code formatting"
+
+echo ""
+echo "🚀 Pre-commit Quality Checks"
+echo "=============================="
+echo ""
+
+echo "💎 Running Prettier (Code Formatting)..."
+echo "   ↳ Ensuring consistent code style across all files"
 npm run format
 
-echo "Execute linting (ESLINT) -> code quality and best practices"
-npm run lint:check
-
 if [ $? -ne 0 ]; then
-  echo "❌ ESLINT failed! Please fix the linting errors before committing."
-  echo "💡 Run 'npm run lint' to automatically fix some issues."
+  echo ""
+  echo "❌ PRETTIER failed!"
+  echo "   ↳ Code formatting could not be applied automatically"
+  echo "   💡 Try running 'npm run format' manually to see the error"
+  echo ""
   exit 1
 fi
 
-echo "✅ All checks passed successfully!"
+echo "   ✅ Code formatting completed successfully"
+echo ""
+
+echo "🔍 Running ESLint (Code Quality & Best Practices)..."
+echo "   ↳ Checking for code quality issues and potential bugs"
+npm run lint:check
+
+if [ $? -ne 0 ]; then
+  echo ""
+  echo "❌ ESLINT failed!"
+  echo "   ↳ Code quality issues found that need manual attention"
+  echo "   💡 Run 'npm run lint' to automatically fix some issues"
+  echo "   📋 Review the errors above and fix them before committing"
+  echo ""
+  exit 1
+fi
+
+echo "   ✅ Code quality checks passed successfully"
+echo ""
+
+echo "🎉 All quality checks passed! Ready to commit."
+echo "   ↳ Your code is formatted and follows best practices"
+echo ""
