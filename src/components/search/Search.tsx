@@ -46,7 +46,7 @@ const SearchPage = ({ searchList }: Props) => {
   }, []);
 
   useEffect(() => {
-    let inputResult = inputVal.length > 2 ? fuse.search(inputVal) : [];
+    const inputResult = inputVal.length > 2 ? fuse.search(inputVal) : [];
     setSearchResults(inputResult);
 
     if (inputVal.length > 0) {

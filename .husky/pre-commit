@@ -1,3 +1,4 @@
 #!/usr/bin/env sh
 .
-echo "Husky pre-commit hook: hello from husky!"
+echo "Execute linting -> code quality and best practices"
+npm run lint
