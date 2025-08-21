@@ -6,7 +6,8 @@ import type { GenericEntry } from "@/types";
 export const getTaxa = async (collection: CollectionKey, name: string) => {
   const entries = await getEntries(collection);
   const taxonomyPages = entries.map(
-    (entry: GenericEntry) => (entry.data as Record<string, unknown>)[name] as string[]
+    (entry: GenericEntry) =>
+      (entry.data as Record<string, unknown>)[name] as string[]
   );
   const taxonomies: string[] = [];
   for (let i = 0; i < taxonomyPages.length; i++) {
@@ -20,13 +21,11 @@ export const getTaxa = async (collection: CollectionKey, name: string) => {
   return taxonomy;
 };
 
-export const getAllTaxa = async (
-  collection: CollectionKey,
-  name: string
-) => {
+export const getAllTaxa = async (collection: CollectionKey, name: string) => {
   const entries = await getEntries(collection);
   const taxonomyPages = entries.map(
-    (entry: GenericEntry) => (entry.data as Record<string, unknown>)[name] as string[]
+    (entry: GenericEntry) =>
+      (entry.data as Record<string, unknown>)[name] as string[]
   );
   const taxonomies: string[] = [];
   for (let i = 0; i < taxonomyPages.length; i++) {
@@ -44,7 +43,8 @@ export const getTaxaMultiset = async (
 ) => {
   const entries = await getEntries(collection);
   const taxonomyPages = entries.map(
-    (entry: GenericEntry) => (entry.data as Record<string, unknown>)[name] as string[]
+    (entry: GenericEntry) =>
+      (entry.data as Record<string, unknown>)[name] as string[]
   );
   const taxonomies: string[] = [];
   for (let i = 0; i < taxonomyPages.length; i++) {
