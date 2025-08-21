@@ -1,0 +1,16 @@
+# Common typos and alternatives
+Javascript -> JavaScript
+Typescript -> TypeScript
+Github -> GitHub
+Api -> API
+Css -> CSS
+Html -> HTML
+Json -> JSON
+Yaml -> YAML
+Toml -> TOML
+Npm -> npm
+Cli -> CLI
+Seo -> SEO
+Rss -> RSS
+Ui -> UI
+Ux -> UX

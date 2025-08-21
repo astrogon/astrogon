@@ -1,0 +1,75 @@
+# Vale ignore patterns
+
+# Build outputs
+dist/
+build/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Generated files
+public/
+*.config.js
+*.config.mjs
+*.config.ts
+
+# Cache directories
+.cache/
+.temp/
+.tmp/
+
+# Editor directories and files
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Lock files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Git and CI files
+.git/
+.github/
+.husky/
+
+# License and legal files
+LICENSE
+LICENSE.md
+COPYING
+
+# Binary and media files
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+*.webp
+*.mp4
+*.mp3
+*.pdf
+
+# Code files that shouldn't be prose-linted
+*.ts
+*.js
+*.jsx
+*.tsx
+*.json
+*.jsonc
+*.yaml
+*.yml
+*.toml
+*.css
+*.scss
+*.html
+
+# Specific files to ignore
+CHANGELOG.md

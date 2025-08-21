@@ -72,16 +72,8 @@ See [Teckstack](https://github.com/astrogon/astrogon/blob/main/docs/tech-stack.m
 
 ## 🔧 Git hooks & Husky
 
-Dieses Projekt verwendet Husky, um Git-Hooks (z. B. `pre-commit`) aus dem Verzeichnis `.husky/` zu verwalten. Nach dem Klonen des Repos sollten Mitwirkende die Hooks einmalig aktivieren:
+Dieses Projekt verwendet Husky, um Git-Hooks (z. B. `pre-commit`) aus dem Verzeichnis `.husky/` zu verwalten. 
 
-```bash
-# Installiert Abhängigkeiten und führt das `prepare`-Script aus, das Husky installiert
-npm install
+## Linter
 
-# Falls nötig, Husky manuell einrichten
-npm run prepare
-# oder
-npx husky install
-```
-
-Wichtig: Wenn `npm install` mit `--ignore-scripts` ausgeführt wird oder Lifecycle-Scripts deaktiviert sind, wird das `prepare`-Script nicht ausgeführt und die Hooks werden nicht eingerichtet. In CI solltest du Hooks nicht als Ersatz für CI-Linter-Jobs verwenden; dort sollten Linter/Formatter explizit als separate Schritte ausgeführt werden.
+In dieses Projekt sind die Linter ESLint, Prettier und Vale integriert. Mehr Informationen dazu findest du [hier](./linter-installation.md).

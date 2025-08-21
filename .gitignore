@@ -58,3 +58,7 @@ dist/
 
 # Wrangler output
 .wrangler/
+
+# Vale binary (install with npm run install-vale)
+tools/vale
+tools/vale.exe

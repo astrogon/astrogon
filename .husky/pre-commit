@@ -39,6 +39,31 @@ fi
 echo "   ✅ Code quality checks passed successfully"
 echo ""
 
+echo "📝 Running Vale (Prose Linting)..."
+echo "   ↳ Checking documentation and content for style consistency"
+
+# Check if Vale binary exists, if not provide helpful message
+if [ -f "./tools/vale" ] || [ -f "./tools/vale.exe" ]; then
+  npm run prose:check
+  
+  if [ $? -ne 0 ]; then
+    echo ""
+    echo "❌ VALE failed!"
+    echo "   ↳ Prose style issues found in documentation"
+    echo "   💡 Review the suggestions above and edit the content manually"
+    echo "   📋 Vale cannot auto-fix - manual review required"
+    echo ""
+    exit 1
+  fi
+  
+  echo "   ✅ Prose style checks passed successfully"
+else
+  echo "   ⚠️  Vale binary not found - skipping prose checks"
+  echo "   💡 Run 'npm run install-vale' to install Vale for prose linting"
+fi
+
+echo ""
+
 echo "🎉 All quality checks passed! Ready to commit."
-echo "   ↳ Your code is formatted and follows best practices"
+echo "   ↳ Your code is formatted, follows best practices, and prose is well-written"
 echo ""

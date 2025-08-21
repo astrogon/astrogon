@@ -22,6 +22,7 @@ Frickeldave is based on [Astro](https://astro.build/) and uses the Astro theme [
 - [Contribution]( ./contribute.md)
 - [prompts]( ./prompts.md)
 - [tags-categories]( ./tags-categories.md)
+- [ideas](./ideas.md)
 
 ## License
 

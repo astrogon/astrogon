@@ -13,6 +13,10 @@
     "format:check": "prettier --check ./src --log-level silent",
     "lint": "eslint ./src --ext .js,.ts,.jsx,.tsx,.astro --fix",
     "lint:check": "eslint ./src --ext .js,.ts,.jsx,.tsx,.astro",
+    "install-vale": "node -e \"const cmd = process.platform === 'win32' ? 'powershell -ExecutionPolicy Bypass -File scripts/install-vale.ps1' : 'bash scripts/install-vale.sh'; require('child_process').exec(cmd, (err, stdout, stderr) => { if (err) { console.error(stderr); process.exit(1); } console.log(stdout); })\"",
+    "prose": "node -e \"const vale = process.platform === 'win32' ? './tools/vale.exe' : './tools/vale'; const { exec } = require('child_process'); exec(vale + ' --config=.vale.ini src/content docs', (err, stdout, stderr) => { console.log(stdout); if (stderr) console.error(stderr); if (err) process.exit(1); });\"",
+    "prose:check": "npm run prose",
+    "lint:all": "npm run format && npm run lint && npm run prose:check",
     "prepare": "husky install"
   },
   "dependencies": {

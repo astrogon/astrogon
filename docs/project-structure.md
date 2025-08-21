@@ -7,7 +7,7 @@
 - `.git` is a hidden folder. It is the thing containing all the git tracking. It should never be editied manually. Basically you should just ignore it, it's hidden for a reason.
 - `.github/` contains GitHub-specific files for the repository. If you want to use Github Pages as a host, you'd put a deployment script in here. However right now it's only purpose is to beg for your money. ...Probably just delete this folder.
 - `.gitignore` is a file that tells git which files and folders not to track. Some of the stuff in the repository you only want to have locally. That could be really big assets, files with sensitive info like keys, etc. You likely won't need to edit this at all.
-- `README.md` is the project README, of course. You can put whatever you want here, it will be displayed on the the repo's page on GitHub.
+- `README.md` is the project README, of course. You can put whatever you want here, it will be displayed on the repo's page on GitHub.
 - `LICENSE` contains the license details. The MIT license is a good and honorable one. You should not use a more restrictive license than this on the repository overall. As a software license, it doen not apply to the actual content, such as your writings. I added a `/terms` page where you will be able to outline whatever permissions you want. I have something there for my own site, but I'm no lawyer.
 
 ### Node Stuff
