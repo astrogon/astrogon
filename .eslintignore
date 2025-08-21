@@ -1,0 +1,63 @@
+# Build outputs
+dist/
+build/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Environment files
+.env
+.env.*
+
+# Generated files
+public/
+*.config.js
+*.config.mjs
+*.config.ts
+
+# Cache directories
+.cache/
+.temp/
+.tmp/
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Lock files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Documentation that shouldn't be linted
+docs/
+README.md
+CHANGELOG.md
+LICENSE
+
+# Test coverage
+coverage/
+
+# Husky hooks (shell scripts)
+.husky/
+
+# Wrangler (Cloudflare)
+wrangler.toml

@@ -44,6 +44,7 @@ Diese Anleitung beschreibt, wie du in einem Astro/Starlight Repository alle notw
       - [ESLint Dependencies installieren](#eslint-dependencies-installieren)
       - [ESLint-Konfiguration erstellen](#eslint-konfiguration-erstellen)
       - [Lint-Script in package.json hinzufügen](#lint-script-in-packagejson-hinzufügen)
+      - [ESLint-Ignore-Datei erstellen](#eslint-ignore-datei-erstellen)
       - [Hook erweitern](#hook-erweitern)
       - [Testen](#testen-1)
       - [Troubleshooting](#troubleshooting)
@@ -51,8 +52,8 @@ Diese Anleitung beschreibt, wie du in einem Astro/Starlight Repository alle notw
     - [Prettier Installation \& Konfiguration](#prettier-installation--konfiguration)
       - [Prettier Dependencies installieren](#prettier-dependencies-installieren)
       - [Prettier-Konfiguration erstellen](#prettier-konfiguration-erstellen)
-      - [Prettier-Ignore-Datei erstellen](#prettier-ignore-datei-erstellen)
       - [Format-Scripts in package.json hinzufügen](#format-scripts-in-packagejson-hinzufügen)
+      - [Prettier-Ignore-Datei erstellen](#prettier-ignore-datei-erstellen)
       - [Hook erweitern für Prettier](#hook-erweitern-für-prettier)
       - [Testen der Prettier-Integration](#testen-der-prettier-integration)
       - [Editor-Integration für Prettier](#editor-integration-für-prettier)
@@ -449,6 +450,89 @@ Füge ein `lint`-Script zu den Scripts in `package.json` hinzu:
 
 Das `--fix` Flag repariert automatisch behebbare Probleme. Mit `lint:check` kannst du nur prüfen, ohne automatische Reparaturen.
 
+#### ESLint-Ignore-Datei erstellen
+
+Erstelle eine `.eslintignore` im Projekt-Root, um bestimmte Dateien und Ordner von der Linting auszuschließen:
+
+```gitignore
+# Build outputs
+dist/
+build/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Environment files
+.env
+.env.*
+
+# Generated files
+public/
+*.config.js
+*.config.mjs
+*.config.ts
+
+# Cache directories
+.cache/
+.temp/
+.tmp/
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Lock files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Documentation that shouldn't be linted
+docs/
+README.md
+CHANGELOG.md
+LICENSE
+
+# Test coverage
+coverage/
+
+# Husky hooks (shell scripts)
+.husky/
+
+# Wrangler (Cloudflare)
+wrangler.toml
+```
+
+**Wichtige Ignore-Patterns erklärt:**
+
+| Pattern                | Grund                                                    |
+| ---------------------- | -------------------------------------------------------- |
+| `dist/`, `build/`      | Build-Ausgaben sollten nicht gelintet werden             |
+| `node_modules/`        | Dependencies sind bereits gelintet                       |
+| `public/`              | Statische Assets brauchen kein Linting                   |
+| `*.config.*`           | Konfigurationsdateien haben oft andere Standards         |
+| `.astro/`              | Astro-Build-Cache                                        |
+| `docs/`                | Dokumentation braucht meist kein JavaScript-Linting     |
+| `.husky/`              | Shell-Scripts, nicht JavaScript                          |
+| `wrangler.toml`        | Cloudflare-Konfiguration                                 |
+
 #### Hook erweitern
 
 Erweitere den Husky pre-commit Hook, um ESLint auszuführen:
@@ -566,6 +650,21 @@ Erstelle eine `.prettierrc` im Projekt-Root:
 | `endOfLine`         | `"lf"`    | Unix-style line endings (wichtig für cross-platform)           |
 | `proseWrap`         | `"always"`| Markdown-Text wird umgebrochen                                  |
 
+#### Format-Scripts in package.json hinzufügen
+
+Füge `format`-Scripts zu den Scripts in `package.json` hinzu:
+
+```json
+"scripts": {
+  "format": "prettier -w ./src",
+  "format:check": "prettier --check ./src"
+}
+```
+
+**Script-Erklärung:**
+- `format`: Formatiert alle Dateien im `src/` Verzeichnis und schreibt Änderungen zurück (`-w` = write)
+- `format:check`: Prüft nur, ob Dateien korrekt formatiert sind, ohne sie zu ändern
+
 #### Prettier-Ignore-Datei erstellen
 
 Erstelle eine `.prettierignore` im Projekt-Root, um bestimmte Dateien von der Formatierung auszuschließen:
@@ -622,21 +721,6 @@ yarn-error.log*
 CHANGELOG.md
 LICENSE
 ```
-
-#### Format-Scripts in package.json hinzufügen
-
-Füge `format`-Scripts zu den Scripts in `package.json` hinzu:
-
-```json
-"scripts": {
-  "format": "prettier -w ./src",
-  "format:check": "prettier --check ./src"
-}
-```
-
-**Script-Erklärung:**
-- `format`: Formatiert alle Dateien im `src/` Verzeichnis und schreibt Änderungen zurück (`-w` = write)
-- `format:check`: Prüft nur, ob Dateien korrekt formatiert sind, ohne sie zu ändern
 
 #### Hook erweitern für Prettier
 
