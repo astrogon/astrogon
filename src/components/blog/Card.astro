@@ -4,7 +4,6 @@ import { upperHumanize, plainify, slugify } from "@lib/textConverter";
 import {
   FaRegFolder,
   FaRegClock,
-  FaHashtag,
   FaRegCalendarAlt,
 } from "react-icons/fa";
 import readingTime from "@lib/readingTime";
@@ -21,7 +20,6 @@ const {
   autodescription,
   date,
   categories,
-  tags,
   complexity,
 } = entry.data;
 
@@ -45,7 +43,7 @@ const entryDescription =
       {
         categories && (
           <li class="mr-0 inline-block">
-            {categories.map((category: string, index: number) => (
+            {categories.map((category: string, _index: number) => (
               <a href={`/blog/categories/${slugify(category)}`}>
                 <FaRegFolder className={"ml-2 -mt-1 inline-block"} />
                 {upperHumanize(category)}

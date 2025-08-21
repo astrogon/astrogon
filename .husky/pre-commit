@@ -1,4 +1,12 @@
 #!/usr/bin/env sh
 .
-echo "Execute linting -> code quality and best practices"
-npm run lint
+echo "Execute linting (ESLINT) -> code quality and best practices"
+npm run lint:check
+
+if [ $? -ne 0 ]; then
+  echo "❌ ESLINT failed! Please fix the linting errors before committing."
+  echo "💡 Run 'npm run lint' to automatically fix some issues."
+  exit 1
+fi
+
+echo "✅ ESLINT passed successfully!"

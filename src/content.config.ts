@@ -35,7 +35,7 @@ const about = defineCollection({
 
 const authors = defineCollection({
   loader: glob({
-    pattern: "**\/[^_]*.{md,mdx}",
+    pattern: "**/[^_]*.{md,mdx}",
     base: "./src/content/authors",
   }),
   schema: ({ image }) =>
@@ -48,7 +48,7 @@ const authors = defineCollection({
 });
 
 const blog = defineCollection({
-  loader: glob({ pattern: "**\/[^_]*.{md,mdx}", base: "./src/content/blog" }),
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/blog" }),
   schema: ({ image }) =>
     searchable.extend({
       date: z.date().optional(),
@@ -63,7 +63,7 @@ const blog = defineCollection({
 });
 
 const docs = defineCollection({
-  loader: glob({ pattern: "**\/[^_]*.{md,mdx}", base: "./src/content/docs" }),
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/docs" }),
   schema: ({ image }) =>
     searchable.extend({
       pubDate: z.date().optional(),
@@ -105,7 +105,7 @@ const indexCards = defineCollection({
 });
 
 const poetry = defineCollection({
-  loader: glob({ pattern: "**\/[^_]*.{md,mdx}", base: "./src/content/poetry" }),
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/poetry" }),
   schema: ({ image }) =>
     searchable.extend({
       date: z.date().optional(),
@@ -134,7 +134,7 @@ const portfolio = defineCollection({
 
 const recipes = defineCollection({
   loader: glob({
-    pattern: "**\/[^_]*.{md,mdx}",
+    pattern: "**/[^_]*.{md,mdx}",
     base: "./src/content/recipes",
   }),
   schema: ({ image }) =>

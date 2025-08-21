@@ -13,7 +13,7 @@ const Tabs = ({ children }: { children: React.ReactElement }) => {
   const tabRefs: React.RefObject<HTMLElement[]> = useRef([]);
   useEffect(() => {
     if (defaultFocus) {
-      //@ts-ignore
+      // @ts-expect-error - tabRefs array access needs proper typing
       tabRefs.current[active]?.focus();
     } else {
       setDefaultFocus(true);
@@ -54,7 +54,7 @@ const Tabs = ({ children }: { children: React.ReactElement }) => {
               tabIndex={index === active ? 0 : -1}
               onKeyDown={(event) => handleKeyDown(event, index)}
               onClick={() => setActive(index)}
-              //@ts-ignore
+              // @ts-expect-error - ref assignment to array needs proper typing
               ref={(ref) => (tabRefs.current[index] = ref)}
             >
               {item.name}

@@ -131,7 +131,7 @@ tags?.sort((a: string, b: string) => a.localeCompare(b));
           )}
           {categories && showCategories && (
             <li class="mr-1 inline-block">
-              {categories.map((category: string, index: number) => (
+              {categories.map((category: string, _index: number) => (
                 <a href={`/blog/categories/${slugify(category)}`}>
                   <FaRegFolder className={"ml-2 -mt-1 inline-block"} />
                   {upperHumanize(category)}
@@ -141,7 +141,7 @@ tags?.sort((a: string, b: string) => a.localeCompare(b));
           )}
           {tags && showTags && (
             <li class="mr-1 inline-block">
-              {tags.map((tag: string, index: number) => (
+              {tags.map((tag: string, _index: number) => (
                 <a href={`/blog/tags/${slugify(tag)}`}>
                   <FaHashtag className={"ml-2 -mt-1 inline-block"} />
                   {lowerHumanize(tag)}
