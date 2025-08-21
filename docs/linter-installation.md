@@ -803,105 +803,9 @@ code --install-extension esbenp.prettier-vscode
 
 ### Vale Installation & Konfiguration
 
-Vale ist ein Syntax-aware Linter für Prosa und Dokumentation, der Schreibstil, Grammatik und Terminologie-Konsistenz überprüft. Da Vale nicht als Node.js-Package verfügbar ist, gibt es verschiedene Installationsoptionen für Cross-Platform-Projekte.
+Vale ist ein Syntax-aware Linter für Prosa und Dokumentation, der Schreibstil, Grammatik und Terminologie-Konsistenz überprüft. Da Vale nicht als Node.js-Package verfügbar ist, wird die Installation über shell scripte vorgenommen, die im "scripts" Ordner des Repositories gespeichert sind ((bash)[./../scripts/install-vale.sh] für mac und linux / (powershell)[./../scripts/install-vale.ps1]). Diese scripts laden die jeweils passenden Binary herunter und speichern dieses im "tools" Verzeichnis, welches in der `.gitignore`aufgenommen ist.
 
-#### Installationsoptionen für Vale
-
-Vale kann auf verschiedene Weise installiert werden. Hier sind die empfohlenen Optionen für Cross-Platform-Kompatibilität:
-
-| Option                    | Plattformen          | Komplexität | Konsistenz | Empfehlung     |
-| ------------------------- | -------------------- | ----------- | ---------- | -------------- |
-| **Binary Download**       | Linux, macOS, Windows| Niedrig     | Mittel     | ⭐⭐⭐ Gut      |
-| **Package Manager**       | Linux, macOS, Windows| Mittel      | Niedrig    | ⭐⭐ OK        |
-| **Docker-basiert**        | Linux, macOS, Windows| Mittel      | Hoch       | ⭐⭐⭐⭐ Beste  |
-| **Go Installation**       | Linux, macOS, Windows| Mittel      | Hoch       | ⭐⭐⭐ Gut      |
-
-#### Option 1: Binary Download (Empfohlen)
-
-Diese Option lädt die vorkompilierten Binärdateien direkt von GitHub herunter und ist am einfachsten zu implementieren.
-
-**Installation:**
-
-1. **Linux/macOS Script erstellen** (`scripts/install-vale.sh`):
-
-```bash
-#!/bin/bash
-set -e
-
-# Vale Version
-VALE_VERSION="3.7.1"
-OS=$(uname -s | tr '[:upper:]' '[:lower:]')
-ARCH=$(uname -m)
-
-# Architecture mapping
-case $ARCH in
-  x86_64) ARCH="64-bit" ;;
-  arm64|aarch64) ARCH="arm64" ;;
-  *) echo "Unsupported architecture: $ARCH"; exit 1 ;;
-esac
-
-# OS specific settings
-case $OS in
-  linux)
-    BINARY_NAME="vale_${VALE_VERSION}_Linux_${ARCH}.tar.gz"
-    ;;
-  darwin)
-    BINARY_NAME="vale_${VALE_VERSION}_macOS_${ARCH}.tar.gz"
-    ;;
-  *)
-    echo "Unsupported OS: $OS"
-    exit 1
-    ;;
-esac
-
-# Create tools directory
-mkdir -p ./tools
-
-# Download and extract Vale
-echo "Downloading Vale ${VALE_VERSION} for ${OS} ${ARCH}..."
-curl -L "https://github.com/errata-ai/vale/releases/download/v${VALE_VERSION}/${BINARY_NAME}" | tar -xz -C ./tools
-
-# Make executable
-chmod +x ./tools/vale
-
-echo "Vale installed successfully in ./tools/vale"
-echo "Add ./tools to your PATH or use ./tools/vale directly"
-```
-
-2. **Windows PowerShell Script erstellen** (`scripts/install-vale.ps1`):
-
-```powershell
-param(
-    [string]$ValeVersion = "3.7.1"
-)
-
-$ErrorActionPreference = "Stop"
-
-# Detect architecture
-$arch = if ([Environment]::Is64BitOperatingSystem) { "64-bit" } else { "32-bit" }
-$binaryName = "vale_${ValeVersion}_Windows_${arch}.zip"
-
-# Create tools directory
-if (!(Test-Path "tools")) {
-    New-Item -ItemType Directory -Path "tools"
-}
-
-# Download Vale
-Write-Host "Downloading Vale $ValeVersion for Windows $arch..."
-$downloadUrl = "https://github.com/errata-ai/vale/releases/download/v$ValeVersion/$binaryName"
-$zipPath = "tools/vale.zip"
-
-Invoke-WebRequest -Uri $downloadUrl -OutFile $zipPath
-
-# Extract Vale
-Expand-Archive -Path $zipPath -DestinationPath "tools" -Force
-Remove-Item $zipPath
-
-Write-Host "Vale installed successfully in ./tools/vale.exe"
-Write-Host "Add ./tools to your PATH or use ./tools/vale.exe directly"
-```
-
-3. **NPM Scripts hinzufügen** (package.json):
+Im Ascnhluß werden die Scripte über npm Scripte der Arbeitsumgebung hinzugefügt (`package.json`). Der Aufruf erfolgt über weitere npm scripte. Da vale keine Autofix Funktion hat, wird der prose Aufruf auf prose:check umgeleitet um ein einheitliches handling über alle Linter zu gewährleisten.
 
 ```json
 "scripts": {
@@ -910,149 +814,11 @@ Write-Host "Add ./tools to your PATH or use ./tools/vale.exe directly"
   "prose": "npm run prose:check"
 }
 ```
-
-#### Option 2: Package Manager Installation
-
-Diese Option nutzt system-spezifische Package Manager für die Installation.
-
-**Installation per Platform:**
-
-```bash
-# macOS (Homebrew)
-brew install vale
-
-# Linux (Ubuntu/Debian)
-sudo apt update && sudo apt install vale
-
-# Linux (Arch)
-yay -S vale
-
-# Windows (Winget)
-winget install errata-ai.vale
-
-# Windows (Chocolatey)
-choco install vale
-```
-
-**NPM Scripts** (package.json):
-
-```json
-"scripts": {
-  "prose:check": "vale --config=.vale.ini src/content docs",
-  "prose": "npm run prose:check"
-}
-```
-
-**Setup-Anleitung für Entwickler** (README-Ergänzung):
-
-```markdown
-## Development Setup
-
-### Prerequisites
-
-**Vale Installation (Choose one method):**
-
-- **macOS**: `brew install vale`
-- **Linux (Ubuntu/Debian)**: `sudo apt install vale`
-- **Linux (Arch)**: `yay -S vale`
-- **Windows**: `winget install errata-ai.vale`
-
-Then install project dependencies:
-```bash
-npm install
-```
-```
-
-#### Option 3: Docker-basierte Installation
-
-Diese Option bietet die höchste Konsistenz zwischen verschiedenen Entwicklungsumgebungen.
-
-**Dockerfile erstellen** (`.docker/vale.Dockerfile`):
-
-```dockerfile
-FROM jdkato/vale:latest
-
-WORKDIR /app
-COPY .vale.ini ./
-COPY .vale/ ./.vale/
-
-ENTRYPOINT ["vale"]
-```
-
-**Docker Compose Service** (`docker-compose.yml`):
-
-```yaml
-version: '3.8'
-services:
-  vale:
-    build:
-      context: .
-      dockerfile: .docker/vale.Dockerfile
-    volumes:
-      - ./src/content:/app/src/content:ro
-      - ./docs:/app/docs:ro
-    working_dir: /app
-```
-
-**NPM Scripts** (package.json):
-
-```json
-"scripts": {
-  "prose:check": "docker-compose run --rm vale src/content docs",
-  "prose": "npm run prose:check",
-  "vale:build": "docker-compose build vale"
-}
-```
-
-**Setup-Anleitung:**
-
-```markdown
-## Vale Setup (Docker)
-
-1. Install Docker Desktop
-2. Build Vale container: `npm run vale:build`
-3. Run prose linting: `npm run prose:check`
-```
-
-#### Option 4: Go-basierte Installation
-
-Diese Option installiert Vale über Go, was auf den meisten Entwicklungssystemen verfügbar ist.
-
-**Installation Script** (`scripts/install-vale-go.sh`):
-
-```bash
-#!/bin/bash
-set -e
-
-echo "Installing Vale via Go..."
-
-# Check if Go is installed
-if ! command -v go &> /dev/null; then
-    echo "Go is not installed. Please install Go first:"
-    echo "https://golang.org/doc/install"
-    exit 1
-fi
-
-# Install Vale
-go install github.com/errata-ai/vale/v3/cmd/vale@latest
-
-echo "Vale installed successfully!"
-echo "Make sure \$GOPATH/bin is in your PATH"
-```
-
-**NPM Scripts** (package.json):
-
-```json
-"scripts": {
-  "install-vale": "bash scripts/install-vale-go.sh",
-  "prose:check": "vale --config=.vale.ini src/content docs",
-  "prose": "npm run prose:check"
-}
-```
+Die Installation von vale wird über `npm install`sichergestellt.
 
 #### Vale-Konfiguration erstellen
 
-Erstelle eine `.vale.ini` im Projekt-Root:
+Über die `.vale.ini` im Projekt-Root wird die Konfiguration vorgenommen. Folgend ist eine simple start Konfiguration dargestellt.
 
 ```ini
 # Vale configuration file
@@ -1089,15 +855,13 @@ BasedOnStyles = Vale
 Transform = (?s)<!--\s*(.*?)\s*-->
 ```
 
-Erstelle das Vale Styles-Verzeichnis und eine Base-Vokabular-Datei:
-
-```bash
-mkdir -p .vale/styles/Base/
-```
+Viele Regeln automatisch von vale geprüft oder sind in den rules definiert. Darüber hinaus 
+Die Base-Vokabular-Datei prüft darauf, ob Wörter korrekt geschrieben sind.
 
 **Base Vocabulary** (`.vale/styles/Base/accept.txt`):
 
 ```
+STACKIT
 Astro
 TypeScript
 JavaScript
@@ -1132,19 +896,6 @@ Typescript -> TypeScript
 Github -> GitHub
 ```
 
-#### NPM Scripts für Vale hinzufügen
-
-Erweitere die Scripts in `package.json` (basierend auf gewählter Installationsoption):
-
-```json
-"scripts": {
-  "prose": "vale --config=.vale.ini src/content docs",
-  "prose:check": "vale --config=.vale.ini src/content docs",
-  "prose:fix": "echo 'Vale cannot auto-fix. Please review the suggestions and edit manually.'",
-  "lint:all": "npm run format && npm run lint && npm run prose:check"
-}
-```
-
 #### Hook erweitern für Vale
 
 Erweitere den Husky pre-commit Hook um Vale:
@@ -1158,38 +909,9 @@ echo "🚀 Pre-commit Quality Checks"
 echo "=============================="
 echo ""
 
-echo "💎 Running Prettier (Code Formatting)..."
-echo "   ↳ Ensuring consistent code style across all files"
-npm run format
-
-if [ $? -ne 0 ]; then
-  echo ""
-  echo "❌ PRETTIER failed!"
-  echo "   ↳ Code formatting could not be applied automatically"
-  echo "   💡 Try running 'npm run format' manually to see the error"
-  echo ""
-  exit 1
-fi
-
-echo "   ✅ Code formatting completed successfully"
-echo ""
-
-echo "🔍 Running ESLint (Code Quality & Best Practices)..."
-echo "   ↳ Checking for code quality issues and potential bugs"
-npm run lint:check
-
-if [ $? -ne 0 ]; then
-  echo ""
-  echo "❌ ESLINT failed!"
-  echo "   ↳ Code quality issues found that need manual attention"
-  echo "   💡 Run 'npm run lint' to automatically fix some issues"
-  echo "   📋 Review the errors above and fix them before committing"
-  echo ""
-  exit 1
-fi
-
-echo "   ✅ Code quality checks passed successfully"
-echo ""
+...
+...
+...
 
 echo "📝 Running Vale (Prose Linting)..."
 echo "   ↳ Checking documentation and content for style consistency"
@@ -1208,9 +930,10 @@ fi
 echo "   ✅ Prose style checks passed successfully"
 echo ""
 
-echo "🎉 All quality checks passed! Ready to commit."
-echo "   ↳ Your code is formatted, follows best practices, and prose is well-written"
-echo ""
+...
+...
+...
+
 ```
 
 #### Testen der Vale-Integration
@@ -1233,6 +956,7 @@ vale --config=.vale.ini src/content/blog/example.md
 # Mit Commit testen
 git add .
 git commit -m "test vale integration"
+
 ```
 
 #### Vale Styles und Regeln
