@@ -4,29 +4,30 @@ Diese Anleitung beschreibt, wie du in einem Astro/Starlight Repository alle notw
 
 - [Linter Installation und Integration über Husky](#linter-installation-und-integration-über-husky)
   - [Übersicht der Tools](#übersicht-der-tools)
-    - [ESLint - JavaScript/TypeScript Code Quality](#eslint---javascripttypescript-code-quality)
-      - [Was macht ESLint?](#was-macht-eslint)
-      - [Hauptfunktionen:](#hauptfunktionen)
-      - [Beispiele für ESLint-Regeln:](#beispiele-für-eslint-regeln)
-      - [Konfiguration:](#konfiguration)
-    - [Prettier - Code Formatierung](#prettier---code-formatierung)
-      - [Was macht Prettier?](#was-macht-prettier)
-      - [Hauptfunktionen:](#hauptfunktionen-1)
-      - [Beispiele für Prettier-Formatierung:](#beispiele-für-prettier-formatierung)
-      - [Konfiguration:](#konfiguration-1)
-    - [Vale - Prose und Dokumentations-Linting](#vale---prose-und-dokumentations-linting)
-      - [Was macht Vale?](#was-macht-vale)
-      - [Hauptfunktionen:](#hauptfunktionen-2)
-      - [Beispiele für Vale-Regeln:](#beispiele-für-vale-regeln)
-      - [Konfiguration:](#konfiguration-2)
-    - [Wie die Tools zusammenarbeiten](#wie-die-tools-zusammenarbeiten)
-      - [1. Entwicklungsphase](#1-entwicklungsphase)
-      - [2. Pre-commit Phase](#2-pre-commit-phase)
-      - [3. CI/CD Pipeline](#3-cicd-pipeline)
-    - [Workflow für Entwickler](#workflow-für-entwickler)
-      - [Beim Entwickeln](#beim-entwickeln)
-      - [Vor dem Commit](#vor-dem-commit)
-      - [Bei Fehlern](#bei-fehlern)
+  - [ESLint - JavaScript/TypeScript Code Quality](#eslint---javascripttypescript-code-quality)
+    - [Was macht ESLint?](#was-macht-eslint)
+    - [Hauptfunktionen](#hauptfunktionen)
+    - [Beispiele für ESLint-Regeln](#beispiele-für-eslint-regeln)
+    - [Konfiguration](#konfiguration)
+    - [Anwendung während der Entwicklung](#anwendung-während-der-entwicklung)
+  - [Prettier - Code Formatierung](#prettier---code-formatierung)
+    - [Was macht Prettier?](#was-macht-prettier)
+    - [Hauptfunktionen](#hauptfunktionen-1)
+    - [Beispiele für Prettier-Formatierung](#beispiele-für-prettier-formatierung)
+    - [Konfiguration](#konfiguration-1)
+  - [Vale - Prose und Dokumentations-Linting](#vale---prose-und-dokumentations-linting)
+    - [Was macht Vale?](#was-macht-vale)
+      - [Hauptfunktionen](#hauptfunktionen-2)
+    - [Beispiele für Vale-Regeln](#beispiele-für-vale-regeln)
+    - [Konfiguration](#konfiguration-2)
+  - [Wie die Tools zusammenarbeiten](#wie-die-tools-zusammenarbeiten)
+    - [1. Entwicklungsphase](#1-entwicklungsphase)
+    - [2. Pre-commit Phase](#2-pre-commit-phase)
+    - [3. CI/CD Pipeline](#3-cicd-pipeline)
+  - [Workflow für Entwickler](#workflow-für-entwickler)
+    - [Beim Entwickeln](#beim-entwickeln)
+    - [Vor dem Commit](#vor-dem-commit)
+    - [Bei Fehlern](#bei-fehlern)
   - [Installationsanleitung](#installationsanleitung)
     - [Pre-commit hooks via husky](#pre-commit-hooks-via-husky)
       - [Voraussetzungen](#voraussetzungen)
@@ -52,18 +53,18 @@ Diese Anleitung beschreibt, wie du in einem Astro/Starlight Repository alle notw
 | **Prettier** | Code-Formatierung | Alle unterstützten Dateitypen | Einheitliche Formatierung und Styling |
 | **Vale** | Prose-Linting | `.md`, `.mdx`, Text in Code-Kommentaren | Schreibstil, Grammatik, Terminologie |
 
-### ESLint - JavaScript/TypeScript Code Quality
+## ESLint - JavaScript/TypeScript Code Quality
 
-#### Was macht ESLint?
+### Was macht ESLint?
 ESLint ist ein statisches Code-Analyse-Tool für JavaScript und TypeScript, das potenzielle Probleme, Bugs und stilistische Inkonsistenzen in Ihrem Code identifiziert.
 
-#### Hauptfunktionen:
+### Hauptfunktionen
 - **Fehlerprävention**: Erkennt potenzielle Bugs und problematische Patterns
 - **Code-Konsistenz**: Durchsetzt einheitliche Coding Standards
 - **Best Practices**: Warnt vor anti-patterns und schlägt bessere Alternativen vor
 - **Framework-Support**: Spezielle Regeln für React, Astro, Node.js etc.
 
-#### Beispiele für ESLint-Regeln:
+### Beispiele für ESLint-Regeln
 ```javascript
 // ❌ ESLint würde warnen:
 var unusedVariable = 'never used';  // unused variable
@@ -76,21 +77,39 @@ if (condition === true) { }
 function foo() { return 'value'; }
 ```
 
-#### Konfiguration:
+### Konfiguration
+
 ESLint wird über `.eslintrc.js` oder `eslint.config.js` konfiguriert und kann projekt-spezifische Regeln definieren.
 
-### Prettier - Code Formatierung
+### Anwendung während der Entwicklung
 
-#### Was macht Prettier?
+Neben Pre-Commit Hooks und Ausführung in der Pipeline kann ESLint wie folgt aufgerufen werden
+
+`npm run lint:check` Führt einen Check der gesamte Codebase des Repositories für alle .js,.ts,.jsx,.tsx,.astro Dateien aus. 
+
+`npm run lint` Führt einen Check der gesamte Codebase des Repositories für alle .js,.ts,.jsx,.tsx,.astro Dateien aus und versucht die gefundenen Errors und Warning automatisch zu fixen.
+
+`npx eslint ./src/lib/taxonomyFilter.ts #--fix` Prüft nur die Datei `/taxonomyFilter.ts` auf Fehler, kann mit dem Parameter `--fix` erweitert werden um ein automatisches fixen.
+
+Automatisch gefixed werden kann: 
+
+- Formatierung (Semicolons, Quotes, Indentation)
+- Import-Sortierung
+- Trailing Commas
+- Spacing-Regeln
+
+## Prettier - Code Formatierung
+
+### Was macht Prettier?
 Prettier ist ein "opinionated" Code-Formatter, der automatisch eine einheitliche Formatierung für verschiedene Dateitypen durchsetzt.
 
-#### Hauptfunktionen:
+### Hauptfunktionen
 - **Automatische Formatierung**: Konsistente Einrückung, Zeilenlänge, Quotes etc.
 - **Zero-Configuration**: Funktioniert out-of-the-box mit sinnvollen Defaults
 - **Multi-Language**: Unterstützt JavaScript, TypeScript, CSS, HTML, Markdown, JSON und mehr
 - **Editor-Integration**: Kann beim Speichern automatisch formatieren
 
-#### Beispiele für Prettier-Formatierung:
+### Beispiele für Prettier-Formatierung
 ```javascript
 // Vorher (inkonsistent formatiert):
 const obj={name:"John",age:30,city:"Berlin"};
@@ -110,21 +129,21 @@ if (condition) {
 }
 ```
 
-#### Konfiguration:
+### Konfiguration
 Prettier wird über `.prettierrc` oder `prettier.config.js` konfiguriert.
 
-### Vale - Prose und Dokumentations-Linting
+## Vale - Prose und Dokumentations-Linting
 
-#### Was macht Vale?
+### Was macht Vale?
 Vale ist ein Syntax-aware Linter für Prosa und Dokumentation, der Schreibstil, Grammatik und Terminologie-Konsistenz überprüft.
 
-#### Hauptfunktionen:
+#### Hauptfunktionen
 - **Schreibstil-Konsistenz**: Durchsetzt einheitliche Schreibregeln
 - **Terminologie-Management**: Stellt sicher, dass Fachbegriffe korrekt verwendet werden
 - **Syntax-Aware**: Versteht Markdown, reStructuredText, AsciiDoc etc.
 - **Anpassbare Regeln**: Unterstützt verschiedene Style Guides (Google, Microsoft, etc.)
 
-#### Beispiele für Vale-Regeln:
+### Beispiele für Vale-Regeln
 ```markdown
 ❌ Vale würde warnen:
 - "We should of done this differently" (should have, nicht should of)
@@ -137,41 +156,41 @@ Vale ist ein Syntax-aware Linter für Prosa und Dokumentation, der Schreibstil, 
 - "Read the complete documentation for detailed examples"
 ```
 
-#### Konfiguration:
+### Konfiguration
 Vale wird über `.vale.ini` und Style-Dateien im `.vale/` Verzeichnis konfiguriert.
 
-### Wie die Tools zusammenarbeiten
+## Wie die Tools zusammenarbeiten
 
-#### 1. Entwicklungsphase
+### 1. Entwicklungsphase
 - **ESLint**: Läuft im Editor und zeigt Code-Probleme in Echtzeit
 - **Prettier**: Formatiert Code automatisch beim Speichern
 - **Vale**: Überprüft Dokumentation und Kommentare
 
-#### 2. Pre-commit Phase
+### 2. Pre-commit Phase
 - Alle drei Tools laufen automatisch vor jedem Git-Commit
 - Verhindert, dass problematischer Code/Content committed wird
 - Stellt sicher, dass alle Änderungen den Qualitätsstandards entsprechen
 
-#### 3. CI/CD Pipeline
+### 3. CI/CD Pipeline
 - Validiert, dass alle Regeln eingehalten werden
 - Blockiert Merges bei Regelverstößen
 - Stellt sicher, dass nur qualitativ hochwertiger Code deployed wird
 
-### Workflow für Entwickler
+## Workflow für Entwickler
 
-#### Beim Entwickeln
+### Beim Entwickeln
 1. **Code schreiben** - ESLint zeigt Probleme in Echtzeit
 2. **Datei speichern** - Prettier formatiert automatisch
 3. **Dokumentation schreiben** - Vale prüft Schreibstil
 
-#### Vor dem Commit
+### Vor dem Commit
 1. **Pre-commit Hook** läuft automatisch
 2. **ESLint** prüft alle geänderten Code-Dateien
 3. **Prettier** formatiert alle Dateien
 4. **Vale** prüft alle Markdown-Dateien
 5. **Commit wird blockiert** bei Fehlern
 
-#### Bei Fehlern
+### Bei Fehlern
 1. **ESLint-Fehler**: Code korrigieren oder `eslint --fix` verwenden
 2. **Prettier-Fehler**: Automatisch behoben durch `prettier --write`
 3. **Vale-Fehler**: Text manuell korrigieren oder Regel anpassen
