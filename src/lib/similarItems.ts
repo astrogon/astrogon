@@ -23,19 +23,15 @@ const similerItems = (
   }
 
   // filter by categories
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const filterByCategories = allItems.filter((item: GenericEntry) =>
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     categories.find((category) =>
-      (item.data as any).categories.includes(category)
+      (item.data as { categories?: string[] }).categories?.includes(category)
     )
   );
 
   // filter by tags
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const filterByTags = allItems.filter((item: GenericEntry) =>
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    tags.find((tag) => (item.data as any).tags.includes(tag))
+    tags.find((tag) => (item.data as { tags?: string[] }).tags?.includes(tag))
   );
 
   // merged after filter
@@ -45,9 +41,8 @@ const similerItems = (
   const filterByID = mergedItems.filter((item) => item.id !== id);
 
   // count instances of each item
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const itemCount = filterByID.reduce(
-    (accumulator: any, currentItem: GenericEntry) => {
+    (accumulator: Record<string, number>, currentItem: GenericEntry) => {
       accumulator[currentItem.id] = (accumulator[currentItem.id] || 0) + 1;
       return accumulator;
     },

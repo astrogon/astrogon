@@ -45,10 +45,9 @@ Diese Anleitung beschreibt, wie du in einem Astro/Starlight Repository alle notw
       - [ESLint-Konfiguration erstellen](#eslint-konfiguration-erstellen)
       - [Lint-Script in package.json hinzufügen](#lint-script-in-packagejson-hinzufügen)
       - [ESLint-Ignore-Datei erstellen](#eslint-ignore-datei-erstellen)
-      - [Hook erweitern](#hook-erweitern)
-      - [Testen](#testen-1)
-      - [Troubleshooting](#troubleshooting)
-      - [Hinweise](#hinweise)
+      - [Hook erweitern für ESLint](#hook-erweitern-für-eslint)
+      - [Testen der ESLint Integration](#testen-der-eslint-integration)
+      - [Hinweise für ESLint](#hinweise-für-eslint)
     - [Prettier Installation \& Konfiguration](#prettier-installation--konfiguration)
       - [Prettier Dependencies installieren](#prettier-dependencies-installieren)
       - [Prettier-Konfiguration erstellen](#prettier-konfiguration-erstellen)
@@ -533,7 +532,7 @@ wrangler.toml
 | `.husky/`              | Shell-Scripts, nicht JavaScript                          |
 | `wrangler.toml`        | Cloudflare-Konfiguration                                 |
 
-#### Hook erweitern
+#### Hook erweitern für ESLint
 
 Erweitere den Husky pre-commit Hook, um ESLint auszuführen:
 
@@ -543,7 +542,7 @@ echo "Execute linting -> code quality and best practices"
 npm run lint:check
 ```
 
-#### Testen
+#### Testen der ESLint Integration
 
 **Zuerst die Dependencies installieren (falls noch nicht geschehen):**
 
@@ -565,17 +564,7 @@ git add .
 git commit -m "test eslint integration"
 ```
 
-#### Troubleshooting
-
-**Fehler: "ESLint couldn't find the config '@typescript-eslint/recommended'"**
-
-Das bedeutet, die TypeScript ESLint-Plugins sind nicht installiert. Führe aus:
-
-```bash
-npm install --save-dev @typescript-eslint/eslint-plugin @typescript-eslint/parser astro-eslint-parser eslint-plugin-astro
-```
-
-#### Hinweise
+#### Hinweise für ESLint
 
 - ESLint wird nun bei jedem Commit automatisch ausgeführt und versucht, Probleme zu beheben
 - Falls ESLint Fehler findet, die nicht automatisch behoben werden können, wird der Commit blockiert
