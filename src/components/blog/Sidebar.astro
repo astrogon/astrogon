@@ -15,7 +15,9 @@ const { tags, categories, allCategories }: Props = Astro.props;
 
 <ScrollArea className="h-full" client:only="react">
   <!-- categories -->
-  <div class="glass rounded-lg p-4 m-2 mb-4 intersect:animate-fadeLeft opacity-0">
+  <div
+    class="glass rounded-lg p-4 m-2 mb-4 intersect:animate-fadeLeft opacity-0"
+  >
     <div>
       <h4 class="mb-2">
         <a href="/blog/categories">
@@ -30,10 +32,7 @@ const { tags, categories, allCategories }: Props = Astro.props;
             const count = allCategories.filter((c) => c === category).length;
             return (
               <li>
-                <a
-                  class=""
-                  href={`/blog/categories/${category}`}
-                >
+                <a class="" href={`/blog/categories/${category}`}>
                   {upperHumanize(category)}{" "}
                   <div class="inline-block pl-1">({count})</div>
                 </a>

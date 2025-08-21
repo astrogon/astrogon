@@ -1,4 +1,4 @@
-import type { SearchableEntry } from "@/types"
+import type { SearchableEntry } from "@/types";
 import Fuse from "fuse.js";
 import React, { useEffect, useRef, useState } from "react";
 import { plainify } from "@lib/textConverter";
@@ -64,10 +64,10 @@ const SearchPage = ({ searchList }: Props) => {
     <section className="section-sm">
       <div className="container">
         <div className="row mb-10 justify-center">
-          <div className="col-10 lg:col-8 px-0">
+          <div className="col-10 px-0 lg:col-8">
             <div className="flex flex-nowrap">
               <input
-                className="w-full glass rounded-lg px-6 py-4 text-txt-p placeholder:text-txt-light dark:placeholder:text-darkmode-txt-light focus:border-darkmode-border focus:ring-transparent dark:text-darkmode-txt-light intersect:animate-fadeDown opacity-0 intersect-no-queue"
+                className="glass intersect-no-queue w-full rounded-lg px-6 py-4 text-txt-p opacity-0 placeholder:text-txt-light focus:border-darkmode-border focus:ring-transparent intersect:animate-fadeDown dark:text-darkmode-txt-light dark:placeholder:text-darkmode-txt-light"
                 placeholder="search posts"
                 type="search"
                 name="search"
@@ -82,7 +82,7 @@ const SearchPage = ({ searchList }: Props) => {
         </div>
         <div className="row">
           {searchResults?.length < 1 ? (
-            <div className="col-10 lg:col-8 mx-auto p-2 text-center glass rounded-lg intersect:animate-fadeUp opacity-0">
+            <div className="glass col-10 mx-auto rounded-lg p-2 text-center opacity-0 lg:col-8 intersect:animate-fadeUp">
               <p>
                 {inputVal.length < 1
                   ? "Looking for something?"
@@ -91,19 +91,21 @@ const SearchPage = ({ searchList }: Props) => {
             </div>
           ) : (
             searchResults?.map(({ item }, index) => (
-              <div className="py-2 px-0" key={`search-${index}`}>
-                <div className="h-full glass col-10 lg:col-8 mx-auto rounded-lg p-4 intersect:animate-fade opacity-0">
+              <div className="px-0 py-2" key={`search-${index}`}>
+                <div className="glass col-10 mx-auto h-full rounded-lg p-4 opacity-0 lg:col-8 intersect:animate-fade">
                   <h4 className="mb-2">
-                    <a href={"/" + getPath(item)}>
-                      {item.data.title}
-                    </a>
+                    <a href={"/" + getPath(item)}>{item.data.title}</a>
                   </h4>
-                  { item.data.description && (
+                  {item.data.description && (
                     <p className="">{item.data.description}</p>
                   )}
-                  {  !item.data.description && item.data.autodescription && item.body && (
-                    <p className="">{plainify(item.body.slice(0, descriptionLength))}</p>
-                  )}
+                  {!item.data.description &&
+                    item.data.autodescription &&
+                    item.body && (
+                      <p className="">
+                        {plainify(item.body.slice(0, descriptionLength))}
+                      </p>
+                    )}
                 </div>
               </div>
             ))

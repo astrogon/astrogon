@@ -1,6 +1,7 @@
 ---
 title: Banana Bread
-description: A moist, flavorful banana bread made with overripe bananas, perfect for breakfast or a snack.
+description:
+  A moist, flavorful banana bread made with overripe bananas, perfect for breakfast or a snack.
 image: "@assets/recipes/banana-bread.jpg"
 author: jane-doe
 prepTime: 15
@@ -41,7 +42,8 @@ instructions:
   - If using, fold in the chopped walnuts.
   - Pour the batter into the prepared loaf pan and smooth the top.
   - Bake for 55-65 minutes, or until a toothpick inserted into the center comes out clean.
-  - Let the bread cool in the pan for 10 minutes before transferring it to a wire rack to cool completely.
+  - Let the bread cool in the pan for 10 minutes before transferring it to a wire rack to cool
+    completely.
 
 notes:
   - For a healthier version, substitute half of the butter with Greek yogurt or applesauce.

@@ -1,19 +1,23 @@
 ---
 title: Races
-description: "An overview of the diverse races that inhabit the realms, their traits, and cultural nuances."
+description:
+  "An overview of the diverse races that inhabit the realms, their traits, and cultural nuances."
 image: "@assets/docs/characters/races/cover.jpg"
 imageAlt: "A painting of a dwarf wielding an axe"
 pubDate: 2024-05-12
 modDate: 2024-06-01
 ---
 
-The realms are home to a wide array of races, each with their own distinct cultures, strengths, and quirks. From the towering heights of the mountain peaks to the shadowy depths of the underworld, the diversity of life is boundless.
+The realms are home to a wide array of races, each with their own distinct cultures, strengths, and
+quirks. From the towering heights of the mountain peaks to the shadowy depths of the underworld, the
+diversity of life is boundless.
 
 ---
 
 ## Humans
 
-Humans are the most adaptable and ambitious of the races, thriving in nearly every environment. Their drive and versatility make them natural leaders and innovators.
+Humans are the most adaptable and ambitious of the races, thriving in nearly every environment.
+Their drive and versatility make them natural leaders and innovators.
 
 ### Traits
 
@@ -23,13 +27,15 @@ Humans are the most adaptable and ambitious of the races, thriving in nearly eve
 
 ### Cultural Nuances
 
-Humans’ cultures vary greatly depending on their region, ranging from scholarly city-states to nomadic tribes of the desert.
+Humans’ cultures vary greatly depending on their region, ranging from scholarly city-states to
+nomadic tribes of the desert.
 
 ---
 
 ## Elves
 
-Elves are known for their grace, longevity, and connection to nature and magic. Their lives are intertwined with the flow of the arcane, making them skilled spellcasters and archers.
+Elves are known for their grace, longevity, and connection to nature and magic. Their lives are
+intertwined with the flow of the arcane, making them skilled spellcasters and archers.
 
 ### Traits
 
@@ -47,7 +53,8 @@ Elves are known for their grace, longevity, and connection to nature and magic. 
 
 ## Dwarves
 
-Dwarves are hearty folk, skilled in mining, smithing, and enduring the harshest conditions. Their loyalty and tenacity are unmatched.
+Dwarves are hearty folk, skilled in mining, smithing, and enduring the harshest conditions. Their
+loyalty and tenacity are unmatched.
 
 ### Traits
 
@@ -64,19 +71,22 @@ Dwarves are hearty folk, skilled in mining, smithing, and enduring the harshest 
 
 ## Orcs
 
-Orcs are fierce and primal, known for their brute strength and indomitable will. Though often misunderstood, many orcs strive for honor and redemption.
+Orcs are fierce and primal, known for their brute strength and indomitable will. Though often
+misunderstood, many orcs strive for honor and redemption.
 
 ### Traits
 
 - **Ability Score Increase**: +2 Strength, +1 Constitution
-- **Relentless Endurance**: When reduced to 0 hit points, drop to 1 hit point instead (once per long rest)
+- **Relentless Endurance**: When reduced to 0 hit points, drop to 1 hit point instead (once per long
+  rest)
 - **Savage Attacks**: When you score a critical hit, roll one additional weapon damage die
 
 ---
 
 ## Halflings
 
-Halflings are small but nimble, known for their luck and unyielding optimism. They often thrive in tight-knit communities.
+Halflings are small but nimble, known for their luck and unyielding optimism. They often thrive in
+tight-knit communities.
 
 ### Traits
 
@@ -88,24 +98,29 @@ Halflings are small but nimble, known for their luck and unyielding optimism. Th
 
 ## Tieflings
 
-Tieflings bear the mark of infernal heritage, with horns, tails, and an aura of mystery. Despite their appearance, they are fiercely independent and often misunderstood.
+Tieflings bear the mark of infernal heritage, with horns, tails, and an aura of mystery. Despite
+their appearance, they are fiercely independent and often misunderstood.
 
 ### Traits
 
 - **Ability Score Increase**: +2 Charisma, +1 Intelligence
 - **Hellish Resistance**: Resistance to fire damage
-- **Infernal Legacy**: Cast _Thaumaturgy_ cantrip; gain access to _Hellish Rebuke_ and _Darkness_ spells at higher levels
+- **Infernal Legacy**: Cast _Thaumaturgy_ cantrip; gain access to _Hellish Rebuke_ and _Darkness_
+  spells at higher levels
 
 ---
 
 ## Uncommon Races
 
-The realms also feature unique and rare races such as dragonborn, gnomes, and even elemental beings like genasi. These individuals are less common but no less important in shaping the world’s history.
+The realms also feature unique and rare races such as dragonborn, gnomes, and even elemental beings
+like genasi. These individuals are less common but no less important in shaping the world’s history.
 
 ---
 
 ### Choosing Your Race
 
-When selecting a race for your character, consider not just the mechanical benefits but also the cultural background and how it shapes their personality. Will you be an ambitious human, a noble elf, or perhaps a misunderstood tiefling?
+When selecting a race for your character, consider not just the mechanical benefits but also the
+cultural background and how it shapes their personality. Will you be an ambitious human, a noble
+elf, or perhaps a misunderstood tiefling?
 
 Your choice defines your place in the world—choose wisely!

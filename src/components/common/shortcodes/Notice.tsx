@@ -10,7 +10,7 @@ function Notice({
 }) {
   return (
     <div
-      className={`mb-6 rounded-lg border border-current py-2 px-4
+      className={`mb-6 rounded-lg border border-current px-4 py-2
       ${type === "note" && "text-[#24a9ab]"}
       ${type === "tip" && "text-[#65ab24]"}
       ${type === "info" && "text-[#d7af2d]"}
@@ -86,7 +86,7 @@ function Notice({
             />
           </svg>
         )}
-        <p className="font-secondary text-xl font-semibold text-txt-p dark:text-darkmode-txt-light my-0">
+        <p className="my-0 font-secondary text-xl font-semibold text-txt-p dark:text-darkmode-txt-light">
           {upperHumanize(type)}
         </p>
       </div>

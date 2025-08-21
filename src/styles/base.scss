@@ -1,11 +1,11 @@
 html {
-  @apply text-base h-screen;
+  @apply h-screen text-base;
 }
 
 body {
   @apply font-secondary font-normal leading-relaxed text-txt-s dark:text-darkmode-txt-s;
   @apply bg-bg-p dark:bg-darkmode-bg-p;
-  @apply flex flex-col min-h-screen lg:mx-8;
+  @apply flex min-h-screen flex-col lg:mx-8;
 }
 
 h1,
@@ -14,7 +14,7 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-primary font-bold leading-tight text-txt-p dark:text-darkmode-txt-p intersect:animate-fade opacity-0;
+  @apply font-primary font-bold leading-tight text-txt-p opacity-0 intersect:animate-fade dark:text-darkmode-txt-p;
   // @apply font-primary font-bold leading-tight bg-gradient-to-r from-orange-500 via-indigo-500 to-green-500 text-transparent bg-clip-text;
 }
 h1,
@@ -43,7 +43,7 @@ h6,
 }
 
 p {
-  @apply intersect:animate-fade opacity-0;
+  @apply opacity-0 intersect:animate-fade;
 }
 
 b,
@@ -71,7 +71,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 

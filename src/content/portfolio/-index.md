@@ -20,7 +20,7 @@ projects:
   - title: "frickeldave.de"
     technologies:
       - "Astro"
-    content: 
+    content:
       - "A website about me and my projects)"
     github: "https://github.com/Frickeldave/frickeldave-main"
 ---

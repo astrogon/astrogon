@@ -9,43 +9,57 @@ interface Props {
   glass?: boolean;
 }
 
-const { label, link, newtab=false, type="primary", color, hoverInvert=false, glass=true }: Props = Astro.props;
+const {
+  label,
+  link,
+  newtab = false,
+  type = "primary",
+  color,
+  hoverInvert = false,
+  glass = true,
+}: Props = Astro.props;
 ---
 
-{ glass ? (
-  <a 
-    href={link} 
-    target=`${newtab ? "_blank" : ""}`
-    class=`no-underline inline-block hover:opacity-100 ${type == "primary" ? "" : "intersect:animate-fade opacity-0"}`
-  >
-    <div class=`glass-t hover:bg-opacity-20 hover:backdrop-blur-none
-      ${type == "primary" ? "px-4 py-2 rounded-md font-bold intersect:animate-fade opacity-0" : "px-2 py-0.5 rounded-sm text-txt-light dark:text-darkmode-txt-light"}`
+{
+  glass ? (
+    <a
+      href={link}
+      target={`${newtab ? "_blank" : ""}`}
+      class={`no-underline inline-block hover:opacity-100 ${type == "primary" ? "" : "intersect:animate-fade opacity-0"}`}
     >
-      {label}
-    </div>
-  </a>
-) : (
-  <a 
-    href={link} 
-    target=`${newtab ? "_blank" : ""}`
-    class=`no-underline inline-block group intersect:animate-fadeLeft opacity-0 ${hoverInvert ? "hover:opacity-100" : ""}`
-  >
-  <div class=`
-    ${color ? color : "bg-bg-t dark:bg-darkmode-bg-t"}
-    ${type == "primary" ? "p-0.5 rounded-md" : "p-[1.5px] rounded-sm"}`
-  >
-    <div class=`bg-bg-p dark:bg-darkmode-bg-p
-      ${type == "primary" ? "px-4 py-2 rounded-md" : "px-2 py-0.5 rounded-sm"}
-      ${hoverInvert ? "group-hover:bg-opacity-0" : ""}`
-    >
-      <div class=`text-transparent bg-clip-text
-        ${color ? color : "bg-bg-t dark:bg-darkmode-bg-t"}
-        ${type == "primary" ? "font-bold" : ""}
-        ${hoverInvert ? "group-hover:text-txt-p dark:group-hover:text-darkmode-txt-p" : ""}`
+      <div
+        class={`glass-t hover:bg-opacity-20 hover:backdrop-blur-none
+      ${type == "primary" ? "px-4 py-2 rounded-md font-bold intersect:animate-fade opacity-0" : "px-2 py-0.5 rounded-sm text-txt-light dark:text-darkmode-txt-light"}`}
       >
         {label}
       </div>
-    </div>
-  </div>
-  </a>
-)}
+    </a>
+  ) : (
+    <a
+      href={link}
+      target={`${newtab ? "_blank" : ""}`}
+      class={`no-underline inline-block group intersect:animate-fadeLeft opacity-0 ${hoverInvert ? "hover:opacity-100" : ""}`}
+    >
+      <div
+        class={`
+    ${color ? color : "bg-bg-t dark:bg-darkmode-bg-t"}
+    ${type == "primary" ? "p-0.5 rounded-md" : "p-[1.5px] rounded-sm"}`}
+      >
+        <div
+          class={`bg-bg-p dark:bg-darkmode-bg-p
+      ${type == "primary" ? "px-4 py-2 rounded-md" : "px-2 py-0.5 rounded-sm"}
+      ${hoverInvert ? "group-hover:bg-opacity-0" : ""}`}
+        >
+          <div
+            class={`text-transparent bg-clip-text
+        ${color ? color : "bg-bg-t dark:bg-darkmode-bg-t"}
+        ${type == "primary" ? "font-bold" : ""}
+        ${hoverInvert ? "group-hover:text-txt-p dark:group-hover:text-darkmode-txt-p" : ""}`}
+          >
+            {label}
+          </div>
+        </div>
+      </div>
+    </a>
+  )
+}

@@ -24,4 +24,9 @@ export async function getStaticPaths() {
 const { entry, pageIDs, pageIndex, pageCount } = Astro.props;
 ---
 
-<EntryLayout entry={entry} pageIDs={pageIDs} pageIndex={pageIndex} pageCount={pageCount} />
+<EntryLayout
+  entry={entry}
+  pageIDs={pageIDs}
+  pageIndex={pageIndex}
+  pageCount={pageCount}
+/>

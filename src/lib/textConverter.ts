@@ -26,9 +26,7 @@ export const upperHumanize = (content: string) => {
 
 // hyphen to space, lowercase all letters
 export const lowerHumanize = (content: string) => {
-  return content
-    .toLowerCase()
-    .replace(/-/g, " ");
+  return content.toLowerCase().replace(/-/g, " ");
 };
 
 // plainify
@@ -54,7 +52,7 @@ const htmlEntityDecoder = (htmlWithEntities: string) => {
     /(&amp;|&lt;|&gt;|&quot;|&#39;)/g,
     (entity: string): string => {
       return entityList[entity];
-    },
+    }
   );
   return htmlWithoutEntities;
 };

@@ -20,7 +20,10 @@ const descriptionLenth = 200; // the max length in characters for the auto-gener
 const globalHideToc = false; // set true to always hide the table of contents (right side menu)
 const tocDepth = 3; // maximum depth for the table of contents 1 = h1, etc
 
-const actuallyHideToc = hideToc || globalHideToc || headings.filter((heading) => heading.depth <= tocDepth).length === 0;
+const actuallyHideToc =
+  hideToc ||
+  globalHideToc ||
+  headings.filter((heading) => heading.depth <= tocDepth).length === 0;
 
 const entryDescription =
   description ||

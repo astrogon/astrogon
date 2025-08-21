@@ -127,7 +127,7 @@ const portfolio = defineCollection({
         github: z.string().optional(),
         technologies: z.array(z.string()).optional(),
         content: z.array(z.string()).optional(),
-      }),
+      })
     ),
   }),
 });

@@ -1,19 +1,23 @@
 ---
 title: Classes
-description: "A guide to the core classes of the realms and the diverse paths they offer for character growth."
+description:
+  "A guide to the core classes of the realms and the diverse paths they offer for character growth."
 image: "@assets/docs/characters/classes/cover.jpg"
 imageAlt: "A painting of an Elvish Rogue in a tree"
 pubDate: 2024-03-10
 modDate: 2024-05-18
 ---
 
-Classes define an adventurer’s role in the realms, shaping their abilities, combat style, and place within a party. From spell-slinging mages to stalwart defenders, each class offers a unique path to greatness.
+Classes define an adventurer’s role in the realms, shaping their abilities, combat style, and place
+within a party. From spell-slinging mages to stalwart defenders, each class offers a unique path to
+greatness.
 
 ---
 
 ## Fighter
 
-Fighters are masters of combat, excelling in physical prowess and weaponry. They serve as the backbone of many adventuring parties.
+Fighters are masters of combat, excelling in physical prowess and weaponry. They serve as the
+backbone of many adventuring parties.
 
 ### Core Features
 
@@ -31,7 +35,8 @@ Fighters are masters of combat, excelling in physical prowess and weaponry. They
 
 ## Wizard
 
-Wizards delve into arcane secrets, wielding incredible magical power through their studies. Their potential is limited only by their knowledge.
+Wizards delve into arcane secrets, wielding incredible magical power through their studies. Their
+potential is limited only by their knowledge.
 
 ### Core Features
 
@@ -43,19 +48,22 @@ Wizards delve into arcane secrets, wielding incredible magical power through the
 
 1. **School of Evocation**: Specializes in destructive spells like fireball and lightning bolt.
 2. **School of Illusion**: Masters of deception and sensory manipulation.
-3. **School of Necromancy**: Harnesses the power of life and death, animating the dead to serve their will.
+3. **School of Necromancy**: Harnesses the power of life and death, animating the dead to serve
+   their will.
 
 ---
 
 ## Rogue
 
-Rogues are stealthy, cunning, and resourceful. They thrive in shadowy corners, using guile and precision to achieve their goals.
+Rogues are stealthy, cunning, and resourceful. They thrive in shadowy corners, using guile and
+precision to achieve their goals.
 
 ### Core Features
 
 - **Hit Die**: d8
 - **Primary Attributes**: Dexterity
-- **Sneak Attack**: Deal extra damage when attacking with advantage or when allies are distracting the enemy.
+- **Sneak Attack**: Deal extra damage when attacking with advantage or when allies are distracting
+  the enemy.
 
 ### Subclasses
 
@@ -67,7 +75,8 @@ Rogues are stealthy, cunning, and resourceful. They thrive in shadowy corners, u
 
 ## Cleric
 
-Clerics are divine agents, drawing power from their chosen deity to heal the wounded and smite the unholy.
+Clerics are divine agents, drawing power from their chosen deity to heal the wounded and smite the
+unholy.
 
 ### Core Features
 
@@ -85,7 +94,8 @@ Clerics are divine agents, drawing power from their chosen deity to heal the wou
 
 ## Barbarian
 
-Barbarians are primal warriors fueled by rage, capable of enduring incredible punishment and dealing devastating blows.
+Barbarians are primal warriors fueled by rage, capable of enduring incredible punishment and dealing
+devastating blows.
 
 ### Core Features
 
@@ -103,7 +113,8 @@ Barbarians are primal warriors fueled by rage, capable of enduring incredible pu
 
 ## Bard
 
-Bards are charismatic performers and spellcasters, using their talents to inspire allies and confound enemies.
+Bards are charismatic performers and spellcasters, using their talents to inspire allies and
+confound enemies.
 
 ### Core Features
 
@@ -121,13 +132,16 @@ Bards are charismatic performers and spellcasters, using their talents to inspir
 
 ## Choosing a Class
 
-Your class defines not only your abilities but also your character’s worldview and role in a party. Whether you aim to lead, protect, or destroy, the choice of class is the first step on your path to adventure.
+Your class defines not only your abilities but also your character’s worldview and role in a party.
+Whether you aim to lead, protect, or destroy, the choice of class is the first step on your path to
+adventure.
 
 ---
 
 ### Multiclassing
 
-Adventurers may combine classes, blending features from multiple paths to create unique combinations. For instance:
+Adventurers may combine classes, blending features from multiple paths to create unique
+combinations. For instance:
 
 - A **Paladin/Sorcerer** wields divine and arcane power.
 - A **Rogue/Ranger** excels in stealth and tracking.

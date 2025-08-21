@@ -1,7 +1,7 @@
 .glass {
   @apply bg-bg-s dark:bg-darkmode-bg-s;
   @apply backdrop-blur-lg;
-  @apply bg-clip-padding backdrop-filter backdrop-saturate-100 backdrop-contrast-100;
+  @apply bg-clip-padding backdrop-contrast-100 backdrop-saturate-100 backdrop-filter;
   @apply bg-opacity-30 dark:bg-opacity-30;
   @apply border border-[rgba(255,255,255,0.6)] dark:border-[rgba(255,255,255,0.15)];
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
@@ -11,7 +11,7 @@
   @apply bg-bg-t dark:bg-darkmode-bg-t;
   @apply bg-opacity-20 dark:bg-opacity-20;
   @apply backdrop-blur;
-  @apply bg-clip-padding backdrop-filter backdrop-saturate-100 backdrop-contrast-100;
+  @apply bg-clip-padding backdrop-contrast-100 backdrop-saturate-100 backdrop-filter;
   @apply border border-[rgba(255,255,255,0.6)] dark:border-[rgba(255,255,255,0.15)];
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
 }
@@ -20,7 +20,7 @@
   @apply bg-bg-t dark:bg-darkmode-bg-t;
   @apply bg-opacity-20 dark:bg-opacity-20;
   @apply backdrop-blur;
-  @apply bg-clip-padding backdrop-filter backdrop-saturate-100 backdrop-contrast-100;
+  @apply bg-clip-padding backdrop-contrast-100 backdrop-saturate-100 backdrop-filter;
 }
 
 // Gradient

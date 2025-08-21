@@ -7,13 +7,16 @@ pubDate: 2024-07-15
 modDate: 2024-09-10
 ---
 
-Throughout the realms, magic is studied and practiced in structured institutions known as Mage Schools. Each school specializes in a specific aspect of magic, offering unique skills and philosophies to its students.
+Throughout the realms, magic is studied and practiced in structured institutions known as Mage
+Schools. Each school specializes in a specific aspect of magic, offering unique skills and
+philosophies to its students.
 
 ---
 
 ## School of Pyromancy
 
-The School of Pyromancy is dedicated to the mastery of fire and heat. Students learn to wield destructive power with precision, forging bonds with the raw energy of flames.
+The School of Pyromancy is dedicated to the mastery of fire and heat. Students learn to wield
+destructive power with precision, forging bonds with the raw energy of flames.
 
 ### Curriculum
 
@@ -23,13 +26,15 @@ The School of Pyromancy is dedicated to the mastery of fire and heat. Students l
 
 ### Signature Spell
 
-**Infernal Surge**: A torrent of flame that engulfs enemies in a cone, leaving scorched earth in its wake.
+**Infernal Surge**: A torrent of flame that engulfs enemies in a cone, leaving scorched earth in its
+wake.
 
 ---
 
 ## School of Chronomancy
 
-Chronomancy focuses on the manipulation of time, teaching mages to alter the flow of events, foresee possibilities, and even undo mistakes.
+Chronomancy focuses on the manipulation of time, teaching mages to alter the flow of events, foresee
+possibilities, and even undo mistakes.
 
 ### Curriculum
 
@@ -39,7 +44,8 @@ Chronomancy focuses on the manipulation of time, teaching mages to alter the flo
 
 ### Signature Spell
 
-**Temporal Echo**: Create a duplicate of yourself from a few seconds into the past, allowing you to attack or cast spells in tandem.
+**Temporal Echo**: Create a duplicate of yourself from a few seconds into the past, allowing you to
+attack or cast spells in tandem.
 
 > **Warning**: Misuse of chronomancy can lead to paradoxes, causing unpredictable side effects.
 
@@ -47,7 +53,8 @@ Chronomancy focuses on the manipulation of time, teaching mages to alter the flo
 
 ## School of Illusion
 
-The School of Illusion centers on bending reality to deceive the senses. Illusionists are masters of subtlety, capable of creating intricate mirages and disguises.
+The School of Illusion centers on bending reality to deceive the senses. Illusionists are masters of
+subtlety, capable of creating intricate mirages and disguises.
 
 ### Curriculum
 
@@ -57,7 +64,8 @@ The School of Illusion centers on bending reality to deceive the senses. Illusio
 
 ### Signature Spell
 
-**Veil of Falsehood**: Cloak yourself or an ally in an illusion, making them appear as another person or creature.
+**Veil of Falsehood**: Cloak yourself or an ally in an illusion, making them appear as another
+person or creature.
 
 | **Skill Level** | **Illusion Size**      |
 | --------------- | ---------------------- |
@@ -69,7 +77,8 @@ The School of Illusion centers on bending reality to deceive the senses. Illusio
 
 ## School of Transmutation
 
-Transmutation mages specialize in altering matter and energy. Their craft allows them to reshape the physical world, turning mundane materials into tools of wonder.
+Transmutation mages specialize in altering matter and energy. Their craft allows them to reshape the
+physical world, turning mundane materials into tools of wonder.
 
 ### Curriculum
 
@@ -79,12 +88,16 @@ Transmutation mages specialize in altering matter and energy. Their craft allows
 
 ### Signature Spell
 
-**Formshift**: Temporarily transform an object or creature into another form of similar size and mass.
+**Formshift**: Temporarily transform an object or creature into another form of similar size and
+mass.
 
 ---
 
 ## The Path of the Mage
 
-Selecting a school is not merely an academic decision; it shapes the very essence of a mage's journey. Some students choose a single school, while others dabble in multiple disciplines, becoming versatile spellcasters.
+Selecting a school is not merely an academic decision; it shapes the very essence of a mage's
+journey. Some students choose a single school, while others dabble in multiple disciplines, becoming
+versatile spellcasters.
 
-For those seeking mastery, the road is arduous but rewarding. Which school will you choose to unlock your arcane potential?
+For those seeking mastery, the road is arduous but rewarding. Which school will you choose to unlock
+your arcane potential?

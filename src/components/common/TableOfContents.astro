@@ -21,8 +21,11 @@ const toc = heirarchy.filter((heading) => heading.depth <= tocDepth);
         <h2 class="text-2xl border-none">Contents</h2>
         <ul class="list-none m-0">
           {toc.map((heading) => (
-            <li class=`${heading.depth === 2 ? "ml-0" : "ml-4"}`>
-              <a href={`#${heading.slug}`} class=" w-full leading-none no-underline">
+            <li class={`${heading.depth === 2 ? "ml-0" : "ml-4"}`}>
+              <a
+                href={`#${heading.slug}`}
+                class=" w-full leading-none no-underline"
+              >
                 {heading.text}
               </a>
             </li>

@@ -1,5 +1,4 @@
 <!-- Customized from https://github.com/heidkaemper/tailwindcss-intersect -->
-
 <script is:inline>
   const Observer = {
     observer: null,
@@ -62,7 +61,8 @@
                 target.removeAttribute("no-intersect");
                 target.setAttribute("data-animated", "true");
 
-                const delay = this.animationCounter * this.delayBetweenAnimations;
+                const delay =
+                  this.animationCounter * this.delayBetweenAnimations;
                 this.animationCounter++;
 
                 target.style.animationDelay = `${delay}ms`;

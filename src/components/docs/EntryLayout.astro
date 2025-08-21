@@ -20,7 +20,10 @@ const globalHideToc = false; // set true to always hide the table of contents (r
 const tocDepth = 3; // maximum depth for the table of contents 1 = h1, etc
 
 const actuallyHideNav = hideNav || globalHideNav;
-const actuallyHideToc = hideToc || globalHideToc || headings.filter((heading) => heading.depth <= tocDepth).length === 0;
+const actuallyHideToc =
+  hideToc ||
+  globalHideToc ||
+  headings.filter((heading) => heading.depth <= tocDepth).length === 0;
 
 let articleClass = "";
 let navClass = "";

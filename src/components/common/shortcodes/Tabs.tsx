@@ -22,14 +22,14 @@ const Tabs = ({ children }: { children: React.ReactElement }) => {
 
   const tabLinks = Array.from(
     children.props.value.matchAll(
-      /<div\s+data-name="([^"]+)"[^>]*>(.*?)<\/div>/gs,
+      /<div\s+data-name="([^"]+)"[^>]*>(.*?)<\/div>/gs
     ),
-    (match: RegExpMatchArray) => ({ name: match[1], children: match[0] }),
+    (match: RegExpMatchArray) => ({ name: match[1], children: match[0] })
   );
 
   const handleKeyDown = (
     event: React.KeyboardEvent<EventTarget>,
-    index: number,
+    index: number
   ) => {
     if (event.key === "Enter" || event.key === " ") {
       setActive(index);
@@ -42,13 +42,13 @@ const Tabs = ({ children }: { children: React.ReactElement }) => {
 
   return (
     <div className="overflow-hidden rounded-lg border border-border dark:border-darkmode-border">
-      <ul className="glass-t-borderless m-0 list-none flex border-b border-border dark:border-darkmode-border">
+      <ul className="glass-t-borderless m-0 flex list-none border-b border-border dark:border-darkmode-border">
         {tabLinks.map(
           (item: { name: string; children: string }, index: number) => (
             <li
               key={index}
-              className={`my-0 px-8 cursor-pointer border-b-[3px] pt-2 pb-1 text-lg text-txt-s dark:text-darkmode-txt-s border-border dark:border-darkmode-border 
-                ${index === active && "border-b-[3px] text-txt-p dark:text-darkmode-txt-p border-txt-p dark:border-darkmode-txt-p"}
+              className={`my-0 cursor-pointer border-b-[3px] border-border px-8 pb-1 pt-2 text-lg text-txt-s dark:border-darkmode-border dark:text-darkmode-txt-s 
+                ${index === active && "border-b-[3px] border-txt-p text-txt-p dark:border-darkmode-txt-p dark:text-darkmode-txt-p"}
               `}
               role="tab"
               tabIndex={index === active ? 0 : -1}
@@ -59,7 +59,7 @@ const Tabs = ({ children }: { children: React.ReactElement }) => {
             >
               {item.name}
             </li>
-          ),
+          )
         )}
       </ul>
       {tabLinks.map((item: { name: string; children: string }, i: number) => (

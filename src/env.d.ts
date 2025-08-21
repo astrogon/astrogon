@@ -1,1 +1,1 @@
-import type {} from '../.astro/types.d.ts';
+import type {} from "../.astro/types.d.ts";

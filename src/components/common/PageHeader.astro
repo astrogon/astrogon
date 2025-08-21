@@ -12,7 +12,9 @@ const { title = "" }: Props = Astro.props;
 <section class="flex justify-center">
   <div class="container text-center m-2">
     <div class="rounded-lg p-0 bg-gradient-to-t gradient">
-      <div class="rounded-lg glass px-8 py-6 intersect:animate-fadeDown opacity-0 intersect-no-queue">
+      <div
+        class="rounded-lg glass px-8 py-6 intersect:animate-fadeDown opacity-0 intersect-no-queue"
+      >
         <h1 set:text={upperHumanize(title)} />
         <Breadcrumbs className="mt-4" />
       </div>

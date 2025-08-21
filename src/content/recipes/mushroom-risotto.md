@@ -43,8 +43,10 @@ instructions:
   - Add butter to the same skillet and cook the shallot and garlic until fragrant.
   - Stir in the Arborio rice, cooking for 1-2 minutes until lightly toasted.
   - Deglaze the pan with white wine, stirring until the liquid is absorbed.
-  - Begin adding the warm broth one ladle at a time, stirring frequently and allowing each addition to be absorbed before adding more.
-  - After 20-25 minutes, when the rice is creamy and tender, stir in the sautéed mushrooms, Parmesan, salt, and pepper.
+  - Begin adding the warm broth one ladle at a time, stirring frequently and allowing each addition
+    to be absorbed before adding more.
+  - After 20-25 minutes, when the rice is creamy and tender, stir in the sautéed mushrooms,
+    Parmesan, salt, and pepper.
   - Remove from heat and let sit for a minute before serving.
   - Garnish with fresh parsley and additional Parmesan if desired.
 

@@ -6,11 +6,12 @@ const readingTime = (content: string, complexity: number): string => {
   const regex = /\w/;
 
   const words = content.split(" ").filter((word) => {
-    if (word.includes(".png)")
-      || word.includes(".jpg)")
-      || word.includes(".svg)")
-      || word.includes(".webp)")
-      || word.includes(".gif)" )
+    if (
+      word.includes(".png)") ||
+      word.includes(".jpg)") ||
+      word.includes(".svg)") ||
+      word.includes(".webp)") ||
+      word.includes(".gif)")
     ) {
       images += 1;
     }

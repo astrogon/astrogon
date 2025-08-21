@@ -1,6 +1,8 @@
 ---
 title: Sweet Potato and Black Bean Chili
-description: A hearty, warming chili packed with sweet potatoes, black beans, and spices, perfect for a cozy meal.
+description:
+  A hearty, warming chili packed with sweet potatoes, black beans, and spices, perfect for a cozy
+  meal.
 image: "@assets/recipes/sweet-potato-chili.jpg"
 author: jane-doe
 prepTime: 45
@@ -40,11 +42,13 @@ ingredients:
     - some (for garnish)
 
 instructions:
-  - In a large pot, heat olive oil over medium heat. Add the onion and garlic, cooking until softened, about 5 minutes.
+  - In a large pot, heat olive oil over medium heat. Add the onion and garlic, cooking until
+    softened, about 5 minutes.
   - Add the diced sweet potatoes to the pot and cook for another 5-7 minutes, stirring occasionally.
   - Stir in cumin, chili powder, and paprika, cooking for 1 minute until fragrant.
   - Add the diced tomatoes, vegetable broth, black beans, and a pinch of salt and pepper.
-  - Bring the mixture to a boil, then reduce the heat and simmer for 25-30 minutes, or until the sweet potatoes are tender.
+  - Bring the mixture to a boil, then reduce the heat and simmer for 25-30 minutes, or until the
+    sweet potatoes are tender.
   - Stir in lime juice and adjust seasoning with salt and pepper to taste.
   - Serve the chili hot, garnished with fresh cilantro.
 

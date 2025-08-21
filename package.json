@@ -10,6 +10,7 @@
     "build": "astro build",
     "postbuild": "pagefind --site dist",
     "format": "prettier -w ./src",
+    "format:check": "prettier --check ./src",
     "lint": "eslint ./src --ext .js,.ts,.jsx,.tsx,.astro --fix",
     "lint:check": "eslint ./src --ext .js,.ts,.jsx,.tsx,.astro",
     "prepare": "husky install"

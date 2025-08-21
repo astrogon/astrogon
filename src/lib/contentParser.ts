@@ -1,14 +1,16 @@
 import { getEntry, getCollection, type CollectionKey } from "astro:content";
 import type { GenericEntry } from "@/types";
 
-export const getIndex = async (collection: CollectionKey): Promise<GenericEntry | undefined> => {
+export const getIndex = async (
+  collection: CollectionKey
+): Promise<GenericEntry | undefined> => {
   const index = await getEntry(collection, "-index");
   return index;
-}
+};
 
 export const getEntries = async (
   collection: CollectionKey,
-  sortFunction?: ((array: GenericEntry[]) => GenericEntry[]),
+  sortFunction?: (array: GenericEntry[]) => GenericEntry[],
   noIndex = true,
   noDrafts = true
 ): Promise<GenericEntry[]> => {
@@ -17,7 +19,9 @@ export const getEntries = async (
     ? entries.filter((entry: GenericEntry) => !entry.id.match(/^-/))
     : entries;
   entries = noDrafts
-    ? entries.filter((entry: GenericEntry) => 'draft' in entry.data && !entry.data.draft)
+    ? entries.filter(
+        (entry: GenericEntry) => "draft" in entry.data && !entry.data.draft
+      )
     : entries;
   entries = sortFunction ? sortFunction(entries) : entries;
   return entries;
@@ -26,7 +30,7 @@ export const getEntries = async (
 // Fetch all pages in all specified collections, flattened into a single array
 export const getEntriesBatch = async (
   collections: CollectionKey[],
-  sortFunction?: ((array: GenericEntry[]) => GenericEntry[]),
+  sortFunction?: (array: GenericEntry[]) => GenericEntry[],
   noIndex = true,
   noDrafts = true
 ): Promise<GenericEntry[]> => {
@@ -41,7 +45,7 @@ export const getEntriesBatch = async (
 // Fetch top-level folders within a collection
 export const getGroups = async (
   collection: CollectionKey,
-  sortFunction?: ((array: GenericEntry[]) => GenericEntry[])
+  sortFunction?: (array: GenericEntry[]) => GenericEntry[]
 ): Promise<GenericEntry[]> => {
   let entries = await getEntries(collection, sortFunction, false);
   entries = entries.filter((entry: GenericEntry) => {
@@ -55,12 +59,16 @@ export const getGroups = async (
 export const getEntriesInGroup = async (
   collection: CollectionKey,
   groupSlug: string,
-  sortFunction?: ((array: GenericEntry[]) => GenericEntry[]),
+  sortFunction?: (array: GenericEntry[]) => GenericEntry[]
 ): Promise<GenericEntry[]> => {
   let entries = await getEntries(collection, sortFunction);
   entries = entries.filter((data: GenericEntry) => {
     const segments = data.id.split("/");
-    return segments[0] === groupSlug && segments.length > 1 && segments[1] !== "-index";
+    return (
+      segments[0] === groupSlug &&
+      segments.length > 1 &&
+      segments[1] !== "-index"
+    );
   });
   return entries;
 };

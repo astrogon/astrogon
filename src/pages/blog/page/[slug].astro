@@ -20,9 +20,7 @@ const indexOfLastEntry = currentPageIndex * entriesPerPage;
 const indexOfFirstEntry = indexOfLastEntry - entriesPerPage;
 const currentEntries = entries.slice(indexOfFirstEntry, indexOfLastEntry);
 
-const pageCount: number = Math.ceil(
-  entries.length / entriesPerPage
-);
+const pageCount: number = Math.ceil(entries.length / entriesPerPage);
 
 export async function getStaticPaths() {
   const entries = (await getEntries("blog", sortByDate)) as BlogEntry[];

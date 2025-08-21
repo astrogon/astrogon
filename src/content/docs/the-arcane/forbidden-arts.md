@@ -1,19 +1,24 @@
 ---
 title: The Forbidden Arts
-description: A guide to the shadowed arts of demonology, summoning, and occult rituals for those who dare tread the dangerous path
+description:
+  A guide to the shadowed arts of demonology, summoning, and occult rituals for those who dare tread
+  the dangerous path
 image: "@assets/docs/the-arcane/forbidden-arts/cover.jpg"
 imageAlt: Painting of a person standing before a large demonic ghost
 pubDate: 2024-02-20
 modDate: 2024-03-05
 ---
 
-The forbidden arts are shrouded in mystery and fear, often whispered about in hushed tones. Those who study these disciplines walk a precarious line between power and ruin. Proceed with caution, for the price of mastery is steep.
+The forbidden arts are shrouded in mystery and fear, often whispered about in hushed tones. Those
+who study these disciplines walk a precarious line between power and ruin. Proceed with caution, for
+the price of mastery is steep.
 
 ---
 
 ## Demonology: The Art of Binding
 
-Demonology focuses on summoning and controlling infernal entities. Practitioners seek to harness demonic power to achieve their goals, often at great personal risk.
+Demonology focuses on summoning and controlling infernal entities. Practitioners seek to harness
+demonic power to achieve their goals, often at great personal risk.
 
 ### Ritual of Summoning
 
@@ -40,7 +45,8 @@ To summon a minor demon:
 
 ## Occult Rituals: Weaving Shadows
 
-Occult practitioners draw upon ambient energies and dark forces to achieve extraordinary feats. Unlike demonology, these arts do not involve sentient entities but still require immense discipline.
+Occult practitioners draw upon ambient energies and dark forces to achieve extraordinary feats.
+Unlike demonology, these arts do not involve sentient entities but still require immense discipline.
 
 ### Ritual: Veil of Shadows
 
@@ -58,7 +64,8 @@ The _Veil of Shadows_ cloaks the caster in darkness, rendering them nearly invis
 
 ## Curses and Hexes
 
-The forbidden arts also encompass curses and hexes, tools of vengeance for those who wish to harm their enemies. However, curses often rebound on the caster if improperly performed.
+The forbidden arts also encompass curses and hexes, tools of vengeance for those who wish to harm
+their enemies. However, curses often rebound on the caster if improperly performed.
 
 ### Example Hex
 
@@ -80,7 +87,8 @@ The forbidden arts also encompass curses and hexes, tools of vengeance for those
 
 ## The Price of Power
 
-The forbidden arts demand sacrifice. Whether it be your vitality, your sanity, or your very soul, mastery of these practices is never free.
+The forbidden arts demand sacrifice. Whether it be your vitality, your sanity, or your very soul,
+mastery of these practices is never free.
 
 ---
 
@@ -90,4 +98,5 @@ The forbidden arts demand sacrifice. Whether it be your vitality, your sanity, o
 2. Keep protective wards active whenever practicing demonology.
 3. Never underestimate the cost of a pact, and always plan for contingencies.
 
-Will you dare to embrace the forbidden, or will you leave these arts buried in the shadows where they belong?
+Will you dare to embrace the forbidden, or will you leave these arts buried in the shadows where
+they belong?

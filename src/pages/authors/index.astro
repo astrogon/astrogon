@@ -5,8 +5,8 @@ import { getEntries } from "@lib/contentParser";
 import { getIndex } from "@lib/contentParser";
 import { sortByTitle } from "@lib/sortFunctions";
 
-const authorIndex = await getIndex("authors") as AuthorsEntry;
-const entries = await getEntries("authors", sortByTitle) as AuthorsEntry[];
+const authorIndex = (await getIndex("authors")) as AuthorsEntry;
+const entries = (await getEntries("authors", sortByTitle)) as AuthorsEntry[];
 ---
 
 <CollectionLayout authorIndex={authorIndex} entries={entries} />

@@ -9,18 +9,18 @@
   @apply prose-p:text-base prose-p:text-txt-s prose-p:dark:text-darkmode-txt-s;
   @apply prose-a:text-txt-s prose-a:underline hover:prose-a:text-txt-p prose-a:dark:text-darkmode-txt-s hover:prose-a:dark:text-darkmode-txt-p;
   @apply prose-img:max-w-full prose-img:rounded;
-  @apply prose-hr:border-border prose-hr:dark:border-darkmode-border prose-hr:my-4;
+  @apply prose-hr:my-4 prose-hr:border-border prose-hr:dark:border-darkmode-border;
   @apply prose-strong:text-txt-p prose-strong:dark:text-darkmode-txt-s;
   @apply prose-pre:rounded-lg prose-pre:bg-bg-t prose-pre:dark:bg-darkmode-bg-t;
   // Code
   @apply prose-code:px-1 prose-code:text-txt-p prose-code:dark:text-darkmode-txt-p;
   // Blockquote
   @apply prose-blockquote:rounded-lg prose-blockquote:border prose-blockquote:border-l-8 prose-blockquote:px-4 prose-blockquote:py-0 prose-blockquote:font-secondary prose-blockquote:text-2xl prose-blockquote:not-italic;
-  @apply prose-blockquote:glass-t-borderless prose-blockquote:border-border prose-blockquote:dark:border-darkmode-border prose-blockquote:text-txt-s prose-blockquote:dark:text-darkmode-txt-s;
+  @apply prose-blockquote:glass-t-borderless prose-blockquote:border-border prose-blockquote:text-txt-s prose-blockquote:dark:border-darkmode-border prose-blockquote:dark:text-darkmode-txt-s;
   @apply prose-blockquote:prose-p:m-0;
   // Table
-  @apply prose-table:relative prose-table:overflow-hidden prose-table:rounded-lg prose-table:before:rounded-lg prose-table:before:absolute prose-table:before:left-0 prose-table:before:top-0 prose-table:before:h-full prose-table:before:w-full prose-table:before:border prose-table:before:content-[""] prose-table:before:dark:border-darkmode-border;
-  @apply prose-thead:border-border prose-thead:dark:border-darkmode-border prose-thead:dark:bg-darkmode-bg-t prose-thead:bg-bg-t prose-thead:bg-opacity-40 prose-thead:dark:bg-opacity-40 backdrop-blur-lg;
+  @apply prose-table:relative prose-table:overflow-hidden prose-table:rounded-lg prose-table:before:absolute prose-table:before:left-0 prose-table:before:top-0 prose-table:before:h-full prose-table:before:w-full prose-table:before:rounded-lg prose-table:before:border prose-table:before:content-[""] prose-table:before:dark:border-darkmode-border;
+  @apply backdrop-blur-lg prose-thead:border-border prose-thead:bg-bg-t prose-thead:bg-opacity-40 prose-thead:dark:border-darkmode-border prose-thead:dark:bg-darkmode-bg-t prose-thead:dark:bg-opacity-40;
   @apply prose-th:relative prose-th:z-10 prose-th:px-4 prose-th:py-2 prose-th:text-txt-p prose-th:dark:text-darkmode-txt-p;
   @apply prose-tr:border-border prose-tr:dark:border-darkmode-border;
   @apply prose-td:relative prose-td:z-10 prose-td:px-3 prose-td:py-2 prose-td:text-txt-s prose-td:dark:text-darkmode-txt-s;

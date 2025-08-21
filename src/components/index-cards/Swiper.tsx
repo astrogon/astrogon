@@ -56,7 +56,7 @@ const ConversationSwiper = ({ cards }: Props) => {
       >
         {cards.map((card, index) => (
           <SwiperSlide key={index}>
-            <div className="col-10 sm:col-8 md:col-6 mx-auto p-4 my-12 min-h-64 text-center content-center glass rounded-lg">
+            <div className="glass col-10 mx-auto my-12 min-h-64 content-center rounded-lg p-4 text-center sm:col-8 md:col-6">
               <h3>{card}</h3>
             </div>
           </SwiperSlide>
@@ -64,19 +64,19 @@ const ConversationSwiper = ({ cards }: Props) => {
       </Swiper>
 
       <nav className="flex justify-center pb-8">
-        <div className="flex-col glass justify-center rounded-md p-2 m-2 w-48">
+        <div className="glass m-2 w-48 flex-col justify-center rounded-md p-2">
           <div className="row items-center">
             <div
-              className="cursor-pointer col-4 p-0 text-txt-p dark:text-darkmode-txt-p text-center align-middle"
+              className="col-4 cursor-pointer p-0 text-center align-middle text-txt-p dark:text-darkmode-txt-p"
               onClick={() => swiper?.slidePrev()}
               aria-label="Previous card"
             >
               <FaArrowLeft className={"m-2 inline-block"} />
             </div>
-            <div className="col-4 p-0 text-txt-p dark:text-darkmode-txt-p text-center">
+            <div className="col-4 p-0 text-center text-txt-p dark:text-darkmode-txt-p">
               <input
                 type="number"
-                className="w-16 text-center bg-transparent border-none"
+                className="w-16 border-none bg-transparent text-center"
                 min="1"
                 max={cards.length}
                 value={currentIndex + 1}
@@ -95,7 +95,7 @@ const ConversationSwiper = ({ cards }: Props) => {
               />
             </div>
             <div
-              className="cursor-pointer col-4 p-0 text-txt-p dark:text-darkmode-txt-p text-center"
+              className="col-4 cursor-pointer p-0 text-center text-txt-p dark:text-darkmode-txt-p"
               onClick={() => swiper?.slideNext()}
               aria-label="Next card"
             >
@@ -104,7 +104,7 @@ const ConversationSwiper = ({ cards }: Props) => {
           </div>
           <div className="row content-center justify-center">
             <div
-              className="cursor-pointer col-4 p-0 text-txt-p dark:text-darkmode-txt-p text-center"
+              className="col-4 cursor-pointer p-0 text-center text-txt-p dark:text-darkmode-txt-p"
               onClick={() => swiper?.slideTo(todayIndex)}
               title="Jump to today's card"
               aria-label="Jump to today's card"
@@ -112,7 +112,7 @@ const ConversationSwiper = ({ cards }: Props) => {
               <FaCalendarDay className={"m-2 inline-block"} />
             </div>
             <div
-              className="cursor-pointer col-4 p-0 text-txt-p dark:text-darkmode-txt-p text-center"
+              className="col-4 cursor-pointer p-0 text-center text-txt-p dark:text-darkmode-txt-p"
               onClick={() =>
                 swiper?.slideTo(Math.floor(Math.random() * cards.length))
               }

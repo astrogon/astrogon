@@ -1,6 +1,8 @@
 ---
 title: Veggie Stir-Fry with Tofu
-description: A vibrant, healthy stir-fry featuring crispy tofu and colorful vegetables, tossed in a savory sauce.
+description:
+  A vibrant, healthy stir-fry featuring crispy tofu and colorful vegetables, tossed in a savory
+  sauce.
 image: "@assets/recipes/veggie-stir-fry.jpg"
 author: jane-doe
 prepTime: 40
@@ -41,12 +43,15 @@ ingredients:
 
 instructions:
   - Press the tofu to remove excess moisture, then cut into cubes.
-  - Heat olive oil in a large skillet or wok over medium-high heat. Add the tofu and cook until golden and crispy, about 5-7 minutes. Set aside.
+  - Heat olive oil in a large skillet or wok over medium-high heat. Add the tofu and cook until
+    golden and crispy, about 5-7 minutes. Set aside.
   - In the same pan, add sesame oil and sauté garlic and ginger until fragrant.
-  - Add the bell peppers, carrots, broccoli, and snow peas to the pan. Stir-fry for 4-5 minutes, until the vegetables are tender-crisp.
+  - Add the bell peppers, carrots, broccoli, and snow peas to the pan. Stir-fry for 4-5 minutes,
+    until the vegetables are tender-crisp.
   - Stir in the soy sauce, rice vinegar, and a splash of water to create a light sauce.
   - Add the tofu back to the pan and toss everything together, cooking for another 2-3 minutes.
-  - Serve the stir-fry over cooked rice, garnished with green onions, sesame seeds, and a drizzle of additional soy sauce if desired.
+  - Serve the stir-fry over cooked rice, garnished with green onions, sesame seeds, and a drizzle of
+    additional soy sauce if desired.
 
 notes:
   - You can use any mix of vegetables you like or have on hand.

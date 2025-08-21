@@ -1,6 +1,7 @@
 ---
 title: Lemon Herb Roasted Chicken
-description: A juicy roasted chicken infused with zesty lemon and fragrant herbs, perfect for a family dinner.
+description:
+  A juicy roasted chicken infused with zesty lemon and fragrant herbs, perfect for a family dinner.
 image: "@assets/recipes/herb-chicken.jpg"
 author: jane-doe
 prepTime: 90
@@ -43,13 +44,15 @@ instructions:
   - Loosen the chicken skin and spread the butter mixture underneath, ensuring an even coating.
   - Rub olive oil over the chicken's exterior and season generously with salt and pepper.
   - Place the chicken in a roasting pan, surrounded by carrots, potatoes, and onion.
-  - Roast in the oven for about 1 hour 15 minutes, or until the internal temperature reaches 165°F (74°C) at the thickest part of the thigh.
+  - Roast in the oven for about 1 hour 15 minutes, or until the internal temperature reaches 165°F
+    (74°C) at the thickest part of the thigh.
   - Baste the chicken with its drippings every 20 minutes for extra flavor and moisture.
   - Let the chicken rest for 10-15 minutes before carving and serving.
 
 notes:
   - For crispier skin, roast the chicken uncovered.
   - Swap in your favorite vegetables to customize the dish.
-  - Use the pan drippings to make a quick gravy by deglazing the pan with chicken stock and whisking in a bit of flour.
+  - Use the pan drippings to make a quick gravy by deglazing the pan with chicken stock and whisking
+    in a bit of flour.
   - Leftovers make excellent sandwiches or chicken salad.
 ---

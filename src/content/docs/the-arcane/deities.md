@@ -1,19 +1,23 @@
 ---
 title: Deities
-description: A guide to the deities of the arcane, their domains, and blessings bestowed upon followers.
+description:
+  A guide to the deities of the arcane, their domains, and blessings bestowed upon followers.
 image: "@assets/docs/the-arcane/deities/cover.jpg"
-imageAlt: Painting of an important looking woman 
+imageAlt: Painting of an important looking woman
 pubDate: 2024-12-02
 modDate: 2024-12-02
 ---
 
-The arcane deities govern the mysteries of magic, knowledge, and the unseen threads that weave the world together. Their influence is subtle yet profound, and their blessings are sought by mages, scholars, and truth-seekers.
+The arcane deities govern the mysteries of magic, knowledge, and the unseen threads that weave the
+world together. Their influence is subtle yet profound, and their blessings are sought by mages,
+scholars, and truth-seekers.
 
 ---
 
 ## Vaelthar, The Weaver of Mysteries
 
-Vaelthar is the guardian of forbidden knowledge and the patron of wizards who seek to unlock the unknown. His form is said to be a shifting constellation, ever-changing and unknowable.
+Vaelthar is the guardian of forbidden knowledge and the patron of wizards who seek to unlock the
+unknown. His form is said to be a shifting constellation, ever-changing and unknowable.
 
 ### Domains
 
@@ -23,14 +27,17 @@ Vaelthar is the guardian of forbidden knowledge and the patron of wizards who se
 
 ### Blessings
 
-- Insight of the Unknown: Followers may cast divination spells with an additional level of clarity, reducing the chance of cryptic responses.
-- Veil Piercer: Once per day, a devotee can detect hidden magical auras within 60 feet, bypassing illusions or concealment.
+- Insight of the Unknown: Followers may cast divination spells with an additional level of clarity,
+  reducing the chance of cryptic responses.
+- Veil Piercer: Once per day, a devotee can detect hidden magical auras within 60 feet, bypassing
+  illusions or concealment.
 
 ---
 
 ## Sylvanea, The Moonlit Scholar
 
-Sylvanea governs the realm of structured learning and research. Often depicted as a serene figure reading an ancient tome under moonlight, she embodies the tranquility of study.
+Sylvanea governs the realm of structured learning and research. Often depicted as a serene figure
+reading an ancient tome under moonlight, she embodies the tranquility of study.
 
 ### Domains
 
@@ -53,7 +60,8 @@ Sylvanea governs the realm of structured learning and research. Often depicted a
 
 ## Korathal, The Flame of Creation
 
-Korathal represents raw magical power, the spark of invention, and the fire that forges both worlds and ideas. He is often shown as a blazing figure of molten gold.
+Korathal represents raw magical power, the spark of invention, and the fire that forges both worlds
+and ideas. He is often shown as a blazing figure of molten gold.
 
 ### Domains
 
@@ -63,22 +71,27 @@ Korathal represents raw magical power, the spark of invention, and the fire that
 
 ### Blessings
 
-- **Ember's Touch**: Followers can summon a harmless flame in their palm, useful for light or small-scale crafting.
-- **Ignition Surge**: Once per day, amplify a fire-based spell to deal additional damage equal to the caster's level.
+- **Ember's Touch**: Followers can summon a harmless flame in their palm, useful for light or
+  small-scale crafting.
+- **Ignition Surge**: Once per day, amplify a fire-based spell to deal additional damage equal to
+  the caster's level.
 
-> **Note**: Korathal's blessings often come with a warning. Those who seek power for destructive purposes without balance may find themselves consumed by the same flames they wield.
+> **Note**: Korathal's blessings often come with a warning. Those who seek power for destructive
+> purposes without balance may find themselves consumed by the same flames they wield.
 
 ---
 
 ## The Tapestry of the Arcane
 
-These deities, though distinct, are believed to work in harmony, their domains interwoven into a grand celestial tapestry. Followers often honor multiple members of the pantheon, seeking balance in their magical pursuits.
+These deities, though distinct, are believed to work in harmony, their domains interwoven into a
+grand celestial tapestry. Followers often honor multiple members of the pantheon, seeking balance in
+their magical pursuits.
 
 ---
 
 ### Example Ritual for Vaelthar
 
-``` txt
+```txt
 - Prepare a silver bowl filled with pure water under the night sky.
 - Speak the incantation: *"Vaelthar, guide my thoughts beyond the veil."*
 - Drop a shard of obsidian into the water and gaze at the reflections to receive a vision.

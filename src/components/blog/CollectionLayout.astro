@@ -27,7 +27,10 @@ const {
 } = Astro.props;
 ---
 
-<BaseLayout title={entryIndex.data.title} description={entryIndex.data.description}>
+<BaseLayout
+  title={entryIndex.data.title}
+  description={entryIndex.data.description}
+>
   <PageHeader title={entryIndex.data.title} />
   <section class="section">
     <div class="flex container">
