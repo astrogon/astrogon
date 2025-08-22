@@ -4,33 +4,12 @@ Diese Anleitung beschreibt, wie du in einem Astro/Starlight Repository alle notw
 
 - [Linter Installation und Integration über Husky](#linter-installation-und-integration-über-husky)
   - [Übersicht der Tools](#übersicht-der-tools)
-  - [Was ist Husky?](#was-ist-husky)
-    - [Warum Husky verwenden?](#warum-husky-verwenden)
-    - [Wie funktioniert Husky?](#wie-funktioniert-husky)
-    - [Vorteile von Husky](#vorteile-von-husky)
-  - [ESLint - JavaScript/TypeScript Code Quality](#eslint---javascripttypescript-code-quality)
-    - [Was macht ESLint?](#was-macht-eslint)
-    - [Hauptfunktionen](#hauptfunktionen)
-    - [Beispiele für ESLint-Regeln](#beispiele-für-eslint-regeln)
-    - [Konfiguration](#konfiguration)
-    - [Anwendung während der Entwicklung](#anwendung-während-der-entwicklung)
-  - [Prettier - Code Formatierung](#prettier---code-formatierung)
-    - [Was macht Prettier?](#was-macht-prettier)
-    - [Hauptfunktionen](#hauptfunktionen-1)
-    - [Beispiele für Prettier-Formatierung](#beispiele-für-prettier-formatierung)
-    - [Konfiguration](#konfiguration-1)
-  - [Vale - Prose und Dokumentations-Linting](#vale---prose-und-dokumentations-linting)
-    - [Was macht Vale?](#was-macht-vale)
-    - [Beispiele für Vale-Regeln](#beispiele-für-vale-regeln)
-    - [Konfiguration](#konfiguration-2)
   - [Wie die Tools zusammenarbeiten](#wie-die-tools-zusammenarbeiten)
-    - [1. Entwicklungsphase](#1-entwicklungsphase)
-    - [2. Pre-commit Phase](#2-pre-commit-phase)
-    - [3. CI/CD Pipeline](#3-cicd-pipeline)
   - [Workflow für Entwickler](#workflow-für-entwickler)
     - [Beim Entwickeln](#beim-entwickeln)
     - [Vor dem Commit](#vor-dem-commit)
     - [Bei Fehlern](#bei-fehlern)
+  - [Nützliche Befehle für Entwickler](#nützliche-befehle-für-entwickler)
   - [Installationsanleitung](#installationsanleitung)
     - [Pre-commit hooks via husky](#pre-commit-hooks-via-husky)
       - [Voraussetzungen](#voraussetzungen)
@@ -39,7 +18,6 @@ Diese Anleitung beschreibt, wie du in einem Astro/Starlight Repository alle notw
       - [Testen](#testen)
       - [Wie wird der hook ausgelöst](#wie-wird-der-hook-ausgelöst)
       - [Setup nach dem Clone](#setup-nach-dem-clone)
-      - [Doing nach dem clone](#doing-nach-dem-clone)
     - [ESLint Installation \& Konfiguration](#eslint-installation--konfiguration)
       - [ESLint Dependencies installieren](#eslint-dependencies-installieren)
       - [ESLint-Konfiguration erstellen](#eslint-konfiguration-erstellen)
@@ -58,18 +36,12 @@ Diese Anleitung beschreibt, wie du in einem Astro/Starlight Repository alle notw
       - [Editor-Integration für Prettier](#editor-integration-für-prettier)
       - [Hinweise für Prettier](#hinweise-für-prettier)
     - [Vale Installation \& Konfiguration](#vale-installation--konfiguration)
-      - [Installationsoptionen für Vale](#installationsoptionen-für-vale)
-      - [Option 1: Binary Download (Empfohlen)](#option-1-binary-download-empfohlen)
-      - [Option 2: Package Manager Installation](#option-2-package-manager-installation)
-      - [Option 3: Docker-basierte Installation](#option-3-docker-basierte-installation)
-      - [Option 4: Go-basierte Installation](#option-4-go-basierte-installation)
+      - [Installationsvorbereitungen](#installationsvorbereitungen)
       - [Vale-Konfiguration erstellen](#vale-konfiguration-erstellen)
-      - [NPM Scripts für Vale hinzufügen](#npm-scripts-für-vale-hinzufügen)
       - [Hook erweitern für Vale](#hook-erweitern-für-vale)
       - [Testen der Vale-Integration](#testen-der-vale-integration)
       - [Vale Styles und Regeln](#vale-styles-und-regeln)
       - [Hinweise für Vale](#hinweise-für-vale)
-
 
 ## Übersicht der Tools
 
@@ -80,166 +52,19 @@ Diese Anleitung beschreibt, wie du in einem Astro/Starlight Repository alle notw
 | **Prettier** | Code-Formatierung                | Alle unterstützten Dateitypen           | Einheitliche Formatierung und Styling                              |
 | **Vale**     | Prose-Linting                    | `.md`, `.mdx`, Text in Code-Kommentaren | Schreibstil, Grammatik, Terminologie                               |
 
-## Was ist Husky?
-
-Husky ist ein Tool, das **Git Hooks** in Node.js-Projekten vereinfacht und automatisiert. Git Hooks sind Skripte, die automatisch zu bestimmten Zeitpunkten im Git-Workflow ausgeführt werden (z.B. vor einem Commit oder Push).
-
-### Warum Husky verwenden?
-
-**Problem ohne Husky:**
-- Entwickler vergessen, Linter vor dem Commit auszuführen
-- Inkonsistente Code-Qualität erreicht das Repository
-- CI/CD-Pipeline schlägt erst spät fehl
-- Manuelle Prozesse sind fehleranfällig
-
-**Lösung mit Husky:**
-- **Automatische Qualitätsprüfung** bei jedem Commit/Push
-- **Verhindert schlechten Code** im Repository
-- **Konsistente Standards** für alle Entwickler
-- **Frühe Fehlererkennung** vor CI/CD
-
-### Wie funktioniert Husky?
-
-```bash
-# Ohne Husky (manuell):
-git add .
-npm run lint        # Entwickler vergisst diesen Schritt oft!
-git commit -m "fix"
-
-# Mit Husky (automatisch):
-git add .
-git commit -m "fix" # Husky führt automatisch lint + tests aus
-```
-
-### Vorteile von Husky
-
-| Vorteil                   | Beschreibung                                      |
-| ------------------------- | ------------------------------------------------- |
-| **Automatisierung**       | Linter, Tests und Formatierung laufen automatisch |
-| **Konsistenz**            | Alle Entwickler haben die gleichen Standards      |
-| **Frühe Fehlererkennung** | Probleme werden vor dem Push erkannt              |
-| **Einfache Einrichtung**  | Funktioniert nach `npm install` automatisch       |
-| **Teamweite Standards**   | Hooks werden im Repository geteilt                |
-
-## ESLint - JavaScript/TypeScript Code Quality
-
-### Was macht ESLint?
-ESLint ist ein statisches Code-Analyse-Tool für JavaScript und TypeScript, das potenzielle Probleme, Bugs und stilistische Inkonsistenzen in Ihrem Code identifiziert.
-
-### Hauptfunktionen
-- **Fehlerprävention**: Erkennt potenzielle Bugs und problematische Patterns
-- **Code-Konsistenz**: Durchsetzt einheitliche Coding Standards
-- **Best Practices**: Warnt vor anti-patterns und schlägt bessere Alternativen vor
-- **Framework-Support**: Spezielle Regeln für React, Astro, Node.js etc.
-
-### Beispiele für ESLint-Regeln
-```javascript
-// ❌ ESLint würde warnen:
-var unusedVariable = 'never used';  // unused variable
-if (condition = true) { }            // assignment instead of comparison
-function foo() { return; }           // unreachable code
-
-// ✅ ESLint approved:
-const usedVariable = 'properly used';
-if (condition === true) { }
-function foo() { return 'value'; }
-```
-
-### Konfiguration
-
-ESLint wird über `.eslintrc.js` oder `eslint.config.js` konfiguriert und kann projekt-spezifische Regeln definieren.
-
-### Anwendung während der Entwicklung
-
-Neben Pre-Commit Hooks und Ausführung in der Pipeline kann ESLint wie folgt aufgerufen werden
-
-`npm run lint:check` Führt einen Check der gesamte Codebase des Repositories für alle .js,.ts,.jsx,.tsx,.astro Dateien aus. 
-
-`npm run lint` Führt einen Check der gesamte Codebase des Repositories für alle .js,.ts,.jsx,.tsx,.astro Dateien aus und versucht die gefundenen Errors und Warning automatisch zu fixen.
-
-`npx eslint ./src/lib/taxonomyFilter.ts #--fix` Prüft nur die Datei `/taxonomyFilter.ts` auf Fehler, kann mit dem Parameter `--fix` erweitert werden um ein automatisches fixen.
-
-Automatisch gefixed werden kann: 
-
-- Formatierung (Semicolons, Quotes, Indentation)
-- Import-Sortierung
-- Trailing Commas
-- Spacing-Regeln
-
-## Prettier - Code Formatierung
-
-### Was macht Prettier?
-Prettier ist ein "opinionated" Code-Formatter, der automatisch eine einheitliche Formatierung für verschiedene Dateitypen durchsetzt.
-
-### Hauptfunktionen
-- **Automatische Formatierung**: Konsistente Einrückung, Zeilenlänge, Quotes etc.
-- **Zero-Configuration**: Funktioniert out-of-the-box mit sinnvollen Defaults
-- **Multi-Language**: Unterstützt JavaScript, TypeScript, CSS, HTML, Markdown, JSON und mehr
-- **Editor-Integration**: Kann beim Speichern automatisch formatieren
-
-### Beispiele für Prettier-Formatierung
-```javascript
-// Vorher (inkonsistent formatiert):
-const obj={name:"John",age:30,city:"Berlin"};
-if(condition){doSomething();} else{doSomethingElse();}
-
-// Nachher (Prettier formatiert):
-const obj = {
-  name: "John",
-  age: 30,
-  city: "Berlin",
-};
-
-if (condition) {
-  doSomething();
-} else {
-  doSomethingElse();
-}
-```
-
-### Konfiguration
-Prettier wird über `.prettierrc` oder `prettier.config.js` konfiguriert.
-
-## Vale - Prose und Dokumentations-Linting
-
-### Was macht Vale?
-Vale ist ein Syntax-aware Linter für Prosa und Dokumentation, der Schreibstil, Grammatik und Terminologie-Konsistenz überprüft.
-
-
-- **Schreibstil-Konsistenz**: Durchsetzt einheitliche Schreibregeln
-- **Terminologie-Management**: Stellt sicher, dass Fachbegriffe korrekt verwendet werden
-- **Syntax-Aware**: Versteht Markdown, reStructuredText, AsciiDoc etc.
-- **Anpassbare Regeln**: Unterstützt verschiedene Style Guides (Google, Microsoft, etc.)
-
-### Beispiele für Vale-Regeln
-```markdown
-❌ Vale würde warnen:
-- "We should of done this differently" (should have, nicht should of)
-- "The API is very easy to use" (subjektive Sprache)
-- "Click here for more info" (nicht-deskriptive Links)
-
-✅ Vale approved:
-- "We should have implemented this differently"
-- "The API provides a straightforward interface"
-- "Read the complete documentation for detailed examples"
-```
-
-### Konfiguration
-Vale wird über `.vale.ini` und Style-Dateien im `.vale/` Verzeichnis konfiguriert.
-
 ## Wie die Tools zusammenarbeiten
 
-### 1. Entwicklungsphase
+**1. Entwicklungsphase**
 - **ESLint**: Läuft im Editor und zeigt Code-Probleme in Echtzeit
 - **Prettier**: Formatiert Code automatisch beim Speichern
 - **Vale**: Überprüft Dokumentation und Kommentare
 
-### 2. Pre-commit Phase
+**1. Pre-commit Phase**
 - Alle drei Tools laufen automatisch vor jedem Git-Commit
 - Verhindert, dass problematischer Code/Content committed wird
 - Stellt sicher, dass alle Änderungen den Qualitätsstandards entsprechen
 
-### 3. CI/CD Pipeline
+**3. CI/CD Pipeline**
 - Validiert, dass alle Regeln eingehalten werden
 - Blockiert Merges bei Regelverstößen
 - Stellt sicher, dass nur qualitativ hochwertiger Code deployed wird
@@ -259,13 +84,66 @@ Vale wird über `.vale.ini` und Style-Dateien im `.vale/` Verzeichnis konfigurie
 5. **Commit wird blockiert** bei Fehlern
 
 ### Bei Fehlern
-1. **ESLint-Fehler**: Code korrigieren oder `eslint --fix` verwenden
-2. **Prettier-Fehler**: Automatisch behoben durch `prettier --write`
+1. **ESLint-Fehler**: Code korrigieren oder `npm run lint` verwenden
+2. **Prettier-Fehler**: Automatisch behoben durch `npm run format`
 3. **Vale-Fehler**: Text manuell korrigieren oder Regel anpassen
+
+## Nützliche Befehle für Entwickler
+
+- `npm install`: Installiert alle Dependencies und Vale automatisch über postinstall Hook
+- `npm run lint`: Versucht den Code automatisch zu korrigieren
+- `npm run lint:check`: Findet Fehler im Code und zeigt diese an
+- `npm run format`: Formatiert alle Dateien gemäß den Vorgaben
+- `npm run format:check`: Findet Formatierungsfehler und zeigt diese an
+- `npm run install-vale`: Installiert Vale manuell (falls erforderlich)
+- `npm run prose`: Findet alle Prosa-Fehler und zeigt diese an
+- `npm run lint:all`: Findet alle Issues im Code und versucht diese soweit es geht automatisch zu korrigieren
+- `npm run lint:checkall`: Findet alle Issues im Code und zeigt die Ergebnisse an
 
 ## Installationsanleitung
 
+Diese Anleitung beschreibt, wie die einzelnen Tools in ein NEUES astro oder node Projekt eingebunden werden. Dieses Schritte dienen der reinen Dokumentation und müssen NICHT vom Entwickler durchgeführt werden. 
+
 ### Pre-commit hooks via husky
+
+Husky ist ein Tool, das **Git Hooks** in Node.js-Projekten vereinfacht und automatisiert. Git Hooks sind Skripte, die automatisch zu bestimmten Zeitpunkten im Git-Workflow ausgeführt werden (z.B. vor einem Commit oder Push).
+
+**Problem ohne Husky:**
+- Entwickler vergessen, Linter vor dem Commit auszuführen
+- Inkonsistente Code-Qualität erreicht das Repository
+- CI/CD-Pipeline schlägt erst spät fehl
+- Manuelle Prozesse sind fehleranfällig
+
+**Lösung mit Husky:**
+- **Automatische Qualitätsprüfung** bei jedem Commit/Push
+- **Verhindert schlechten Code** im Repository
+- **Konsistente Standards** für alle Entwickler
+- **Frühe Fehlererkennung** vor CI/CD
+
+**Wie funktioniert Husky?**
+
+```bash
+# Ohne Husky (manuell):
+git add .
+npm run lint        # Entwickler vergisst diesen Schritt oft!
+git commit -m "fix"
+
+# Mit Husky (automatisch):
+git add .
+git commit -m "fix" # Husky führt automatisch lint + tests aus
+```
+
+**Vorteile von Husky**
+
+| Vorteil                   | Beschreibung                                      |
+| ------------------------- | ------------------------------------------------- |
+| **Automatisierung**       | Linter, Tests und Formatierung laufen automatisch |
+| **Konsistenz**            | Alle Entwickler haben die gleichen Standards      |
+| **Frühe Fehlererkennung** | Probleme werden vor dem Push erkannt              |
+| **Einfache Einrichtung**  | Funktioniert nach `npm install` automatisch       |
+| **Teamweite Standards**   | Hooks werden im Repository geteilt                |
+
+
 
 #### Voraussetzungen
 - Node.js (>=18) und npm installiert
@@ -341,56 +219,57 @@ cat .husky/pre-commit
 
 #### Setup nach dem Clone
 
-Im Gegensatz zu hooks in `.git/hooks`, müssen Husky-Hooks nach dem Klonen eines Repositories lokal eingerichtet werden. Dies geschieht automatisch mit dem `prepare`-Script.
+Im Gegensatz zu hooks in `.git/hooks`, müssen Husky-Hooks nach dem Klonen eines Repositories lokal eingerichtet werden, dies passiert über das `prepare` Script in der `package.json`. Führe hierzu bitte folgenden Befehl aus
 
 ```bash
+
 # Abhängigkeiten installieren (führt `prepare` aus, wenn es in package.json steht)
 npm install
 
-# Falls nötig Husky manuell einrichten (sollte aber durch npm install erledigt sein)
-npm run prepare
-
 ```
 
-#### Doing nach dem clone
-
-Nachdem du das Repository geklont hast, sind folgende Schritte erforderlich:
-
-1. **Alle Dependencies installieren:**
-   ```bash
-   npm install
-   ```
-
-2. **Git Hooks automatisch einrichten:**
-   Nach dem `npm install` werden die Husky-Hooks automatisch aktiviert. Dies passiert über das `prepare` Script in der `package.json`.
-
-3. **Linting-Funktionalität testen:**
-   ```bash
-   # Alle Dateien auf Linting-Fehler prüfen
-   npm run lint:check
    
-   # Automatische Fehlerkorrektur versuchen
-   npm run lint:fix
-   ```
-
-4. **Git-Hooks testen:**
-   ```bash
-   # Commit mit Linting-Check testen
-   git add .
-   git commit -m "test: Git-Hook Funktionalität"
-   ```
-   Bei Linting-Fehlern wird der Commit automatisch abgebrochen.
-
-5. **Entwicklungsserver starten:**
-   ```bash
-   npm run dev
-   ```
-
-**Wichtig:** Husky und alle Linting-Tools sind bereits vollständig konfiguriert. Es ist keine weitere Installation oder Konfiguration erforderlich!
 
 ### ESLint Installation & Konfiguration
 
-ESLint ist ein statisches Code-Analyse-Tool für JavaScript und TypeScript, das Code-Qualität und Best Practices durchsetzt. Hier ist eine vollständige Anleitung zur Integration in ein Astro/TypeScript-Projekt.
+ESLint ist ein statisches Code-Analyse-Tool für JavaScript und TypeScript, das potenzielle Probleme, Bugs und stilistische Inkonsistenzen in Ihrem Code identifiziert.
+
+- **Fehlerprävention**: Erkennt potenzielle Bugs und problematische Patterns
+- **Code-Konsistenz**: Durchsetzt einheitliche Coding Standards
+- **Best Practices**: Warnt vor anti-patterns und schlägt bessere Alternativen vor
+- **Framework-Support**: Spezielle Regeln für React, Astro, Node.js etc.
+
+```javascript
+
+// ❌ ESLint würde warnen:
+var unusedVariable = 'never used';  // unused variable
+if (condition = true) { }            // assignment instead of comparison
+function foo() { return; }           // unreachable code
+
+// ✅ ESLint approved:
+const usedVariable = 'properly used';
+if (condition === true) { }
+function foo() { return 'value'; }
+
+```
+**Konfiguration**
+ESLint wird über `.eslintrc.js` oder `eslint.config.js` konfiguriert und kann projekt-spezifische Regeln definieren.
+
+**Anwendung während der Entwicklung**
+
+Neben Pre-Commit Hooks und Ausführung in der Pipeline kann ESLint wie folgt aufgerufen werden
+
+- `npm run lint:check` Führt einen Check der gesamte Codebase des Repositories für alle .js,.ts,.jsx,.tsx,.astro Dateien aus. 
+- `npm run lint` Führt einen Check der gesamte Codebase des Repositories für alle .js,.ts,.jsx,.tsx,.astro Dateien aus und versucht die gefundenen Errors und Warning automatisch zu fixen.
+- `npx eslint ./src/lib/taxonomyFilter.ts #--fix` Prüft nur die Datei `/taxonomyFilter.ts` auf Fehler, kann mit dem Parameter `--fix` erweitert werden um ein automatisches fixen.
+
+Automatisch gefixed werden kann: 
+
+- Formatierung (Semicolons, Quotes, Indentation)
+- Import-Sortierung
+- Trailing Commas
+- Spacing-Regeln
+
 
 #### ESLint Dependencies installieren
 
@@ -399,8 +278,6 @@ Installiere ESLint und die benötigten Plugins für TypeScript und Astro:
 ```bash
 npm install --save-dev eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser astro-eslint-parser eslint-plugin-astro
 ```
-
-**Wichtig:** Diese Dependencies müssen installiert sein, bevor ESLint verwendet werden kann!
 
 #### ESLint-Konfiguration erstellen
 
@@ -540,7 +417,7 @@ wrangler.toml
 | `public/`              | Statische Assets brauchen kein Linting                   |
 | `*.config.*`           | Konfigurationsdateien haben oft andere Standards         |
 | `.astro/`              | Astro-Build-Cache                                        |
-| `docs/`                | Dokumentation braucht meist kein JavaScript-Linting     |
+| `docs/`                | Dokumentation braucht meist kein JavaScript-Linting      |
 | `.husky/`              | Shell-Scripts, nicht JavaScript                          |
 | `wrangler.toml`        | Cloudflare-Konfiguration                                 |
 
@@ -640,16 +517,16 @@ Erstelle eine `.prettierrc` im Projekt-Root:
 
 **Erklärung der wichtigsten Konfigurationsoptionen:**
 
-| Option              | Wert      | Beschreibung                                                    |
-| ------------------- | --------- | --------------------------------------------------------------- |
-| `semi`              | `true`    | Semikolons am Ende von Statements                               |
-| `singleQuote`       | `false`   | Verwende doppelte Anführungszeichen                             |
-| `tabWidth`          | `2`       | Anzahl Leerzeichen pro Einrückungsebene                         |
-| `trailingComma`     | `"es5"`   | Trailing Commas wo ES5 gültig ist (Objekte, Arrays)            |
-| `printWidth`        | `80`      | Maximale Zeilenlänge vor Umbruch                                |
-| `arrowParens`       | `"always"`| Klammern um Arrow-Function-Parameter                             |
-| `endOfLine`         | `"lf"`    | Unix-style line endings (wichtig für cross-platform)           |
-| `proseWrap`         | `"always"`| Markdown-Text wird umgebrochen                                  |
+| Option          | Wert       | Beschreibung                                         |
+| --------------- | ---------- | ---------------------------------------------------- |
+| `semi`          | `true`     | Semikolons am Ende von Statements                    |
+| `singleQuote`   | `false`    | Verwende doppelte Anführungszeichen                  |
+| `tabWidth`      | `2`        | Anzahl Leerzeichen pro Einrückungsebene              |
+| `trailingComma` | `"es5"`    | Trailing Commas wo ES5 gültig ist (Objekte, Arrays)  |
+| `printWidth`    | `80`       | Maximale Zeilenlänge vor Umbruch                     |
+| `arrowParens`   | `"always"` | Klammern um Arrow-Function-Parameter                 |
+| `endOfLine`     | `"lf"`     | Unix-style line endings (wichtig für cross-platform) |
+| `proseWrap`     | `"always"` | Markdown-Text wird umgebrochen                       |
 
 #### Format-Scripts in package.json hinzufügen
 
@@ -803,21 +680,58 @@ code --install-extension esbenp.prettier-vscode
 
 ### Vale Installation & Konfiguration
 
-Vale ist ein Syntax-aware Linter für Prosa und Dokumentation, der Schreibstil, Grammatik und Terminologie-Konsistenz überprüft. Da Vale nicht als Node.js-Package verfügbar ist, wird die Installation über shell scripte vorgenommen, die im "scripts" Ordner des Repositories gespeichert sind ((bash)[./../scripts/install-vale.sh] für mac und linux / (powershell)[./../scripts/install-vale.ps1]). Diese scripts laden die jeweils passenden Binary herunter und speichern dieses im "tools" Verzeichnis, welches in der `.gitignore`aufgenommen ist.
+Vale ist ein Syntax-aware Linter für Prosa und Dokumentation, der Schreibstil, Grammatik und Terminologie-Konsistenz überprüft. 
 
-Im Ascnhluß werden die Scripte über npm Scripte der Arbeitsumgebung hinzugefügt (`package.json`). Der Aufruf erfolgt über weitere npm scripte. Da vale keine Autofix Funktion hat, wird der prose Aufruf auf prose:check umgeleitet um ein einheitliches handling über alle Linter zu gewährleisten.
+- **Schreibstil-Konsistenz**: Durchsetzt einheitliche Schreibregeln
+- **Terminologie-Management**: Stellt sicher, dass Fachbegriffe korrekt verwendet werden
+- **Syntax-Aware**: Versteht Markdown, reStructuredText, AsciiDoc etc.
+- **Anpassbare Regeln**: Unterstützt verschiedene Style Guides (Google, Microsoft, etc.)
+
+**Beispiele für Vale-Regeln
+```markdown
+❌ Vale würde warnen:
+- "We should of done this differently" (should have, nicht should of)
+- "The API is very easy to use" (subjektive Sprache)
+- "Click here for more info" (nicht-deskriptive Links)
+
+✅ Vale approved:
+- "We should have implemented this differently"
+- "The API provides a straightforward interface"
+- "Read the complete documentation for detailed examples"
+```
+
+#### Installationsvorbereitungen
+
+Da Vale nicht als Node.js-Package verfügbar ist, wird die Installation über Shell-Scripte vorgenommen, die im `scripts/` Ordner des Repositories gespeichert sind:
+
+- **Linux/macOS**: `scripts/install-vale.sh` 
+- **Windows**: `scripts/install-vale.ps1`
+
+Diese Scripte laden die jeweils passende Vale-Binary herunter und speichern diese im `tools/` Verzeichnis, welches in der `.gitignore` aufgenommen ist.
+
+**Automatische Installation:**
+Vale wird automatisch über einen `postinstall` Hook nach jedem `npm install` installiert:
 
 ```json
 "scripts": {
-  "install-vale": "node -e \"process.platform === 'win32' ? require('child_process').exec('powershell -ExecutionPolicy Bypass -File scripts/install-vale.ps1') : require('child_process').exec('bash scripts/install-vale.sh')\"",
-  "prose:check": "node -e \"const vale = process.platform === 'win32' ? './tools/vale.exe' : './tools/vale'; require('child_process').exec(`${vale} --config=.vale.ini src/content docs`).stdout.pipe(process.stdout)\"",
-  "prose": "npm run prose:check"
+  "postinstall": "npm run install-vale",
+  "install-vale": "node -e \"const cmd = process.platform === 'win32' ? 'powershell -ExecutionPolicy Bypass -File scripts/install-vale.ps1' : 'bash scripts/install-vale.sh'; require('child_process').exec(cmd, (err, stdout, stderr) => { if (err) { console.error(stderr); process.exit(1); } console.log(stdout); });\"",
+  "prose": "node -e \"const vale = process.platform === 'win32' ? './tools/vale.exe' : './tools/vale'; const { exec } = require('child_process'); exec(vale + ' --config=.vale.ini src/content docs', (err, stdout, stderr) => { console.log(stdout); if (stderr) console.error(stderr); if (err) process.exit(1); });\"",
+  "prose:check": "npm run prose"
 }
 ```
-Die Installation von vale wird über `npm install`sichergestellt.
+
+**Warum dieser Ansatz?**
+- ✅ Vale wird automatisch nach dem Klonen installiert  
+- ✅ Keine manuellen Installationsschritte erforderlich
+- ✅ Korrekte Ausführungsberechtigungen werden automatisch gesetzt
+- ✅ Plattformübergreifende Kompatibilität (Windows/Linux/macOS)
+- ✅ Vale-Binary wird nicht im Git-Repository gespeichert (siehe `.gitignore`)
 
 #### Vale-Konfiguration erstellen
 
+
+Vale wird über `.vale.ini` und Style-Dateien im `.vale/` Verzeichnis konfiguriert.
 Über die `.vale.ini` im Projekt-Root wird die Konfiguration vorgenommen. Folgend ist eine simple start Konfiguration dargestellt.
 
 ```ini
@@ -938,27 +852,27 @@ echo ""
 
 #### Testen der Vale-Integration
 
-**Nach der Installation (je nach gewählter Option):**
+**Nach der Installation:**
+
+Vale wird automatisch installiert wenn du das Repository klonst und `npm install` ausführst. Falls Vale bereits installiert ist, kannst du die Integration direkt testen:
 
 ```bash
-# Dependencies installieren
+# Dependencies installieren (installiert automatisch Vale über postinstall Hook)
 npm install
 
-# Vale installieren (bei Binary-Option)
-npm run install-vale
-
 # Vale-Konfiguration testen
-npm run prose:check
+npm run prose
 
 # Einzelne Datei testen
-vale --config=.vale.ini src/content/blog/example.md
+./tools/vale --config=.vale.ini src/content/blog/example.md
 
-# Mit Commit testen
+# Vale-Version überprüfen
+./tools/vale --version
+
+# Mit Commit testen (führt den Hook aus)
 git add .
 git commit -m "test vale integration"
-
 ```
-
 #### Vale Styles und Regeln
 
 **Zusätzliche Style-Pakete installieren:**
