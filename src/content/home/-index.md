@@ -1,9 +1,9 @@
 ---
 image: "@assets/astrogon-star.svg"
 imageAlt: Astrogon logo
-title: Astrogon
-content: A rapidly-customizable template for a blog, documentation, and more.
+title: Zion
+content: Every month you spend building is a month you fall behind...
 button:
-  label: See the Code
-  link: https://github.com/astrogon/astrogon
+  label: Join the Waitlist!
+  link: https://buy.stripe.com/6oU14n9aC77e1sW1bJ8AE00
 ---
