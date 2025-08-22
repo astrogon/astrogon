@@ -62,3 +62,9 @@ dist/
 # Vale binary (install with npm run install-vale)
 tools/vale
 tools/vale.exe
+tools/LICENSE
+tools/README.md
+
+# Vale styles (auto-downloaded)
+.vale/styles/Microsoft/
+.vale/styles/write-good/
