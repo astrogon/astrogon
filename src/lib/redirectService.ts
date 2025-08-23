@@ -18,7 +18,7 @@ export async function getLinkById(id: string): Promise<LinkMapping | null> {
   try {
     const mappings = await getLinkMappings();
     const link = mappings.links[id];
-    
+
     if (!link) {
       return null;
     }

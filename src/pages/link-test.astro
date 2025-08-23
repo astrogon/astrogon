@@ -1,0 +1,103 @@
+---
+import BaseLayout from "../components/base/BaseLayout.astro";
+import RedirectLink from "../components/common/RedirectLink.astro";
+---
+
+<BaseLayout
+  title="Link-System Test - Frickeldave"
+  description="Test des neuen Link-Redirect Systems"
+>
+  <main class="container mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl font-bold mb-8 text-center">Link-System Test</h1>
+      
+      <div class="glass rounded-lg p-8 mb-8">
+        <h2 class="text-2xl font-semibold mb-6">Test-Links</h2>
+        
+        <div class="space-y-4">
+          <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+            <h3 class="font-semibold mb-2">Amazon Affiliate Link (mit Hinweisseite)</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
+              Dieser Link zeigt die Affiliate-Hinweisseite mit 10 Sekunden Countdown.
+            </p>
+            <RedirectLink id="amazon-recommended-book" text="→ Empfohlenes Buch auf Amazon" />
+          </div>
+          
+          <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+            <h3 class="font-semibold mb-2">GitHub Projekt (direkter Link)</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
+              Dieser Link öffnet direkt ohne Hinweisseite.
+            </p>
+            <RedirectLink id="github-project" text="→ Mein GitHub Projekt" />
+          </div>
+          
+          <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+            <h3 class="font-semibold mb-2">YouTube Tutorial (direkter Link)</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
+              Dieser Link öffnet das YouTube-Video direkt.
+            </p>
+            <RedirectLink id="youtube-tutorial" text="→ Tutorial Video ansehen" />
+          </div>
+        </div>
+      </div>
+      
+      <div class="glass rounded-lg p-8">
+        <h2 class="text-2xl font-semibold mb-6">System-Features</h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="font-semibold mb-3 flex items-center">
+              <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+              GitHub Pages Kompatibel
+            </h3>
+            <ul class="text-sm space-y-1 text-gray-600 dark:text-gray-400">
+              <li>• Rein client-side Lösung</li>
+              <li>• Keine Server-API erforderlich</li>
+              <li>• Statische JSON-Konfiguration</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="font-semibold mb-3 flex items-center">
+              <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              Amazon Compliance
+            </h3>
+            <ul class="text-sm space-y-1 text-gray-600 dark:text-gray-400">
+              <li>• Affiliate-Hinweisseite</li>
+              <li>• 10 Sekunden Disclosure</li>
+              <li>• Compliance mit Richtlinien</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="font-semibold mb-3 flex items-center">
+              <span class="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+              Click-Tracking
+            </h3>
+            <ul class="text-sm space-y-1 text-gray-600 dark:text-gray-400">
+              <li>• LocalStorage-basiert</li>
+              <li>• Pro-Link Statistiken</li>
+              <li>• Privacy-friendly</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="font-semibold mb-3 flex items-center">
+              <span class="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
+              Benutzerfreundlich
+            </h3>
+            <ul class="text-sm space-y-1 text-gray-600 dark:text-gray-400">
+              <li>• Zurück-Navigation</li>
+              <li>• Mobile-optimiert</li>
+              <li>• Dark/Light Mode</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-8">
+        <a href="/" class="text-blue-600 hover:underline">← Zurück zur Startseite</a>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

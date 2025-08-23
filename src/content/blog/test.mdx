@@ -12,10 +12,11 @@ hideToc: false
 
 import RedirectLink from "@components/common/RedirectLink.astro";
 
-<RedirectLink id="amazon-example-1" text="JS Link" showProvider={true} />
+<RedirectLink id="amazon-recommended-book" text="A book" className="custom-link-style" />
 
-[Markdown Link](/api/redirect?id=amazon-example-1)
-
-<a href="/api/redirect?id=amazon-example-1" rel="nofollow sponsored">
-  HTML Link
+<a
+  href="#"
+  onclick="handleRedirectClick('amazon-recommended-book', window.location.href); return false;"
+>
+  A book html
 </a>

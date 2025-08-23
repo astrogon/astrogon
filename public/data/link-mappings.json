@@ -1,0 +1,29 @@
+{
+  "links": {
+    "amazon-recommended-book": {
+      "targetUrl": "https://amzn.to/3example1",
+      "description": "Empfohlenes Buch auf Amazon",
+      "affiliate": true,
+      "category": "books",
+      "openInNewTab": true
+    },
+    "github-project": {
+      "targetUrl": "https://github.com/example/project",
+      "description": "Mein GitHub Projekt",
+      "affiliate": false,
+      "category": "development",
+      "openInNewTab": true
+    },
+    "youtube-tutorial": {
+      "targetUrl": "https://youtube.com/watch?v=example",
+      "description": "Tutorial Video",
+      "affiliate": false,
+      "category": "tutorials",
+      "openInNewTab": true
+    }
+  },
+  "analytics": {
+    "totalClicks": 0,
+    "lastUpdated": "2024-01-15"
+  }
+}

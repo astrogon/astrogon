@@ -19,7 +19,9 @@ export async function getStaticPaths() {
 }
 
 const { entry, entries } = Astro.props;
-const relatedEntries = similerItems(entry, entries, entry.id).filter((item): item is BlogEntry => item !== undefined);
+const relatedEntries = similerItems(entry, entries, entry.id).filter(
+  (item): item is BlogEntry => item !== undefined
+);
 ---
 
 <EntryLayout entry={entry} relatedEntries={relatedEntries} />

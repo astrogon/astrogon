@@ -23,15 +23,30 @@ const finalText = displayText + providerInfo;
 
 // Add rel attributes for affiliate links
 const relAttr = link?.affiliate ? "nofollow sponsored" : "nofollow";
-
-// The redirect page itself should always open in the same tab
-// The target behavior is handled by the redirect-info page JavaScript
 ---
 
 <a 
-  href={`/api/redirect?id=${id}`} 
+  href="#"
   class={className} 
   rel={relAttr}
+  onclick={`handleRedirectClick('${id}', window.location.href); return false;`}
+  data-link-id={id}
 >
   {finalText}
 </a>
+
+<script>
+  import { handleLinkRedirect } from '../../lib/clientRedirectService';
+
+  // Extend Window interface for type safety
+  declare global {
+    interface Window {
+      handleRedirectClick: (id: string, referrer: string) => Promise<void>;
+    }
+  }
+
+  // Make function globally available
+  window.handleRedirectClick = async (id: string, referrer: string) => {
+    await handleLinkRedirect(id, referrer);
+  };
+</script>

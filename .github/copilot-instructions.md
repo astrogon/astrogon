@@ -32,8 +32,10 @@ Dies ist ein **Astro-basiertes Static Site Generator Projekt** mit dem Namen "Fr
 - **Dark/Light Mode** - Theme-Switching
 
 ### Build & Deployment
-- **Cloudflare Pages** - Hosting & Deployment
-- **Wrangler** - Cloudflare CLI Tool
+- **GitHub Pages** - Static Hosting & Deployment
+- **WICHTIG**: Nur statische Websites unterstützt, KEINE Server-Side Rendering oder API-Routen
+- **Astro Output**: Muss `static` sein für GitHub Pages Kompatibilität
+- **Automatische Deployment** via GitHub Actions
 
 ## Projektstruktur
 
@@ -67,6 +69,7 @@ src/
 - Verwende React (`.tsx`) nur für interaktive Features
 - Nutze `client:load` sparsam, bevorzuge `client:idle` oder `client:visible`
 - Implementiere das Component Island Pattern
+- **WICHTIG**: Keine API-Routen verwenden (GitHub Pages Limitation)
 
 ### TypeScript
 - Definiere explizite Interfaces für Props
@@ -189,7 +192,15 @@ import InteractiveComponent from "@components/InteractiveComponent";
 3. **Styling** mit Tailwind CSS
 4. **Testing** lokal mit `npm run dev`
 5. **Build** mit `npm run build`
-6. **Deploy** auf Cloudflare Pages
+6. **Deploy** auf GitHub Pages
+
+## GitHub Pages Limitations
+
+- **Nur statische Websites** - Keine Server-Side Rendering
+- **Keine API-Routen** - Alles muss zur Build-Zeit generiert werden
+- **Astro Output: `static`** - Zwingend erforderlich
+- **Client-Side Lösungen** für dynamische Features verwenden
+- **LocalStorage/SessionStorage** für Client-Side Daten
 
 ## Best Practices
 

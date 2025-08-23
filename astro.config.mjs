@@ -12,7 +12,7 @@ import remarkMath from "remark-math";
 export default defineConfig({
   site: "https://frickeldave.github.io",
   base: "/",
-  output: "server", // Enable API routes
+  output: "static", // GitHub Pages requires static output
   trailingSlash: "ignore",
   prefetch: {
     prefetchAll: true
