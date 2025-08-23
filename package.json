@@ -25,7 +25,6 @@
     "clsx": "^2.1.1",
     "date-fns": "^2.30.0",
     "date-fns-tz": "^2.0.0",
-    "decap-cms-app": "^3.8.3",
     "fuse.js": "^6.6.2",
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.3",

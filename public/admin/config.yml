@@ -1,0 +1,57 @@
+backend:
+  name: github
+  repo: kemello/ecoabad
+  branch: main
+  base_url: https://sveltia-cms-auth.kemelovramazan.workers.dev
+
+media_folder: "src/assets/images"
+public_folder: "/src/assets/images"
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "src/content/blog"
+    create: true
+    extension: "md"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "docs"
+    label: "Docs"
+    folder: "src/content/docs"
+    create: true
+    extension: "md"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "authors"
+    label: "Authors"
+    folder: "src/content/authors"
+    create: true
+    extension: "md"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "poetry"
+    label: "Poetry"
+    folder: "src/content/poetry"
+    create: true
+    extension: "md"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "recipes"
+    label: "Recipes"
+    folder: "src/content/recipes"
+    create: true
+    extension: "md"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
