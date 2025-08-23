@@ -3,24 +3,30 @@ const similerItems = (currentItem: any, allItems: any, id: string) => {
   let tags: string[] = [];
 
   // set categories
-  if (currentItem.data?.categories?.length > 0) {
+  if (Array.isArray(currentItem?.data?.categories) && currentItem.data.categories.length > 0) {
     categories = currentItem.data.categories;
   }
 
   // set tags
-  if (currentItem.data?.tags?.length > 0) {
+  if (Array.isArray(currentItem?.data?.tags) && currentItem.data.tags.length > 0) {
     tags = currentItem.data.tags;
   }
 
+  if (categories.length === 0 && tags.length === 0) {
+    return [];
+  }
+
   // filter by categories
-  const filterByCategories = allItems.filter((item: any) =>
-    categories.find((category) => item.data.categories.includes(category)),
-  );
-  
+  const filterByCategories = allItems.filter((item: any) => {
+    const itemCats: string[] = Array.isArray(item?.data?.categories) ? item.data.categories : [];
+    return categories.some((category) => itemCats.includes(category));
+  });
+
   // filter by tags
-  const filterByTags = allItems.filter((item: any) =>
-    tags.find((tag) => item.data.tags.includes(tag)),
-  );
+  const filterByTags = allItems.filter((item: any) => {
+    const itemTags: string[] = Array.isArray(item?.data?.tags) ? item.data.tags : [];
+    return tags.some((tag) => itemTags.includes(tag));
+  });
 
   // merged after filter
   const mergedItems = [...filterByCategories, ...filterByTags];
@@ -29,10 +35,10 @@ const similerItems = (currentItem: any, allItems: any, id: string) => {
   const filterByID = mergedItems.filter((item) => item.id !== id);
 
   // count instances of each item
-  const itemCount = filterByID.reduce((accumulator: any, currentItem: any) => {
+  const itemCount = filterByID.reduce((accumulator: Record<string, number>, currentItem: any) => {
     accumulator[currentItem.id] = (accumulator[currentItem.id] || 0) + 1;
     return accumulator;
-  }, {});
+  }, {} as Record<string, number>);
 
   // sort items by number of instances
   const sortedItems = filterByID.sort((a: any, b: any) => itemCount[b.id] - itemCount[a.id]);
@@ -41,9 +47,9 @@ const similerItems = (currentItem: any, allItems: any, id: string) => {
   const filteredItems = sortedItems.filter((item: any) => itemCount[item.id] > 1);
 
   // remove duplicates
-  const uniqueItems = [...new Set(filteredItems.map((item: any) => item.id))].map((id: string) => {
-    return filteredItems.find((item: any) => item.id === id);
-  });
+  const uniqueItems = [...new Set(filteredItems.map((item: any) => item.id))]
+    .map((id: string) => filteredItems.find((item: any) => item.id === id))
+    .filter(Boolean);
 
   return uniqueItems;
 };
