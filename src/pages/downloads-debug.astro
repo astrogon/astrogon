@@ -1,0 +1,86 @@
+---
+import BaseLayout from "../components/base/BaseLayout.astro";
+import { getIndex } from "../lib/contentParser";
+import type { DownloadsEntry } from "../types";
+
+let entry: DownloadsEntry | undefined;
+let error: string | undefined;
+
+try {
+  entry = (await getIndex("downloads")) as DownloadsEntry;
+  console.log("Downloads entry loaded:", {
+    title: entry?.data?.title,
+    downloads: entry?.data?.downloads?.length,
+    hasContent: !!entry,
+  });
+} catch (e) {
+  error = e instanceof Error ? e.message : "Unknown error";
+  console.error("Error loading downloads:", e);
+}
+---
+
+<BaseLayout title="Downloads Debug" description="Debug Downloads">
+  <section class="section-sm">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="md:col-10">
+          <div class="glass rounded-lg p-8">
+            <h1>Downloads Debug Information</h1>
+
+            {
+              error && (
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                  <strong>Error:</strong> {error}
+                </div>
+              )
+            }
+
+            <div class="space-y-4">
+              <p><strong>Entry loaded:</strong> {entry ? "✅ Yes" : "❌ No"}</p>
+
+              {
+                entry && (
+                  <>
+                    <p>
+                      <strong>Title:</strong> {entry.data?.title || "No title"}
+                    </p>
+                    <p>
+                      <strong>Description:</strong>{" "}
+                      {entry.data?.description || "No description"}
+                    </p>
+                    <p>
+                      <strong>Downloads count:</strong>{" "}
+                      {entry.data?.downloads?.length || 0}
+                    </p>
+
+                    {entry.data?.downloads &&
+                      entry.data.downloads.length > 0 && (
+                        <div>
+                          <h3 class="font-semibold mt-4 mb-2">
+                            Downloads found:
+                          </h3>
+                          <ul class="list-disc pl-6">
+                            {entry.data.downloads.map((download) => (
+                              <li>
+                                {download.title} ({download.category})
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                  </>
+                )
+              }
+            </div>
+
+            <div class="mt-6">
+              <a href="/downloads" class="text-blue-600 hover:underline">
+                → Try normal downloads page
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
