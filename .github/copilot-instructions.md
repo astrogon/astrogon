@@ -2,22 +2,27 @@
 
 ## Projektübersicht
 
-Dies ist ein **Astro-basiertes Static Site Generator Projekt** mit dem Namen "Frickeldave", das als Multi-Content-Plattform für Blogs, ein Training und eine Rezeptsammlung enthält und als Portfolio dient.
+Dies ist ein **Astro-basiertes Static Site Generator Projekt** mit dem Namen "Frickeldave", das als
+Multi-Content-Plattform für Blogs, ein Training und eine Rezeptsammlung enthält und als Portfolio
+dient.
 
 ## Tech Stack
 
 ### Core Framework
+
 - **Astro 5.13.2** - Static Site Generator mit Islands Architecture
 - **TypeScript** - Typsichere Entwicklung
 - **React 18** - Für interaktive Komponenten
 - **Tailwind CSS** - Utility-first CSS Framework
 
 ### Content Management
+
 - **Astro Content Collections** - Typisierte Inhalte mit Frontmatter
 - **MDX** - Markdown mit React-Komponenten
 - **Gray Matter** - Frontmatter-Parsing
 
 ### Styling & UI
+
 - **SCSS** - CSS-Präprozessor
 - **Tailwind CSS** mit Bootstrap Grid
 - **Glass Morphism** Design-System
@@ -25,6 +30,7 @@ Dies ist ein **Astro-basiertes Static Site Generator Projekt** mit dem Namen "Fr
 - **React Icons** - Icon-Library
 
 ### Features
+
 - **Pagefind** - Client-side Search
 - **RSS Feed** - Automatische Feed-Generierung
 - **Sitemap** - SEO-optimierte Sitemaps
@@ -32,6 +38,7 @@ Dies ist ein **Astro-basiertes Static Site Generator Projekt** mit dem Namen "Fr
 - **Dark/Light Mode** - Theme-Switching
 
 ### Build & Deployment
+
 - **GitHub Pages** - Static Hosting & Deployment
 - **WICHTIG**: Nur statische Websites unterstützt, KEINE Server-Side Rendering oder API-Routen
 - **Astro Output**: Muss `static` sein für GitHub Pages Kompatibilität
@@ -65,6 +72,7 @@ src/
 ## Coding Standards & Patterns
 
 ### Astro-Komponenten
+
 - Verwende `.astro` für statische Komponenten
 - Verwende React (`.tsx`) nur für interaktive Features
 - Nutze `client:load` sparsam, bevorzuge `client:idle` oder `client:visible`
@@ -72,18 +80,21 @@ src/
 - **WICHTIG**: Keine API-Routen verwenden (GitHub Pages Limitation)
 
 ### TypeScript
+
 - Definiere explizite Interfaces für Props
 - Nutze die Astro Content Collection Types aus `@/types`
 - Verwende `Astro.props` für Component Props
 - Implementiere Type Guards für Content Validation
 
 ### Styling
+
 - Nutze Tailwind-Klassen für Styling
 - Verwende das Glass Morphism Design System (`glass` Klassen)
 - Implementiere Responsive Design mit Breakpoints
 - Nutze CSS Grid und Flexbox für Layouts
 
 ### Content Collections
+
 - Alle Inhalte sind typisiert über `src/content.config.ts`
 - Verwende Frontmatter für Metadaten
 - Nutze `getCollection()` und `getEntryBySlug()` für Content-Queries
@@ -92,6 +103,7 @@ src/
 ## Wichtige Patterns
 
 ### Layout-Pattern
+
 ```astro
 ---
 // Component script
@@ -109,6 +121,7 @@ const { title, description } = Astro.props;
 ```
 
 ### Content Collection Pattern
+
 ```astro
 ---
 import { getCollection } from "astro:content";
@@ -119,6 +132,7 @@ const entries = (await getCollection("blog")) as BlogEntry[];
 ```
 
 ### React Island Pattern
+
 ```astro
 ---
 import InteractiveComponent from "@components/InteractiveComponent";
@@ -130,15 +144,18 @@ import InteractiveComponent from "@components/InteractiveComponent";
 ## Spezielle Konfigurationen
 
 ### Auto-Import
+
 - Button, Accordion, Notice, Tabs komponenten werden automatisch importiert
 - YouTube-Komponente ist temporär deaktiviert (ES Module Konflikt)
 
 ### Bildoptimierung
+
 - Nutze `astro:assets` für optimierte Bilder
 - Verwende `Image` Component mit expliziten Dimensionen
 - Implementiere `loading="eager"` für Above-the-fold Bilder
 
 ### SEO & Meta
+
 - Alle Seiten nutzen `BaseLayout` für konsistente Meta-Tags
 - OpenGraph und Twitter Cards werden automatisch generiert
 - Sitemap und RSS werden automatisch erstellt
@@ -146,17 +163,20 @@ import InteractiveComponent from "@components/InteractiveComponent";
 ## Content-Typen
 
 ### Blog Posts
+
 - Markdown/MDX mit Frontmatter
 - Unterstützt Tags, Kategorien, Autoren
 - Table of Contents automatisch generiert
 - Related Posts basierend auf Tags
 
 ### Dokumentation
+
 - Hierarchische Struktur mit Browser-Navigation
 - Unterstützt Code-Syntax-Highlighting
 - Math-Formeln mit KaTeX
 
 ### Rezepte
+
 - Strukturierte Daten (Zutaten, Anweisungen, Zeit)
 - Responsive Card-Layout
 - Filterbare Listen
@@ -171,16 +191,19 @@ import InteractiveComponent from "@components/InteractiveComponent";
 ## Besonderheiten
 
 ### Glass Morphism Design
+
 - Verwende `glass` Klassen für das Design-System
 - Gradients mit `gradient` Klassen
 - Animations mit `intersect:animate-*` Klassen
 
 ### Search Integration
+
 - Pagefind für client-side search
 - Automatische Indexierung nach Build
 - Search-Interface in Header
 
 ### Theme System
+
 - Dark/Light Mode Toggle
 - CSS Custom Properties für Farben
 - Responsive Design-System
@@ -224,13 +247,15 @@ import InteractiveComponent from "@components/InteractiveComponent";
 ## Code Quality & Linting
 
 ### Linter-Konfiguration
+
 Das Projekt nutzt mehrere Linter zur Code-Qualitätssicherung:
 
 - **ESLint** - JavaScript/TypeScript Code-Analyse
-- **Prettier** - Code-Formatierung 
+- **Prettier** - Code-Formatierung
 - **Vale** - Prose/Content Linting für Markdown-Dateien
 
 ### Linting-Workflow
+
 **WICHTIG**: Bei JEDER Code-Änderung müssen alle Linter-Regeln eingehalten werden:
 
 1. **ESLint-Regeln beachten**:
@@ -250,12 +275,13 @@ Das Projekt nutzt mehrere Linter zur Code-Qualitätssicherung:
    - Readability-Checks
 
 ### Linter Commands
+
 ```bash
 # ESLint prüfen und fixen
 npm run lint
 npm run lint:fix
 
-# Prettier formatieren  
+# Prettier formatieren
 npm run format
 
 # Vale prüfen (Markdown/Content)
@@ -263,12 +289,14 @@ vale src/content/
 ```
 
 ### VS Code Integration
+
 - ESLint Extension aktiviert
-- Prettier Extension aktiviert  
+- Prettier Extension aktiviert
 - Format on Save aktiviert
 - Auto-Fix on Save für ESLint
 
 ### Linter-Fehler beheben
+
 - **Unbenutzte Parameter**: Prefix mit `_` (`_unusedParam`)
 - **Implizite any-Types**: Explizite Typen definieren
 - **Missing return types**: Return-Type annotieren
@@ -286,6 +314,7 @@ vale src/content/
 ## GitHub Copilot Regeln
 
 ### Obligatorische Linter-Prüfung
+
 **WICHTIG**: GitHub Copilot muss bei ALLEN Code-Änderungen folgende Prüfungen durchführen:
 
 1. **ESLint-Compliance**: Alle TypeScript/JavaScript-Dateien müssen ESLint-Regeln erfüllen
@@ -295,6 +324,7 @@ vale src/content/
 5. **Unbenutzte Variablen**: Mit `_` prefix markieren oder entfernen
 
 ### Workflow bei Code-Änderungen
+
 ```bash
 # 1. ESLint prüfen
 npm run lint
@@ -310,9 +340,11 @@ npm run type-check
 ```
 
 ### Fehlerbehebung-Prioritäten
+
 1. **ESLint-Fehler** sofort beheben
-2. **TypeScript-Kompilier-Fehler** sofort beheben  
+2. **TypeScript-Kompilier-Fehler** sofort beheben
 3. **Prettier-Formatierung** automatisch anwenden
 4. **Vale-Warnungen** in Markdown-Dateien beachten
 
-Diese Anweisungen helfen GitHub Copilot dabei, kontextspezifische und projektkonform Vorschläge zu generieren.
+Diese Anweisungen helfen GitHub Copilot dabei, kontextspezifische und projektkonform Vorschläge zu
+generieren.

@@ -1,0 +1,58 @@
+---
+import type { DownloadsEntry } from "../types";
+import BaseLayout from "../components/base/BaseLayout.astro";
+import { getIndex } from "../lib/contentParser";
+import { render } from "astro:content";
+
+const entry = (await getIndex("downloads")) as DownloadsEntry;
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.description}>
+  <section class="section-sm">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="md:col-10 lg:col-8">
+          <div class="glass rounded-lg p-8 mb-8 text-center">
+            <h1 class="h2 mb-4">{entry.data.title}</h1>
+            {entry.data.description && (
+              <p class="text-lg text-txt-s dark:text-darkmode-txt-s mb-6">
+                {entry.data.description}
+              </p>
+            )}
+          </div>
+
+          <div class="glass rounded-lg p-8 mb-8">
+            <Content />
+          </div>
+
+          {entry.data.downloads && entry.data.downloads.length > 0 && (
+            <div class="glass rounded-lg p-8">
+              <h2 class="h4 mb-6">Available Downloads</h2>
+              <div class="grid gap-6 md:grid-cols-2">
+                {entry.data.downloads.map((download) => (
+                  <div class="border rounded-lg p-4">
+                    <h3 class="font-semibold mb-2">{download.title}</h3>
+                    <p class="text-sm text-gray-600 mb-3">{download.description}</p>
+                    <div class="text-xs text-gray-500 mb-3">
+                      {download.fileSize && <span>Size: {download.fileSize}</span>}
+                      {download.fileType && <span class="ml-4">Type: {download.fileType}</span>}
+                      {download.version && <span class="ml-4">v{download.version}</span>}
+                    </div>
+                    <a
+                      href={download.fileUrl}
+                      download
+                      class="btn btn-primary btn-sm"
+                    >
+                      Download
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

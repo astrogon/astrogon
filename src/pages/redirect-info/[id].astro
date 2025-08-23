@@ -1,0 +1,113 @@
+---
+import BaseLayout from "@components/base/BaseLayout.astro";
+import { getLinkById, getLinkMappings } from "@/lib/redirectService";
+
+export async function getStaticPaths() {
+  const mappings = await getLinkMappings();
+  return Object.keys(mappings.links).map((id) => ({
+    params: { id },
+  }));
+}
+
+const { id } = Astro.params;
+
+if (!id) {
+  return Astro.redirect("/404");
+}
+
+const link = await getLinkById(id);
+
+if (!link) {
+  return Astro.redirect("/404");
+}
+
+const pageTitle = `Weiterleitung zu ${link.provider}`;
+const pageDescription = `Du wirst zu ${link.title} bei ${link.provider} weitergeleitet.`;
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="container mx-auto px-4 py-8">
+    <div class="max-w-2xl mx-auto">
+      <!-- Redirect Info Card -->
+      <div class="glass glass-hover rounded-xl p-8 text-center">
+        <div class="mb-6">
+          <h1 class="text-3xl font-bold mb-2">Weiterleitung</h1>
+          <p class="text-gray-600 dark:text-gray-300">
+            Du wirst in wenigen Sekunden weitergeleitet...
+          </p>
+        </div>
+
+        <!-- Link Information -->
+        <div class="bg-white/10 rounded-lg p-6 mb-6">
+          <h2 class="text-xl font-semibold mb-2">{link.title}</h2>
+          <p class="text-gray-600 dark:text-gray-300 mb-3">
+            {link.description}
+          </p>
+
+          <div class="flex items-center justify-center gap-4 text-sm">
+            <span
+              class="px-3 py-1 bg-blue-500/20 text-blue-600 dark:text-blue-400 rounded-full"
+            >
+              {link.provider}
+            </span>
+            <span
+              class="px-3 py-1 bg-gray-500/20 text-gray-600 dark:text-gray-400 rounded-full"
+            >
+              {link.category}
+            </span>
+          </div>
+        </div>
+
+        <!-- Affiliate Disclaimer -->
+        {
+          link.affiliate && (
+            <div class="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-4 mb-6">
+              <p class="text-sm text-yellow-700 dark:text-yellow-300">
+                <strong>Hinweis:</strong> Dies ist ein Affiliate-Link. Wenn du
+                über diesen Link etwas kaufst, erhalte ich eine kleine
+                Provision, ohne dass für dich zusätzliche Kosten entstehen.
+              </p>
+            </div>
+          )
+        }
+
+        <!-- Manual Redirect Button -->
+        <div class="space-y-4">
+          <a
+            href={link.targetUrl}
+            class="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+            rel={link.affiliate ? "nofollow sponsored" : "nofollow"}
+            target="_blank"
+          >
+            Jetzt zu {link.provider} →
+          </a>
+
+          <p class="text-xs text-gray-500">
+            Oder warte, du wirst automatisch weitergeleitet.
+          </p>
+        </div>
+      </div>
+
+      <!-- Back Link -->
+      <div class="text-center mt-6">
+        <a
+          href="javascript:history.back()"
+          class="text-blue-600 dark:text-blue-400 hover:underline"
+        >
+          ← Zurück zur vorherigen Seite
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Auto-redirect Script -->
+  <script define:vars={{ targetUrl: link.targetUrl, affiliate: link.affiliate }}
+  >
+    // Auto-redirect after 3 seconds for affiliate links, 2 seconds for others
+    const redirectDelay = affiliate ? 3000 : 2000;
+
+    setTimeout(() => {
+      window.location.href = targetUrl;
+    }, redirectDelay);
+  </script>
+</BaseLayout>

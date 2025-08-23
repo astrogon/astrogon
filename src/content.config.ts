@@ -162,12 +162,33 @@ const terms = defineCollection({
   schema: searchable,
 });
 
+const downloads = defineCollection({
+  loader: glob({ pattern: "-index.{md,mdx}", base: "./src/content/downloads" }),
+  schema: searchable.extend({
+    downloads: z
+      .array(
+        z.object({
+          title: z.string(),
+          description: z.string(),
+          fileUrl: z.string(),
+          fileSize: z.string().optional(),
+          fileType: z.string().optional(),
+          version: z.string().optional(),
+          releaseDate: z.date().optional(),
+          category: z.string().optional(),
+        })
+      )
+      .optional(),
+  }),
+});
+
 // Export collections
 export const collections = {
   about,
   authors,
   blog,
   docs,
+  downloads,
   home,
   indexCards,
   poetry,

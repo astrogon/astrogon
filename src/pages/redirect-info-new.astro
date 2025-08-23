@@ -1,0 +1,263 @@
+---
+import BaseLayout from "@components/base/BaseLayout.astro";
+
+const pageTitle = "Weiterleitung";
+const pageDescription = "Du wirst in wenigen Sekunden weitergeleitet...";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="container mx-auto px-4 py-8">
+    <div class="max-w-2xl mx-auto">
+      <!-- Loading State -->
+      <div id="loading" class="glass glass-hover rounded-xl p-8 text-center">
+        <div class="mb-6">
+          <h1 class="text-3xl font-bold mb-2">Weiterleitung</h1>
+          <p class="text-gray-600 dark:text-gray-300">
+            Link-Informationen werden geladen...
+          </p>
+        </div>
+
+        <div
+          class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"
+        >
+        </div>
+      </div>
+
+      <!-- Content Container (will be populated by JavaScript) -->
+      <div id="content" class="hidden"></div>
+
+      <!-- Error State -->
+      <div
+        id="error"
+        class="hidden glass glass-hover rounded-xl p-8 text-center"
+      >
+        <div class="mb-6">
+          <h1 class="text-3xl font-bold mb-2 text-red-600">Fehler</h1>
+          <p class="text-gray-600 dark:text-gray-300">
+            Der angeforderte Link wurde nicht gefunden.
+          </p>
+        </div>
+
+        <a
+          href="/"
+          class="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+        >
+          Zur Startseite
+        </a>
+      </div>
+
+      <!-- Back Link -->
+      <div class="text-center mt-6">
+        <a
+          href="/"
+          class="text-gray-600 dark:text-gray-400 hover:text-blue-600 text-sm"
+        >
+          ← Zur Startseite
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    import type { LinkMapping } from "@/types";
+    import {
+      getLinkById,
+      incrementClickCount,
+      initializeLinkMappings,
+    } from "../lib/clientRedirectService";
+
+    // Parse URL parameters
+    function getUrlParams(): { id: string | null; return: string | null } {
+      const urlParams = new URLSearchParams(window.location.search);
+      return {
+        id: urlParams.get("id"),
+        return: urlParams.get("return"),
+      };
+    }
+
+    // Load link information and display content
+    async function loadLinkInfo(): Promise<void> {
+      const { id, return: returnUrl } = getUrlParams();
+
+      if (!id) {
+        showError();
+        return;
+      }
+
+      try {
+        // Initialize link mappings
+        await initializeLinkMappings();
+
+        // Get link data
+        const link = getLinkById(id);
+
+        if (!link) {
+          showError();
+          return;
+        }
+
+        displayLinkInfo(link, id, returnUrl);
+      } catch (error) {
+        console.error("Error loading link info:", error);
+        showError();
+      }
+    }
+
+    function displayLinkInfo(
+      link: LinkMapping,
+      id: string,
+      returnUrl: string | null
+    ): void {
+      const content = document.getElementById("content");
+      const loading = document.getElementById("loading");
+
+      if (!content || !loading) return;
+
+      content.innerHTML = `
+        <div class="glass glass-hover rounded-xl p-8">
+          ${
+            link.affiliate
+              ? `
+          <div class="mb-6 p-4 bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 rounded-r-lg">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm text-yellow-800 dark:text-yellow-200">
+                  <strong>Affiliate-Link Hinweis:</strong>
+                  Dieser Link führt zu einem Partner-Angebot. Als Amazon-Partner erhalte ich
+                  eine kleine Provision, wenn du über diesen Link etwas kaufst.
+                  Für dich entstehen dadurch keine zusätzlichen Kosten.
+                </p>
+              </div>
+            </div>
+          </div>
+          `
+              : ""
+          }
+
+          <div class="mb-6">
+            <h1 class="text-3xl font-bold mb-2">Link-Informationen</h1>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              ${link.description || "Keine Beschreibung verfügbar"}
+            </p>
+            
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 mb-4">
+              <p class="text-sm"><strong>Kategorie:</strong> ${link.category || "Allgemein"}</p>
+              <p class="text-sm break-all"><strong>Ziel-URL:</strong> ${link.targetUrl}</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4 items-center justify-center mb-6">
+            <button
+              id="continue-btn"
+              class="w-full sm:w-auto px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+            >
+              Weiter zum Link ${link.openInNewTab ? "(Neuer Tab)" : ""}
+            </button>
+          </div>
+
+          <div class="text-center text-sm text-gray-500">
+            <p>Du wirst in <span id="countdown">10</span> Sekunden automatisch weitergeleitet.</p>
+          </div>
+          
+          <div class="text-center mt-4">
+            ${
+              returnUrl
+                ? `<a href="${returnUrl}" class="text-blue-600 hover:underline">← Zurück zur vorherigen Seite</a>`
+                : '<a href="/" class="text-blue-600 hover:underline">← Zur Startseite</a>'
+            }
+          </div>
+        </div>
+      `;
+
+      // Show content and hide loading
+      loading.style.display = "none";
+      content.classList.remove("hidden");
+
+      // Set up continue button
+      const continueBtn = document.getElementById("continue-btn");
+      if (continueBtn) {
+        continueBtn.addEventListener("click", () => redirectToTarget(link, id));
+      }
+
+      // Start countdown
+      startCountdown(link, id);
+    }
+
+    function redirectToTarget(link: LinkMapping, id: string): void {
+      // Increment click count
+      incrementClickCount(id);
+
+      if (link.openInNewTab) {
+        window.open(link.targetUrl, "_blank");
+        // Return to previous page or home
+        const { return: returnUrl } = getUrlParams();
+        if (returnUrl) {
+          window.location.href = returnUrl;
+        } else {
+          window.location.href = "/";
+        }
+      } else {
+        window.location.href = link.targetUrl;
+      }
+    }
+
+    function startCountdown(link: LinkMapping, id: string): void {
+      let seconds = 10;
+      const countdownElement = document.getElementById("countdown");
+
+      const timer = setInterval(() => {
+        seconds--;
+        if (countdownElement) {
+          countdownElement.textContent = seconds.toString();
+        }
+
+        if (seconds <= 0) {
+          clearInterval(timer);
+          redirectToTarget(link, id);
+        }
+      }, 1000);
+    }
+
+    function showError(): void {
+      const loading = document.getElementById("loading");
+      const error = document.getElementById("error");
+
+      if (loading) loading.style.display = "none";
+      if (error) error.style.display = "block";
+    }
+
+    // Load link info when page loads
+    function initializeRedirect(): void {
+      // Add a small delay to ensure DOM is fully ready
+      setTimeout(loadLinkInfo, 100);
+    }
+
+    // Handle both fresh loads and cached loads
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initializeRedirect);
+    } else {
+      initializeRedirect();
+    }
+
+    // Handle browser back/forward navigation (pageshow event)
+    window.addEventListener("pageshow", function (event) {
+      if (event.persisted) {
+        // Page was loaded from cache, reinitialize
+        initializeRedirect();
+      }
+    });
+
+    // Additional fallback
+    setTimeout(() => {
+      const loading = document.getElementById("loading");
+      if (loading && loading.style.display !== "none") {
+        initializeRedirect();
+      }
+    }, 1000);
+  </script>
+</BaseLayout>
