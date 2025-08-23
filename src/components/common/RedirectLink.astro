@@ -25,9 +25,9 @@ const finalText = displayText + providerInfo;
 const relAttr = link?.affiliate ? "nofollow sponsored" : "nofollow";
 ---
 
-<a 
+<a
   href="#"
-  class={className} 
+  class={className}
   rel={relAttr}
   onclick={`handleRedirectClick('${id}', window.location.href); return false;`}
   data-link-id={id}
@@ -36,7 +36,7 @@ const relAttr = link?.affiliate ? "nofollow sponsored" : "nofollow";
 </a>
 
 <script>
-  import { handleLinkRedirect } from '../../lib/clientRedirectService';
+  import { handleLinkRedirect } from "../../lib/clientRedirectService";
 
   // Extend Window interface for type safety
   declare global {

@@ -59,8 +59,12 @@ const pageDescription = "Du wirst in wenigen Sekunden weitergeleitet...";
   </main>
 
   <script>
-    import type { LinkMapping } from '@/types';
-    import { getLinkById, incrementClickCount, initializeLinkMappings } from '../lib/clientRedirectService';
+    import type { LinkMapping } from "@/types";
+    import {
+      getLinkById,
+      incrementClickCount,
+      initializeLinkMappings,
+    } from "../lib/clientRedirectService";
 
     // Parse URL parameters
     function getUrlParams(): { id: string | null; return: string | null } {
@@ -83,10 +87,10 @@ const pageDescription = "Du wirst in wenigen Sekunden weitergeleitet...";
       try {
         // Initialize link mappings
         await initializeLinkMappings();
-        
+
         // Get link data
         const link = getLinkById(id);
-        
+
         if (!link) {
           showError();
           return;
@@ -99,7 +103,11 @@ const pageDescription = "Du wirst in wenigen Sekunden weitergeleitet...";
       }
     }
 
-    function displayLinkInfo(link: LinkMapping, id: string, returnUrl: string | null): void {
+    function displayLinkInfo(
+      link: LinkMapping,
+      id: string,
+      returnUrl: string | null
+    ): void {
       const content = document.getElementById("content");
       const loading = document.getElementById("loading");
 
@@ -153,9 +161,10 @@ const pageDescription = "Du wirst in wenigen Sekunden weitergeleitet...";
           </div>
           
           <div class="text-center mt-4">
-            ${returnUrl 
-              ? `<a href="${returnUrl}" class="text-blue-600 hover:underline">← Zurück zur vorherigen Seite</a>`
-              : '<a href="/" class="text-blue-600 hover:underline">← Zur Startseite</a>'
+            ${
+              returnUrl
+                ? `<a href="${returnUrl}" class="text-blue-600 hover:underline">← Zurück zur vorherigen Seite</a>`
+                : '<a href="/" class="text-blue-600 hover:underline">← Zur Startseite</a>'
             }
           </div>
         </div>
@@ -179,9 +188,13 @@ const pageDescription = "Du wirst in wenigen Sekunden weitergeleitet...";
       if (link.openInNewTab) {
         // Try to open in new tab first
         const newWindow = window.open(link.targetUrl, "_blank");
-        
+
         // Check if popup was blocked
-        if (!newWindow || newWindow.closed || typeof newWindow.closed === "undefined") {
+        if (
+          !newWindow ||
+          newWindow.closed ||
+          typeof newWindow.closed === "undefined"
+        ) {
           // Popup blocked, fallback to same window
           console.warn("Popup blocked, redirecting in same window");
           window.location.href = link.targetUrl;
