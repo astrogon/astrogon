@@ -1,0 +1,175 @@
+---
+import BaseLayout from "@components/base/BaseLayout.astro";
+import { getLinkMappings } from "@/lib/redirectService";
+import type { LinkMapping } from "@/types/redirect";
+
+const mappings = await getLinkMappings();
+const { links, analytics } = mappings;
+
+// Sort links by click count (descending)
+const sortedLinks = Object.entries(links).sort(
+  ([, a], [, b]) => (b as LinkMapping).clicks - (a as LinkMapping).clicks
+);
+
+const pageTitle = "Link Analytics Dashboard";
+const pageDescription =
+  "Übersicht über alle verfolgten Links und deren Klick-Statistiken.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="container mx-auto px-4 py-8">
+    <div class="max-w-6xl mx-auto">
+      <!-- Header -->
+      <div class="mb-8">
+        <h1 class="text-4xl font-bold mb-2">Link Analytics</h1>
+        <p class="text-gray-600 dark:text-gray-300">
+          Übersicht über alle verfolgten Links und deren Performance
+        </p>
+      </div>
+
+      <!-- Summary Stats -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="glass rounded-xl p-6">
+          <h3 class="text-lg font-semibold mb-2">Gesamt Klicks</h3>
+          <p class="text-3xl font-bold text-blue-600">
+            {analytics.totalClicks}
+          </p>
+        </div>
+        <div class="glass rounded-xl p-6">
+          <h3 class="text-lg font-semibold mb-2">Aktive Links</h3>
+          <p class="text-3xl font-bold text-green-600">
+            {Object.keys(links).length}
+          </p>
+        </div>
+        <div class="glass rounded-xl p-6">
+          <h3 class="text-lg font-semibold mb-2">Letzte Aktualisierung</h3>
+          <p class="text-lg font-medium">{analytics.lastUpdated}</p>
+        </div>
+      </div>
+
+      <!-- Links Table -->
+      <div class="glass rounded-xl overflow-hidden">
+        <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+          <h2 class="text-2xl font-bold">Link Übersicht</h2>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead class="bg-gray-50 dark:bg-gray-800">
+              <tr>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider"
+                >
+                  Link ID
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider"
+                >
+                  Titel
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider"
+                >
+                  Provider
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider"
+                >
+                  Kategorie
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider"
+                >
+                  Klicks
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider"
+                >
+                  Typ
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider"
+                >
+                  Erstellt
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+              {
+                sortedLinks.map(([id, linkData]) => {
+                  const link = linkData as LinkMapping;
+                  return (
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-800">
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <code class="text-sm bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">
+                          {id}
+                        </code>
+                      </td>
+                      <td class="px-6 py-4">
+                        <div class="text-sm font-medium">{link.title}</div>
+                        <div class="text-sm text-gray-500 dark:text-gray-400 truncate max-w-xs">
+                          {link.description}
+                        </div>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="text-sm">{link.provider}</span>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full">
+                          {link.category}
+                        </span>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="text-lg font-bold">{link.clicks}</span>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        {link.affiliate ? (
+                          <span class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 rounded-full">
+                            Affiliate
+                          </span>
+                        ) : (
+                          <span class="px-2 py-1 text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200 rounded-full">
+                            Normal
+                          </span>
+                        )}
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                        {link.created}
+                      </td>
+                    </tr>
+                  );
+                })
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Usage Example -->
+      <div class="mt-8 glass rounded-xl p-6">
+        <h3 class="text-xl font-bold mb-4">Verwendung</h3>
+        <div class="space-y-4">
+          <div>
+            <h4 class="font-semibold mb-2">In Markdown/MDX:</h4>
+            <code
+              class="block bg-gray-100 dark:bg-gray-800 p-3 rounded text-sm"
+            >
+              import RedirectLink from "@components/common/RedirectLink.astro";<br
+              />
+               &lt;RedirectLink id="amazon-example-1" text="Arduino Kit kaufen"
+              /&gt;
+            </code>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-2">Direkter Link:</h4>
+            <code
+              class="block bg-gray-100 dark:bg-gray-800 p-3 rounded text-sm"
+            >
+              [Arduino Kit](/redirect/amazon-example-1)
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

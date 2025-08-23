@@ -1,0 +1,44 @@
+{
+  "links": {
+    "amazon-example-1": {
+      "title": "Arduino Uno Starter Kit",
+      "description": "Perfekt für Einsteiger in die Elektronik",
+      "targetUrl": "https://amazon.de/dp/B01D8KOZF4?tag=frickeldave-21",
+      "provider": "Amazon",
+      "category": "Electronics",
+      "affiliate": true,
+      "openInNewTab": true,
+      "clicks": 118,
+      "created": "2025-08-23",
+      "lastUpdated": "2025-08-23"
+    },
+    "amazon-example-2": {
+      "title": "Raspberry Pi 4 Model B",
+      "description": "Einplatinencomputer für DIY-Projekte",
+      "targetUrl": "https://amazon.de/dp/B07TC2BK1X?tag=frickeldave-21",
+      "provider": "Amazon",
+      "category": "Electronics",
+      "affiliate": true,
+      "openInNewTab": true,
+      "clicks": 0,
+      "created": "2025-08-23",
+      "lastUpdated": "2025-08-23"
+    },
+    "github-repo": {
+      "title": "Astro Framework Repository",
+      "description": "Official Astro GitHub Repository",
+      "targetUrl": "https://github.com/withastro/astro",
+      "provider": "GitHub",
+      "category": "Development",
+      "affiliate": false,
+      "openInNewTab": false,
+      "clicks": 1,
+      "created": "2025-08-23",
+      "lastUpdated": "2025-08-23"
+    }
+  },
+  "analytics": {
+    "totalClicks": 119,
+    "lastUpdated": "2025-08-23"
+  }
+}

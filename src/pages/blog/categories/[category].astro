@@ -5,6 +5,8 @@ import { getTaxa } from "@lib/taxonomyParser";
 import taxonomyFilter from "@lib/taxonomyFilter";
 import TaxonLayout from "@components/blog/TaxonLayout.astro";
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   const taxa = await getTaxa("blog", "categories");
   const paths = taxa.map((taxon) => ({
@@ -18,11 +20,11 @@ export async function getStaticPaths() {
 
 const { taxon } = Astro.props;
 const entries = (await getEntries("blog")) as BlogEntry[];
-const filteredEntries: BlogEntry[] = taxonomyFilter(
+const filteredEntries = taxonomyFilter(
   entries,
   "categories",
   taxon!
-);
+) as BlogEntry[];
 ---
 
 <TaxonLayout taxon={taxon} entries={filteredEntries} />

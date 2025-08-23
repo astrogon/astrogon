@@ -66,3 +66,25 @@ export type SideNavMenuProps = {
   items: MenuItemWithDraft[];
   level: number;
 };
+
+// Link redirect system types
+export type LinkMapping = {
+  title: string;
+  description: string;
+  targetUrl: string;
+  provider: string;
+  category: string;
+  affiliate: boolean;
+  openInNewTab: boolean;
+  clicks: number;
+  created: string;
+  lastUpdated: string;
+};
+
+export type LinkMappings = {
+  links: Record<string, LinkMapping>;
+  analytics: {
+    totalClicks: number;
+    lastUpdated: string;
+  };
+};

@@ -1,0 +1,21 @@
+---
+title: Testseite
+description: Daves Spielwiese
+date: 2025-08-23
+image: "@assets/blog/diy/personalisierte-schluesselanhaenger/psmf-header.jpeg"
+imageAlt: Header image für den Test Blog Artikel
+categories: [Test]
+author: Frickeldave
+tags: [Test, NochMehrTest]
+hideToc: false
+---
+
+import RedirectLink from "@components/common/RedirectLink.astro";
+
+<RedirectLink id="amazon-example-1" text="JS Link" showProvider={true} />
+
+[Markdown Link](/api/redirect?id=amazon-example-1)
+
+<a href="/api/redirect?id=amazon-example-1" rel="nofollow sponsored">
+  HTML Link
+</a>

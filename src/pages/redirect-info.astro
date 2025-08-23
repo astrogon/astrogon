@@ -1,0 +1,239 @@
+---
+import BaseLayout from "@components/base/BaseLayout.astro";
+
+const pageTitle = "Weiterleitung";
+const pageDescription = "Du wirst in wenigen Sekunden weitergeleitet...";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="container mx-auto px-4 py-8">
+    <div class="max-w-2xl mx-auto">
+      <!-- Loading State -->
+      <div id="loading" class="glass glass-hover rounded-xl p-8 text-center">
+        <div class="mb-6">
+          <h1 class="text-3xl font-bold mb-2">Weiterleitung</h1>
+          <p class="text-gray-600 dark:text-gray-300">
+            Link-Informationen werden geladen...
+          </p>
+        </div>
+
+        <div
+          class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"
+        >
+        </div>
+      </div>
+
+      <!-- Content Container (will be populated by JavaScript) -->
+      <div id="content" class="hidden"></div>
+
+      <!-- Error State -->
+      <div
+        id="error"
+        class="hidden glass glass-hover rounded-xl p-8 text-center"
+      >
+        <div class="mb-6">
+          <h1 class="text-3xl font-bold mb-2 text-red-600">Fehler</h1>
+          <p class="text-gray-600 dark:text-gray-300">
+            Der angeforderte Link wurde nicht gefunden.
+          </p>
+        </div>
+
+        <a
+          href="/"
+          class="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+        >
+          Zur Startseite
+        </a>
+      </div>
+
+      <!-- Back Link -->
+      <div class="text-center mt-6">
+        <a
+          href="javascript:history.back()"
+          class="text-blue-600 dark:text-blue-400 hover:underline"
+        >
+          ← Zurück zur vorherigen Seite
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- External Script for Redirect Logic -->
+  <script is:inline>
+    // Clear any existing state to prevent conflicts
+    if (window.redirectProcessed) {
+      window.redirectProcessed = false;
+    }
+    
+    // Simple approach: use URL parameter to pass the return URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const returnUrl = urlParams.get('return') || document.referrer || '/blog';
+    
+    // Reset state on each page load
+    function resetPageState() {
+      const loading = document.getElementById("loading");
+      const content = document.getElementById("content");
+      const error = document.getElementById("error");
+      
+      if (loading) {
+        loading.style.display = "block";
+      }
+      if (content) {
+        content.style.display = "none";
+        content.innerHTML = "";
+      }
+      if (error) {
+        error.style.display = "none";
+      }
+    }
+
+    async function loadLinkInfo() {
+      // Prevent multiple executions
+      if (window.redirectProcessed) {
+        return;
+      }
+      window.redirectProcessed = true;
+      
+      // Reset state first
+      resetPageState();
+      
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get("id");
+
+      if (!id) {
+        window.redirectProcessed = false;
+        showError();
+        return;
+      }
+
+      try {
+        // Add cache busting and unique timestamp
+        const timestamp = Date.now() + Math.random();
+        const response = await fetch(`/api/link-info?id=${id}&_t=${timestamp}`);
+        const link = await response.json();
+
+        if (!response.ok || link.error) {
+          window.redirectProcessed = false;
+          showError();
+          return;
+        }
+
+        showLinkInfo(link);
+
+        // Auto-redirect after delay
+        const redirectDelay = link.affiliate ? 3000 : 2000;
+        setTimeout(() => {
+          if (link.openInNewTab) {
+            window.open(link.targetUrl, '_blank');
+            // Use the return URL
+            window.location.href = returnUrl;
+          } else {
+            window.location.href = link.targetUrl;
+          }
+        }, redirectDelay);
+      } catch (error) {
+        console.error("Error loading link info:", error);
+        window.redirectProcessed = false;
+        showError();
+      }
+    }
+
+    function showLinkInfo(link) {
+      const loading = document.getElementById("loading");
+      const content = document.getElementById("content");
+
+      if (loading) loading.style.display = "none";
+      if (content) {
+        content.className = "glass glass-hover rounded-xl p-8 text-center";
+        content.innerHTML = `
+          <div class="mb-6">
+            <h1 class="text-3xl font-bold mb-2">Weiterleitung</h1>
+            <p class="text-gray-600 dark:text-gray-300">
+              Du wirst in wenigen Sekunden weitergeleitet...
+            </p>
+          </div>
+
+          <div class="bg-white/10 rounded-lg p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-2">${link.title}</h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-3">${link.description}</p>
+            
+            <div class="flex items-center justify-center gap-4 text-sm">
+              <span class="px-3 py-1 bg-blue-500/20 text-blue-600 dark:text-blue-400 rounded-full">
+                ${link.provider}
+              </span>
+              <span class="px-3 py-1 bg-gray-500/20 text-gray-600 dark:text-gray-400 rounded-full">
+                ${link.category}
+              </span>
+            </div>
+          </div>
+
+          ${
+            link.affiliate
+              ? `
+          <div class="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-4 mb-6">
+            <p class="text-sm text-yellow-700 dark:text-yellow-300">
+              <strong>Hinweis:</strong> Dies ist ein Affiliate-Link. Wenn du über diesen Link etwas kaufst, 
+              erhalte ich eine kleine Provision, ohne dass für dich zusätzliche Kosten entstehen.
+            </p>
+          </div>
+          `
+              : ""
+          }
+
+          <div class="space-y-4">
+            <a 
+              href="${link.targetUrl}"
+              class="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+              rel="${link.affiliate ? "nofollow sponsored" : "nofollow"}"
+              ${link.openInNewTab ? 'target="_blank"' : ''}
+            >
+              Jetzt zu ${link.provider} →
+            </a>
+            
+            <p class="text-xs text-gray-500">
+              Oder warte, du wirst automatisch weitergeleitet${link.openInNewTab ? ' (neuer Tab)' : ''}.
+            </p>
+          </div>
+        `;
+        content.style.display = "block";
+      }
+    }
+
+    function showError() {
+      const loading = document.getElementById("loading");
+      const error = document.getElementById("error");
+
+      if (loading) loading.style.display = "none";
+      if (error) error.style.display = "block";
+    }
+
+    // Load link info when page loads
+    function initializeRedirect() {
+      // Add a small delay to ensure DOM is fully ready
+      setTimeout(loadLinkInfo, 100);
+    }
+    
+    // Handle both fresh loads and cached loads
+    if (document.readyState === 'loading') {
+      document.addEventListener("DOMContentLoaded", initializeRedirect);
+    } else {
+      initializeRedirect();
+    }
+    
+    // Handle browser back/forward navigation (pageshow event)
+    window.addEventListener('pageshow', function(event) {
+      if (event.persisted) {
+        // Page was loaded from cache, reinitialize
+        initializeRedirect();
+      }
+    });
+    
+    // Additional fallback
+    setTimeout(() => {
+      const loading = document.getElementById('loading');
+      if (loading && loading.style.display !== 'none') {
+        initializeRedirect();
+      }
+    }, 1000);
+  </script>
+</BaseLayout>

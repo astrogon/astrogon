@@ -1,0 +1,37 @@
+---
+import type { LinkMapping } from "@/types";
+
+interface Props {
+  id: string;
+  link?: LinkMapping;
+  text?: string;
+  className?: string;
+  showProvider?: boolean;
+}
+
+const {
+  id,
+  link,
+  text,
+  className = "text-blue-600 dark:text-blue-400 hover:underline",
+  showProvider = false,
+} = Astro.props;
+
+const displayText = text || link?.title || `Link zu ${id}`;
+const providerInfo = showProvider && link ? ` (${link.provider})` : "";
+const finalText = displayText + providerInfo;
+
+// Add rel attributes for affiliate links
+const relAttr = link?.affiliate ? "nofollow sponsored" : "nofollow";
+
+// The redirect page itself should always open in the same tab
+// The target behavior is handled by the redirect-info page JavaScript
+---
+
+<a 
+  href={`/api/redirect?id=${id}`} 
+  class={className} 
+  rel={relAttr}
+>
+  {finalText}
+</a>

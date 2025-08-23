@@ -199,6 +199,9 @@ import InteractiveComponent from "@components/InteractiveComponent";
 - Verwende progressive Enhancement
 - Implementiere Error Boundaries
 - Nutze TypeScript für Type Safety
+- **Linter-Compliance**: Alle Code-Änderungen müssen ESLint, Prettier und Vale bestehen
+- **Code-Reviews**: Prüfe Linter-Output vor Commits
+- **Type Safety**: Vermeide `any`-Types, verwende explizite Interfaces
 
 ## Debugging & Development
 
@@ -206,6 +209,59 @@ import InteractiveComponent from "@components/InteractiveComponent";
 - Hot Module Replacement für schnelle Entwicklung
 - TypeScript-Checking in VS Code
 - Browser DevTools für Performance-Monitoring
+
+## Code Quality & Linting
+
+### Linter-Konfiguration
+Das Projekt nutzt mehrere Linter zur Code-Qualitätssicherung:
+
+- **ESLint** - JavaScript/TypeScript Code-Analyse
+- **Prettier** - Code-Formatierung 
+- **Vale** - Prose/Content Linting für Markdown-Dateien
+
+### Linting-Workflow
+**WICHTIG**: Bei JEDER Code-Änderung müssen alle Linter-Regeln eingehalten werden:
+
+1. **ESLint-Regeln beachten**:
+   - Keine unverwendeten Variablen/Parameter (Prefix mit `_` wenn nötig)
+   - Explizite TypeScript-Typen verwenden
+   - Keine `any`-Types ohne Begründung
+   - Arrow Functions für Callbacks bevorzugen
+
+2. **Prettier-Formatierung**:
+   - Automatische Code-Formatierung
+   - Konsistente Einrückung und Zeilenumbrüche
+   - Läuft automatisch bei Save (VS Code)
+
+3. **Vale Content-Linting**:
+   - Prüft Markdown/MDX Dateien auf Schreibstil
+   - Terminologie-Konsistenz
+   - Readability-Checks
+
+### Linter Commands
+```bash
+# ESLint prüfen und fixen
+npm run lint
+npm run lint:fix
+
+# Prettier formatieren  
+npm run format
+
+# Vale prüfen (Markdown/Content)
+vale src/content/
+```
+
+### VS Code Integration
+- ESLint Extension aktiviert
+- Prettier Extension aktiviert  
+- Format on Save aktiviert
+- Auto-Fix on Save für ESLint
+
+### Linter-Fehler beheben
+- **Unbenutzte Parameter**: Prefix mit `_` (`_unusedParam`)
+- **Implizite any-Types**: Explizite Typen definieren
+- **Missing return types**: Return-Type annotieren
+- **Console.log**: Nur für Debugging, vor Commit entfernen
 
 ## Code-Konventionen
 
@@ -215,5 +271,37 @@ import InteractiveComponent from "@components/InteractiveComponent";
 - **Dateien**: kebab-case für URLs und IDs
 - **Variablen**: camelCase
 - **Konstanten**: UPPER_SNAKE_CASE
+
+## GitHub Copilot Regeln
+
+### Obligatorische Linter-Prüfung
+**WICHTIG**: GitHub Copilot muss bei ALLEN Code-Änderungen folgende Prüfungen durchführen:
+
+1. **ESLint-Compliance**: Alle TypeScript/JavaScript-Dateien müssen ESLint-Regeln erfüllen
+2. **Prettier-Formatierung**: Code muss korrekt formatiert sein
+3. **Vale-Prüfung**: Markdown/MDX-Inhalte müssen Vale-Regeln bestehen
+4. **TypeScript-Typen**: Explizite Typen ohne `any` verwenden
+5. **Unbenutzte Variablen**: Mit `_` prefix markieren oder entfernen
+
+### Workflow bei Code-Änderungen
+```bash
+# 1. ESLint prüfen
+npm run lint
+
+# 2. Prettier formatieren
+npm run format
+
+# 3. Vale für Markdown prüfen
+vale src/content/
+
+# 4. TypeScript-Checking
+npm run type-check
+```
+
+### Fehlerbehebung-Prioritäten
+1. **ESLint-Fehler** sofort beheben
+2. **TypeScript-Kompilier-Fehler** sofort beheben  
+3. **Prettier-Formatierung** automatisch anwenden
+4. **Vale-Warnungen** in Markdown-Dateien beachten
 
 Diese Anweisungen helfen GitHub Copilot dabei, kontextspezifische und projektkonform Vorschläge zu generieren.

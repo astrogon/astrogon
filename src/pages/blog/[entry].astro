@@ -5,6 +5,8 @@ import EntryLayout from "@components/blog/EntryLayout.astro";
 import { getEntries } from "@lib/contentParser";
 import similerItems from "@lib/similarItems";
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   const entries = (await getEntries("blog", sortByDate)) as BlogEntry[];
   const paths = entries.map((entry) => ({
@@ -17,7 +19,7 @@ export async function getStaticPaths() {
 }
 
 const { entry, entries } = Astro.props;
-const relatedEntries = similerItems(entry, entries, entry.id);
+const relatedEntries = similerItems(entry, entries, entry.id).filter((item): item is BlogEntry => item !== undefined);
 ---
 
 <EntryLayout entry={entry} relatedEntries={relatedEntries} />

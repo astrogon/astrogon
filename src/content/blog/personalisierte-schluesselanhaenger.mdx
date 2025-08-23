@@ -55,7 +55,17 @@ import psmf026 from "@assets/blog/diy/personalisierte-schluesselanhaenger/psmf-0
 import psmf027 from "@assets/blog/diy/personalisierte-schluesselanhaenger/psmf-027.jpg";
 import psmf028 from "@assets/blog/diy/personalisierte-schluesselanhaenger/psmf-028.jpg";
 
+import RedirectLink from "@components/common/RedirectLink.astro";
+
 import PrivacyYouTube from "@components/frickeldave/PrivacyYouTube.astro";
+
+<RedirectLink id="amazon-example-1" text="JS Link" showProvider={true} />
+
+[Markdown Link](/api/redirect?id=amazon-example-1)
+
+<a href="/api/redirect?id=amazon-example-1" rel="nofollow sponsored">
+  HTML Link
+</a>
 
 Für das Macherfestival 2024 habe ich als kleine Erinnerung Schlüsselanhänger aus Holz gebaut, in
 denen ein Logo in Epoxidharz eingegossen ist. Mit dieser Anleitung kannst du mit wenig Materialien,
