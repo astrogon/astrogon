@@ -1,4 +1,77 @@
 // @ts-nocheck
+// Client-side link management for GitHub Pages compatibility
+let linkMappings = null;
+
+// Initialize link mappings from static JSON
+async function initializeLinkMappings() {
+  try {
+    const response = await fetch("/data/link-mappings.json");
+    linkMappings = await response.json();
+  } catch (error) {
+    console.error("Failed to load link mappings:", error);
+    linkMappings = {
+      links: {},
+      analytics: {
+        totalClicks: 0,
+        lastUpdated: new Date().toISOString().split("T")[0],
+      },
+    };
+  }
+}
+
+// Get link by ID
+function getLinkById(id) {
+  if (!linkMappings) {
+    console.error("Link mappings not initialized");
+    return null;
+  }
+
+  const link = linkMappings.links[id];
+  if (!link) {
+    return null;
+  }
+
+  // Handle legacy links without openInNewTab property
+  return {
+    ...link,
+    openInNewTab: link.openInNewTab ?? true, // Default to true
+  };
+}
+
+// Increment click count (client-side storage)
+function incrementClickCount(id) {
+  if (!linkMappings) {
+    console.error("Link mappings not initialized");
+    return;
+  }
+
+  if (!linkMappings.links[id]) {
+    console.error("Link not found:", id);
+    return;
+  }
+
+  // Get current counts from localStorage
+  const stored = localStorage.getItem("linkClickCounts");
+  const clickCounts = stored ? JSON.parse(stored) : {};
+
+  // Increment count
+  clickCounts[id] = (clickCounts[id] || 0) + 1;
+
+  // Store back to localStorage
+  localStorage.setItem("linkClickCounts", JSON.stringify(clickCounts));
+
+  // Update total clicks
+  const totalClicks = Object.values(clickCounts).reduce(
+    (sum, count) => sum + count,
+    0
+  );
+  localStorage.setItem("totalLinkClicks", totalClicks.toString());
+  localStorage.setItem(
+    "lastLinkUpdate",
+    new Date().toISOString().split("T")[0]
+  );
+}
+
 async function loadLinkInfo() {
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get("id");
@@ -9,21 +82,30 @@ async function loadLinkInfo() {
   }
 
   try {
-    // Fetch link info from API
-    const response = await fetch(`/api/link-info?id=${id}`);
-    const link = await response.json();
+    // Initialize link mappings
+    await initializeLinkMappings();
 
-    if (!response.ok || link.error) {
+    // Get link info from static data
+    const link = getLinkById(id);
+
+    if (!link) {
       showError();
       return;
     }
+
+    // Increment click count
+    incrementClickCount(id);
 
     showLinkInfo(link);
 
     // Auto-redirect after delay
     const redirectDelay = link.affiliate ? 3000 : 2000;
     setTimeout(() => {
-      window.location.href = link.targetUrl;
+      if (link.openInNewTab) {
+        window.open(link.targetUrl, "_blank");
+      } else {
+        window.location.href = link.targetUrl;
+      }
     }, redirectDelay);
   } catch (error) {
     console.error("Error loading link info:", error);

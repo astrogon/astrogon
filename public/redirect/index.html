@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weiterleitung - Frickeldave</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <script src="/js/redirect-handler.js"></script>
+    <script>
+      // Fallback redirect for any unmatched paths
+      setTimeout(function () {
+        if (window.location.pathname.startsWith("/redirect/")) {
+          const pathParts = window.location.pathname.split("/");
+          const id = pathParts[pathParts.length - 1];
+          if (id && id !== "index.html") {
+            window.location.replace("/redirect/?id=" + encodeURIComponent(id));
+          }
+        }
+      }, 100);
+    </script>
+  </head>
+  <body>
+    <div
+      style="text-align: center; padding: 50px; font-family: Arial, sans-serif"
+    >
+      <h1>Weiterleitung...</h1>
+      <p>Du wirst automatisch weitergeleitet.</p>
+      <script>
+        // If JavaScript is disabled, show a message
+        document.write(
+          '<p><a href="/redirect/">Klicke hier, falls du nicht automatisch weitergeleitet wirst.</a></p>'
+        );
+      </script>
+    </div>
+  </body>
+</html>
