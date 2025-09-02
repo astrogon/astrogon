@@ -42,7 +42,6 @@ jspm_packages
 **/.cache
 
 # Additonal
-.vscode
 .astro
 .idea
 .DS_Store

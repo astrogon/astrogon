@@ -1,0 +1,36 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+  "type": "node",
+      "request": "launch",
+      "name": "Debug npm run dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+  "type": "node",
+      "request": "launch",
+      "name": "Debug npm run build",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "build"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ],
+  "terminal": {
+    "integrated": {
+      "defaultProfile": {
+        "linux": "bash"
+      }
+    }
+  }
+}

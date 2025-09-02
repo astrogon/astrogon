@@ -11,4 +11,5 @@ This directory contains all downloadable files referenced in the downloads secti
 
 ## Note
 
-This directory is currently a placeholder. Actual download files should be placed here when available.
+This directory is currently a placeholder. Actual download files should be placed here when
+available.
