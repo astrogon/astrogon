@@ -1,0 +1,34 @@
+name: deploy-dev
+
+on:
+  # Allows you to run this workflow manually from the Actions tab on GitHub.
+  workflow_dispatch:
+  # Optional: trigger on push to develop branch
+  # push:
+  #   branches: [develop]
+
+jobs:
+  trigger-homenet-deployment:
+    runs-on: [self-hosted, frickeldave-main]
+    steps:
+      - name: Trigger HomeNet Ansible Deployment
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.HOMENET_PAT }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: 'Frickeldave',
+              repo: 'HomeNet',
+              workflow_id: 'host-waltraud.yaml',
+              ref: 'main',
+              inputs: {
+                homeassistant_reset: 'false'
+              }
+            });
+      
+      - name: Log deployment trigger
+        run: |
+          echo "Triggered HomeNet deployment via host-waltraud.yaml workflow"
+          echo "Target: waltraud-dc.yaml playbook"
+          echo "Limit: waltraud"
+          echo "Variables: homeassistant_reset=false"
