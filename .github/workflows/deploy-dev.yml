@@ -1,14 +1,17 @@
 name: deploy-dev
 
 on:
+  # Trigger when a pull request targeting `dev` is closed (merged)
+  pull_request:
+    types: [closed]
+    branches: [dev]
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
-  # Optional: trigger on push to develop branch
-  # push:
-  #   branches: [develop]
 
 jobs:
   trigger-homenet-deployment:
+    # Only run when manually dispatched or when the pull request was merged
+    if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true) }}
     runs-on: [self-hosted, frickeldave-main]
     steps:
       - name: Trigger HomeNet Ansible Deployment
@@ -33,7 +36,7 @@ jobs:
               console.error('Error status:', error.status);
               throw error;
             }
-      
+
       - name: Log deployment trigger
         run: |
           echo "Triggered HomeNet deployment via host-waltraud.yaml workflow"
