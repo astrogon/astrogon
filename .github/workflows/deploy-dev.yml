@@ -16,15 +16,23 @@ jobs:
         with:
           github-token: ${{ secrets.HOMENET_PAT }}
           script: |
-            await github.rest.actions.createWorkflowDispatch({
-              owner: 'Frickeldave',
-              repo: 'HomeNet',
-              workflow_id: 'host-waltraud.yaml',
-              ref: 'main',
-              inputs: {
-                homeassistant_reset: 'false'
-              }
-            });
+            try {
+              const result = await github.rest.actions.createWorkflowDispatch({
+                owner: 'Frickeldave',
+                repo: 'HomeNet',
+                workflow_id: 'host-waltraud.yaml',
+                ref: 'main',
+                inputs: {
+                  homeassistant_reset: 'false'
+                }
+              });
+              console.log('Workflow dispatch successful:', result.status);
+            } catch (error) {
+              console.error('Error triggering workflow:', error);
+              console.error('Error message:', error.message);
+              console.error('Error status:', error.status);
+              throw error;
+            }
       
       - name: Log deployment trigger
         run: |
