@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  trigger-homenet-deployment:
+  build:
     # Only run when manually dispatched or when the pull request was merged (not when )
     if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true) }}
     runs-on: [self-hosted, frickeldave-main]
@@ -26,7 +26,8 @@ jobs:
                 workflow_id: 'host-waltraud.yaml',
                 ref: 'main',
                 inputs: {
-                  homeassistant_reset: 'false'
+                  homeassistant_reset: 'false',
+                  tag_select: 'frickeldave-build'
                 }
               });
               console.log('Workflow dispatch successful:', result.status);
@@ -42,4 +43,40 @@ jobs:
           echo "Triggered HomeNet deployment via host-waltraud.yaml workflow"
           echo "Target: waltraud-dc.yaml playbook"
           echo "Limit: waltraud"
-          echo "Variables: homeassistant_reset=false"
+          echo "Variables: homeassistant_reset=false, tag_select=frickeldave-build"
+
+  deploy:
+    # Only run when manually dispatched or when the pull request was merged (not when )
+    if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true) }}
+    runs-on: [self-hosted, frickeldave-main]
+    steps:
+      - name: Trigger HomeNet Ansible Deployment
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.HOMENET_PAT }}
+          script: |
+            try {
+              const result = await github.rest.actions.createWorkflowDispatch({
+                owner: 'Frickeldave',
+                repo: 'HomeNet',
+                workflow_id: 'host-waltraud.yaml',
+                ref: 'main',
+                inputs: {
+                  homeassistant_reset: 'false',
+                  tag_select: 'frickeldave'
+                }
+              });
+              console.log('Workflow dispatch successful:', result.status);
+            } catch (error) {
+              console.error('Error triggering workflow:', error);
+              console.error('Error message:', error.message);
+              console.error('Error status:', error.status);
+              throw error;
+            }
+
+      - name: Log deployment trigger
+        run: |
+          echo "Triggered HomeNet deployment via host-waltraud.yaml workflow"
+          echo "Target: waltraud-dc.yaml playbook"
+          echo "Limit: waltraud"
+          echo "Variables: homeassistant_reset=false, tag_select=frickeldave"
