@@ -15,7 +15,7 @@ permissions:
   id-token: write
 
 jobs:
-  build:
+  trigger-github-deployment:
     # Only run on manual dispatch or when the pull request was merged
     if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true) }}
     runs-on: [self-hosted, frickeldave-main]
